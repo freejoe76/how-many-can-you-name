@@ -1,0 +1,20 @@
+<style type="text/css">
+#correct { margin-top: 0; }
+</style>
+    <form name="timecount">
+        <input id="timer" type="text" readonly="true" value="Wait for the timer..." name="timer" />
+    </form>
+        <div id="answerfield">
+        <label for="answer" style="display:none;">Enter your answers here:</label>
+        <input type="text" onKeyUp="checkAnswer(this);" name="input" id="answer" />
+        <span id="remain"></span>
+        </div>
+        
+        <h3>
+        Correct Answers:
+        </h3>
+        <p id="correct">None</p>
+        <div id="missed"></div>
+<script language="javascript" type="text/javascript" src="http://extras.denverpost.com/media/js/quiz.0.3.js"></script>
+
+<h3>Got a high score? Share it, along with the names you got right, in the comments below.</h3>
