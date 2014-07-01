@@ -12,7 +12,7 @@ var secs;
 
 function init() 
 {
-    answerkey = $('answerkey').value.split(',');
+    answerkey = $('#answerkey').attr('value').split(',');
     answercount = answerkey.length;
     timecount();
     document.getElementById('answer').focus();
