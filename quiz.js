@@ -20,7 +20,7 @@ function init()
 
 function timecount() 
 {
-    mins = 1 * minCount($('time_limit').value);
+    mins = 1 * minCount($('#time_limit').attr('value'));
     secs = 0 + secCount(":01");
     counter();
 }
