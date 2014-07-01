@@ -102,10 +102,10 @@ function checkAnswer(input)
                 answertimes[len_correct] = (mins * 60) + secs;
                 for( var x=0; x < len_correct; x++ ) msg += correct[x]+", ";
     
-                document.getElementById("correct").innerHTML = msg;
+                $("#correct").text(msg);
                 var remainmsg = " remain";
                 
-                document.getElementById("remain").innerHTML = (answercount - correctcount) + remainmsg;
+                $("#remain").text( (answercount - correctcount) + remainmsg );
                 if( correctcount == answercount ) window.alert("You win!"); 
             }
         }
@@ -124,7 +124,7 @@ function showAnswers()
     for( var x=0; x < len; x++ ) msg += answerkey[x]+", ";
     msg += '</p>';
 
-    document.getElementById("missed").innerHTML = msg;
-    document.getElementById("missed").style.display = 'block';
-    document.getElementById("explanation").style.display = 'block';
+    $("#missed").text(msg);
+    $("#missed").css('display','block');
+    $("#explanation").css('display', 'block');
 }
