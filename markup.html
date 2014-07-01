@@ -5,7 +5,16 @@
 <!-- PUT THE ANSWERS IN THE VALUE FIELD, SEPARATED BY COMMAS, LIKE SO: value="Name1,Name2,Name3,Name4" -->
 <input id="answerkey" type="hidden" value="Arizona,Utah,Oklahoma,Maine" />
 
-<script type="text/javascript" src="http://extras.denverpost.com/media/js/prototype-1.6.0.2.js"></script>
+<script type="text/javascript">
+// Only load jquery if it hasn't been yet.
+if ( typeof $ === 'undefined' )
+{
+var script = document.createElement( 'script' );
+script.type = 'text/javascript';
+script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
+document.getElementsByTagName('head')[0].appendChild(script);
+}
+</script>
 
 <style type="text/css">
 #correct { margin-top: 0; }
