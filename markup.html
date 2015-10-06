@@ -1,3 +1,6 @@
+<!-- FOR TESTING -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
 <!-- EDIT THE TEXT HERE -->
 <h2>
     This is the question we are asking people to answer
@@ -29,7 +32,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
     </form>
         <div id="answerfield">
         <label for="answer" style="display:none;">Enter your answers here:</label>
-        <input type="text" onKeyUp="checkAnswer(this);" name="input" id="answer" />
+        <input type="text" onKeyUp="quizzer.checkAnswer(this);" name="input" id="answer" />
         <span id="remain"></span>
         </div>
         

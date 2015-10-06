@@ -1,6 +1,3 @@
-
-window.onload = init;
-
 var quizzer = {
     correctcount: 0,
     correct: new Array(),
@@ -11,6 +8,8 @@ var quizzer = {
     secs: 0,
     init: function() 
     {
+        // Populate the answers, figure out how many answers the reader
+        // has to get right, start the timer.
         this.answerkey = $('#answerkey').attr('value').split(',');
         this.answercount = this.answerkey.length;
         this.timecount();
@@ -18,8 +17,9 @@ var quizzer = {
     },
     timecount: function() 
     {
-        this.mins = 1 * minCount($('#time_limit').attr('value'));
-        this.secs = 0 + secCount(":01");
+        // Count down.
+        this.mins = 1 * this.minCount($('#time_limit').attr('value'));
+        this.secs = 0 + this.secCount(":01");
         this.counter();
     },
     minCount: function(input) 
@@ -29,7 +29,7 @@ var quizzer = {
 
         for( var i = 0; i < len; i++ ) if( input.substring(i, i + 1) == ":" ) break;
 
-        return( input.substring(0, i) );
+        return input.substring(0, i);
     },
     secCount: function(input) 
     {
@@ -38,10 +38,11 @@ var quizzer = {
 
         for( var i = 0; i < len; i++ ) if( input.substring(i, i + 1) == ":" ) break;
 
-        return( input.substring(i + 1, input.length) );
+        return input.substring(i + 1, input.length);
     },
     displayTime: function(mins,secs) 
     {
+        // Format a string so we can show readers how much time they have left.
         var display;
 
         if( mins <= 9 ) display = " 0";
@@ -52,52 +53,53 @@ var quizzer = {
         if( secs <= 9 ) display += "0" + secs;
         else display += secs;
 
-        return( display );
+        return display;
     },
     counter: function() 
     {
-        if( correctcount == answerkey.length ) return;
-        secs--;
-        if( secs == -1 ) 
+        // Handle the passage of time.
+        if( this.correctcount == this.answerkey.length ) return;
+        this.secs--;
+        if( this.secs == -1 ) 
         {
-            secs = 59;
-            mins--;
+            this.secs = 59;
+            this.mins--;
         }
-        document.timecount.timer.value = displayTime(mins,secs);
+        document.timecount.timer.value = this.displayTime(this.mins,this.secs);
 
-        if( ( mins == 0 ) && ( secs == 0 ) ) 
+        if( ( this.mins == 0 ) && ( this.secs == 0 ) ) 
         {
             window.alert("Time up."); 
-            showAnswers(); 
+            this.showAnswers(); 
         } 
         else 
         {
-            cd = setTimeout("counter()", 1000);
+            cd = setTimeout("quizzer.counter()", 1000);
         }
     },
     checkAnswer: function(input)
     {
         if( input.value.length > 0 )
         {
-            for( var i = 0; i < answerkey.length; i++ )
+            for( var i = 0; i < this.answerkey.length; i++ )
             {
-                if( input.value.toLowerCase() == answerkey[i].toLowerCase() )
+                if( input.value.toLowerCase() == this.answerkey[i].toLowerCase() )
                 {
-                    correct[correct.length] = answerkey[i];
-                    correct.sort();
-                    answerkey.splice(i,1);
+                    this.correct[correct.length] = this.answerkey[i];
+                    this.correct.sort();
+                    this.answerkey.splice(i,1);
                     input.value = "";
-                    correctcount++;
+                    this.correctcount++;
                     var msg = "";
-                    var len_correct = correct.length;
-                    answertimes[len_correct] = (mins * 60) + secs;
-                    for( var x=0; x < len_correct; x++ ) msg += correct[x]+", ";
+                    var len_correct = this.correct.length;
+                    this.answertimes[len_correct] = (this.mins * 60) + this.secs;
+                    for( var x=0; x < this.len_correct; x++ ) msg += this.correct[x]+", ";
         
                     $("#correct").text(msg);
                     var remainmsg = " remain";
                     
-                    $("#remain").text( (answercount - correctcount) + remainmsg );
-                    if( correctcount == answercount ) window.alert("You win!"); 
+                    $("#remain").text( (this.answercount - this.correctcount) + remainmsg );
+                    if( this.correctcount == this.answercount ) window.alert("You win!"); 
                 }
             }
         }
@@ -108,13 +110,15 @@ var quizzer = {
     },
     showAnswers: function()
     {
-        var len = answerkey.length;
+        var len = this.answerkey.length;
         var msg = '<h3>Missed:</h3><p>';
-        for( var x=0; x < len; x++ ) msg += answerkey[x]+", ";
+        for( var x=0; x < len; x++ ) msg += this.answerkey[x]+", ";
         msg += '</p>';
 
-        $("#missed").text(msg);
+        $("#missed").html(msg);
         $("#missed").css('display','block');
         $("#explanation").css('display', 'block');
     }
 }
+
+$(document).ready(function(){ quizzer.init(); });
