@@ -1,30 +1,27 @@
 
 window.onload = init;
 
-
-var correctcount=0;
-var correct = new Array();
-var answerkey = new Array();
-var answertimes = new Array();
-var answercount;
-var mins;
-var secs;
-
-function init() 
-{
-    answerkey = $('#answerkey').attr('value').split(',');
-    answercount = answerkey.length;
-    timecount();
-    document.getElementById('answer').focus();
-}
-
-function timecount() 
-{
-    mins = 1 * minCount($('#time_limit').attr('value'));
-    secs = 0 + secCount(":01");
-    counter();
-}
-
+var quizzer = {
+    correctcount: 0,
+    correct: new Array(),
+    answerkey: new Array(),
+    answertimes: new Array(),
+    answercount: 0,
+    mins: 0,
+    secs: 0,
+    init: function() 
+    {
+        this.answerkey = $('#answerkey').attr('value').split(',');
+        this.answercount = this.answerkey.length;
+        this.timecount();
+        document.getElementById('answer').focus();
+    },
+    timecount: function() 
+    {
+        this.mins = 1 * minCount($('#time_limit').attr('value'));
+        this.secs = 0 + secCount(":01");
+        this.counter();
+    },
 function minCount(input) 
 {
     // Pull out the minutes part of a time string, as in the "1" part of, say, "1:30"
@@ -33,7 +30,7 @@ function minCount(input)
     for( var i = 0; i < len; i++ ) if( input.substring(i, i + 1) == ":" ) break;
 
     return( input.substring(0, i) );
-}
+},
 
 function secCount(input) 
 {
@@ -43,7 +40,7 @@ function secCount(input)
     for( var i = 0; i < len; i++ ) if( input.substring(i, i + 1) == ":" ) break;
 
     return( input.substring(i + 1, input.length) );
-}
+},
 
 function displayTime(mins,secs) 
 {
@@ -58,7 +55,7 @@ function displayTime(mins,secs)
     else display += secs;
 
     return( display );
-}
+},
 
 function counter() 
 {
@@ -80,7 +77,7 @@ function counter()
     {
         cd = setTimeout("counter()",1000);
     }
-}
+},
 
 
 
@@ -114,7 +111,7 @@ function checkAnswer(input)
     {
         if( input.value == " " ) input.value = "";
     }
- }
+},
  
  
 function showAnswers()
@@ -127,4 +124,4 @@ function showAnswers()
     $("#missed").text(msg);
     $("#missed").css('display','block');
     $("#explanation").css('display', 'block');
-}
+},
