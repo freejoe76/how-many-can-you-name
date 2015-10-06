@@ -85,7 +85,7 @@ var quizzer = {
             {
                 if( input.value.toLowerCase() == this.answerkey[i].toLowerCase() )
                 {
-                    this.correct[correct.length] = this.answerkey[i];
+                    this.correct[this.correct.length] = this.answerkey[i];
                     this.correct.sort();
                     this.answerkey.splice(i,1);
                     input.value = "";
@@ -93,9 +93,9 @@ var quizzer = {
                     var msg = "";
                     var len_correct = this.correct.length;
                     this.answertimes[len_correct] = (this.mins * 60) + this.secs;
-                    for( var x=0; x < this.len_correct; x++ ) msg += this.correct[x]+", ";
+                    for( var x=0; x < len_correct; x++ ) msg += this.correct[x]+", ";
         
-                    $("#correct").text(msg);
+                    $("#correct").html(msg);
                     var remainmsg = " remain";
                     
                     $("#remain").text( (this.answercount - this.correctcount) + remainmsg );
