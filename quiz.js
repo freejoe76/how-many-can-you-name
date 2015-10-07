@@ -55,20 +55,38 @@ var quizzer = {
 
         return display;
     },
+    quit: function()
+    {
+        // Sometimes games end early.
+        $('#end-it').remove();
+        this.secs = 1;
+        this.mins = 0;
+        this.counter();
+        return false;
+    },
+    alerted: 0,
     counter: function() 
     {
-        // Handle the passage of time.
+        // Deal with the passage of time.
         if( this.correctcount == this.answerkey.length ) return;
         this.secs--;
         if( this.secs == -1 ) 
         {
             this.secs = 59;
             this.mins--;
+
+            // This situation happens if we end a game early.
+            if ( this.mins < 0 )
+            {
+                this.mins = 0;
+                this.secs = 0;
+            }
         }
         document.timecount.timer.value = this.displayTime(this.mins,this.secs);
 
-        if( ( this.mins == 0 ) && ( this.secs == 0 ) ) 
+        if( this.mins == 0 && this.secs == 0 && this.alerted == 0 ) 
         {
+            this.alerted = 1;
             window.alert("Time up."); 
             this.showAnswers(); 
         } 
