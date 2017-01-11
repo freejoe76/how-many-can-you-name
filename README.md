@@ -3,10 +3,10 @@ Javascript and markup for publishing open-ended "How many X can you name?"-style
 
 ## How to create a quiz
 
-1. Copy the markup in markup.html
+1. Copy the markup in full-page.html
 2. Edit the markup in the places there's an `<!-- EDIT:` in the markup.
 3. Upload the quiz.js to a server somewhere, if it's not up there already.
-4. Put this up somewhere online.
+4. Upload the html file to the same directory quiz.js is in.
 
 
 # License
