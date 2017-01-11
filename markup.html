@@ -1,5 +1,5 @@
 <!-- FOR TESTING -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
 <!-- EDIT: Edit the text in the h2, and if we're quizzing on something other than names, the text in the p element. -->
 <h2>
@@ -15,12 +15,11 @@
 
 
 
-<script type="text/javascript">
+<script>
 // Only load jquery if it hasn't been yet.
 if ( typeof $ === 'undefined' )
 {
 var script = document.createElement( 'script' );
-script.type = 'text/javascript';
 script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
 document.getElementsByTagName('head')[0].appendChild(script);
 }
@@ -44,6 +43,6 @@ document.getElementsByTagName('head')[0].appendChild(script);
         <p id="correct">None</p>
         <div id="missed"></div>
         <button id="end-it" onClick="quizzer.quit();">End the quiz now</button>
-<script type="text/javascript" src="quiz.js"></script>
+<script src="quiz.js"></script>
 
 <h3>Did you get a non-embarrassing score? Share it, along with the names you got right, in the comments below.</h3>
