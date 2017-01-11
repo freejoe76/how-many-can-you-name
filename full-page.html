@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title></title>
+
+    <link rel="canonical" href="" />
+    <link rel="shortcut icon" href="http://extras.mnginteractive.com/live/media/favIcon/dpo/favicon.ico" type="image/x-icon" />
+
+    <meta name="distribution" content="global" />
+    <meta name="robots" content="index" />
+    <meta name="title" content="" />
+    <meta name="language" content="en, sv" />
+    <meta name="Copyright" content="Copyright &copy; The Denver Post." />
+
+    <meta name="description" content="">
+    <meta name="news_keywords" content="">
+
+    <meta name="google-site-verification" content="2bKNvyyGh6DUlOvH1PYsmKN4KRlb-0ZI7TvFtuKLeAc" />
+</head>
+<body>
+
+<!-- FOR TESTING -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<!-- EDIT: Edit the text in the h2, and if we're quizzing on something other than names, the text in the p element. -->
+<h2>
+    This is the question we are asking people to answer
+</h2>
+<p>
+    (Last names only. Type the last name in the box below, if you get it right it will disappear and be added to your correct-answers list. No need to type "Jr." or "Junior", no need to hit the enter key, if it's not accepting your answer either you're spelling it wrong or we made a mistake)
+</p>
+<!-- EDIT: If you want to give the people more or less than two minutes, edit this. --> 
+<input id="time_limit" type="hidden" value="2" />
+<!-- EDIT: Put the answers here, separated by commas, like this: value="Name1,Name2,Name3,Name4" -->
+<input id="answerkey" type="hidden" value="Arizona,Utah,Oklahoma,Maine" />
+
+
+
+<script>
+// Only load jquery if it hasn't been yet.
+if ( typeof $ === 'undefined' )
+{
+var script = document.createElement( 'script' );
+script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
+document.getElementsByTagName('head')[0].appendChild(script);
+}
+</script>
+
+<style type="text/css">
+#correct { margin-top: 0; }
+</style>
+    <form name="timecount">
+        <input id="timer" type="text" readonly="true" value="Wait for the timer..." name="timer" />
+    </form>
+        <div id="answerfield">
+        <label for="answer" style="display:none;">Enter your answers here:</label>
+        <input type="text" onKeyUp="quizzer.checkAnswer(this);" name="input" id="answer" />
+        <span id="remain"></span>
+        </div>
+        
+        <h3>
+        Correct Answers:
+        </h3>
+        <p id="correct">None</p>
+        <div id="missed"></div>
+        <button id="end-it" onClick="quizzer.quit();">End the quiz now</button>
+<script src="quiz.js"></script>
+
+<h3>Did you get a non-embarrassing score? Share it, along with the names you got right, in the comments below.</h3>
+</body>
+</html>
