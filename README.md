@@ -1,5 +1,5 @@
 # Quizzer
-Javascript and markup for publishing open-ended "How many X can you name?"-style quizzes.
+Javascript and markup for publishing open-ended "How many X can you name?"-style quizzes. [Example](http://www.denverpost.com/2017/01/11/quiz-denver-broncos-coaches/).
 
 ## How to create a quiz
 
