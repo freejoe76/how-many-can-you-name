@@ -7,6 +7,20 @@ var quizzer = {
     mins: 0,
     secs: 0,
     time_on_current_answer: 0,
+    config: 
+    { 
+        has_photos: 0,
+    },
+    update_config: function(config) {
+        // Take an external config object and update this config object.
+        for ( var key in config )
+        {
+            if ( config.hasOwnProperty(key) )
+            {
+                this.config[key] = config[key];
+            }
+        }
+    },
     time_count: function() 
     {
         // Count down.
@@ -133,7 +147,7 @@ var quizzer = {
     },
     start: function()
     {
-        // Start the quiz
+        // Start the quiz timer and show the quiz interface elements.
         $('#start-it').remove();
         $('#quiz_interface').removeClass('hide');
         //this.counter();
@@ -143,7 +157,11 @@ var quizzer = {
     init: function() 
     {
         // Populate the answers, figure out how many answers the reader
-        // has to get right, start the timer.
+        // has to get right, set the config.
+
+        // Config handling. External config objects must be named quiz_config
+        if ( typeof window.quiz_config !== 'undefined' ) { this.update_config(mapg_config); }
+
         this.answer_key = $('#answer_key').attr('value').split(',');
         this.answer_count = this.answer_key.length;
     }
