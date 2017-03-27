@@ -45,7 +45,12 @@ body { margin: .5em; }
 input#timer { border: 0;
     font-size: 120%;
 }
+.hide { display: none; }
 </style>
+
+    <button class="btn-show-more-headlines" id="start-it" onClick="quizzer.start();">Start the quiz</button>
+
+    <section id="quiz_interface" class="hide">
     <form name="time_count">
         <input id="timer" type="text" readonly="true" value="Wait for the timer..." name="timer" />
     </form>
@@ -60,7 +65,9 @@ input#timer { border: 0;
         </h3>
         <p id="correct">None</p>
         <div id="missed"></div>
-        <button class="btn-show-more-headlines" id="end-it" onClick="quizzer.quit();">End the quiz now</button>
+        <button class="hide btn-show-more-headlines" id="end-it" onClick="quizzer.quit();">End the quiz now</button>
+    </section>
+
 <script src="../js/app-howmany.js"></script>
 
 </body>

@@ -131,14 +131,21 @@ var quizzer = {
         $("#missed").css('display','block');
         $("#explanation").css('display', 'block');
     },
+    start: function()
+    {
+        // Start the quiz
+        $('#start-it').remove();
+        $('#quiz_interface').removeClass('hide');
+        //this.counter();
+        this.time_count();
+        document.getElementById('answer').focus();
+    },
     init: function() 
     {
         // Populate the answers, figure out how many answers the reader
         // has to get right, start the timer.
         this.answer_key = $('#answer_key').attr('value').split(',');
         this.answer_count = this.answer_key.length;
-        this.time_count();
-        document.getElementById('answer').focus();
     }
 }
 
