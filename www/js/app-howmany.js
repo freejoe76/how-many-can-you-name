@@ -104,11 +104,15 @@ var quizzer = {
     },
     check_answer: function(input)
     {
-        if( input.value.length > 0 )
+        // Take the current value of the input field people type their answers into.
+        // If there's something in that field, and it matches any of the strings
+        // remaining in the answer_key array, we have a new, correct answer.
+
+        if ( input.value.length > 0 )
         {
-            for( var i = 0; i < this.answer_key.length; i++ )
+            for ( var i = 0; i < this.answer_key.length; i++ )
             {
-                if( input.value.toLowerCase() == this.answer_key[i].toLowerCase() )
+                if ( input.value.toLowerCase() == this.answer_key[i].toLowerCase() )
                 {
                     this.time_on_current_answer = 0;
                     this.correct[this.correct.length] = this.answer_key[i];
@@ -119,15 +123,33 @@ var quizzer = {
                     var msg = "";
                     var len_correct = this.correct.length;
                     this.answer_times[len_correct] = (this.mins * 60) + this.secs;
-                    for( var x=0; x < len_correct; x++ ) msg += this.correct[x]+", ";
+                    for ( var x=0; x < len_correct; x++ ) msg += this.correct[x]+", ";
         
                     $("#correct").html(msg);
                     var remainmsg = " remain";
                     
                     $("#remain").text( (this.answer_count - this.correct_count) + remainmsg );
-                    if( this.correct_count == this.answer_count ) window.alert("You win!"); 
+                    if ( this.correct_count == this.answer_count ) window.alert("You win!"); 
+                    return;
                 }
             }
+            if ( input.value.length > 2 )
+            {
+                // If they don't have a right answer yet, check to make sure they're
+                // on the right track, and if not, color the text red.
+                var all_wrong = 1;
+                for ( var i = 0; i < this.answer_key.length; i++ )
+                {
+                    var c = input.value.toLowerCase();
+                    if ( this.answer_key[i].toLowerCase().indexOf(c) === 0 )
+                    {
+                        all_wrong = 0;
+                    }
+                }
+                if ( all_wrong == 1 ) $('input#answer').addClass('wrong');
+                else $('input#answer').removeClass('wrong');
+            }
+            else $('input#answer').removeClass('wrong');
         }
         else
         {
