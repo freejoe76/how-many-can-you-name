@@ -1,28 +1,19 @@
 var quizzer = {
-    correctcount: 0,
+    correct_count: 0,
     correct: new Array(),
-    answerkey: new Array(),
-    answertimes: new Array(),
-    answercount: 0,
+    answer_key: new Array(),
+    answer_times: new Array(),
+    answer_count: 0,
     mins: 0,
     secs: 0,
-    init: function() 
-    {
-        // Populate the answers, figure out how many answers the reader
-        // has to get right, start the timer.
-        this.answerkey = $('#answerkey').attr('value').split(',');
-        this.answercount = this.answerkey.length;
-        this.timecount();
-        document.getElementById('answer').focus();
-    },
-    timecount: function() 
+    time_count: function() 
     {
         // Count down.
-        this.mins = 1 * this.minCount($('#time_limit').attr('value'));
-        this.secs = 0 + this.secCount(":01");
+        this.mins = 1 * this.min_count($('#time_limit').attr('value'));
+        this.secs = 0 + this.sec_count(":01");
         this.counter();
     },
-    minCount: function(input) 
+    min_count: function(input) 
     {
         // Pull out the minutes part of a time string, as in the "1" part of, say, "1:30"
         var len = input.length;
@@ -31,7 +22,7 @@ var quizzer = {
 
         return input.substring(0, i);
     },
-    secCount: function(input) 
+    sec_count: function(input) 
     {
         // Pull out the seconds part of a time string, as in the "30" part of, say, "1:30"
         var len = input.length;
@@ -40,7 +31,7 @@ var quizzer = {
 
         return input.substring(i + 1, input.length);
     },
-    displayTime: function(mins,secs) 
+    display_time: function(mins,secs) 
     {
         // Format a string so we can show readers how much time they have left.
         var display;
@@ -68,7 +59,7 @@ var quizzer = {
     counter: function() 
     {
         // Deal with the passage of time.
-        if( this.correctcount == this.answerkey.length ) return;
+        if( this.correct_count == this.answer_key.length ) return;
         this.secs--;
         if( this.secs == -1 ) 
         {
@@ -82,42 +73,42 @@ var quizzer = {
                 this.secs = 0;
             }
         }
-        document.timecount.timer.value = this.displayTime(this.mins,this.secs);
+        document.time_count.timer.value = this.display_time(this.mins,this.secs);
 
         if( this.mins == 0 && this.secs == 0 && this.alerted == 0 ) 
         {
             this.alerted = 1;
             window.alert("Time up."); 
-            this.showAnswers(); 
+            this.show_answers(); 
         } 
         else 
         {
             cd = setTimeout("quizzer.counter()", 1000);
         }
     },
-    checkAnswer: function(input)
+    check_answer: function(input)
     {
         if( input.value.length > 0 )
         {
-            for( var i = 0; i < this.answerkey.length; i++ )
+            for( var i = 0; i < this.answer_key.length; i++ )
             {
-                if( input.value.toLowerCase() == this.answerkey[i].toLowerCase() )
+                if( input.value.toLowerCase() == this.answer_key[i].toLowerCase() )
                 {
-                    this.correct[this.correct.length] = this.answerkey[i];
+                    this.correct[this.correct.length] = this.answer_key[i];
                     this.correct.sort();
-                    this.answerkey.splice(i,1);
+                    this.answer_key.splice(i,1);
                     input.value = "";
-                    this.correctcount++;
+                    this.correct_count++;
                     var msg = "";
                     var len_correct = this.correct.length;
-                    this.answertimes[len_correct] = (this.mins * 60) + this.secs;
+                    this.answer_times[len_correct] = (this.mins * 60) + this.secs;
                     for( var x=0; x < len_correct; x++ ) msg += this.correct[x]+", ";
         
                     $("#correct").html(msg);
                     var remainmsg = " remain";
                     
-                    $("#remain").text( (this.answercount - this.correctcount) + remainmsg );
-                    if( this.correctcount == this.answercount ) window.alert("You win!"); 
+                    $("#remain").text( (this.answer_count - this.correct_count) + remainmsg );
+                    if( this.correct_count == this.answer_count ) window.alert("You win!"); 
                 }
             }
         }
@@ -126,17 +117,36 @@ var quizzer = {
             if( input.value == " " ) input.value = "";
         }
     },
-    showAnswers: function()
+    show_answers: function()
     {
-        var len = this.answerkey.length;
+        var len = this.answer_key.length;
         var msg = '<h3>Missed:</h3><p>';
-        for( var x=0; x < len; x++ ) msg += this.answerkey[x]+", ";
+        for( var x=0; x < len; x++ ) msg += this.answer_key[x]+", ";
         msg += '</p>';
 
         $("#missed").html(msg);
         $("#missed").css('display','block');
         $("#explanation").css('display', 'block');
+    },
+    init: function() 
+    {
+        // Populate the answers, figure out how many answers the reader
+        // has to get right, start the timer.
+        this.answer_key = $('#answer_key').attr('value').split(',');
+        this.answer_count = this.answer_key.length;
+        this.time_count();
+        document.getElementById('answer').focus();
     }
 }
 
 $(document).ready(function(){ quizzer.init(); });
+
+function slugify(text) {
+    // from https://gist.github.com/mathewbyrne/1280286
+    return text.toString().toLowerCase()
+        .replace(/\s+/g, '-')           // Replace spaces with -
+        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+        .replace(/^-+/, '')             // Trim - from start of text
+        .replace(/-+$/, '');            // Trim - from end of text
+}

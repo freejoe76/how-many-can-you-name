@@ -34,7 +34,7 @@
 <!-- EDIT: If you want to give the people more or less than two minutes, edit this. --> 
 <input id="time_limit" type="hidden" value="2" />
 <!-- EDIT: Put the answers here, separated by commas, like this: value="Name1,Name2,Name3,Name4" -->
-<input id="answerkey" type="hidden" value="Arizona,Utah,Oklahoma,Maine" />
+<input id="answer_key" type="hidden" value="Arizona,Utah,Oklahoma,Maine" />
 
 
 
@@ -46,12 +46,12 @@ input#timer { border: 0;
     font-size: 120%;
 }
 </style>
-    <form name="timecount">
+    <form name="time_count">
         <input id="timer" type="text" readonly="true" value="Wait for the timer..." name="timer" />
     </form>
-        <div id="answerfield">
+        <div id="answer_field">
         <label for="answer" style="display:none;">Enter your answers here:</label>
-        <input type="text" onKeyUp="quizzer.checkAnswer(this);" name="input" id="answer" />
+        <input type="text" onKeyUp="quizzer.check_answer(this);" name="input" id="answer" />
         <span id="remain"></span>
         </div>
         
