@@ -2,7 +2,9 @@ var quizzer = {
     correct_count: 0,
     correct: new Array(),
     answer_key: new Array(),
+    answer_key_merged: new Array(),
     answer_times: new Array(),
+    split_answer: new Array(),
     answer_count: 0,
     mins: 0,
     secs: 0,
@@ -10,6 +12,7 @@ var quizzer = {
     config: 
     { 
         has_photos: 0,
+        log_answers: 0,
     },
     update_config: function(config) {
         // Take an external config object and update this config object.
@@ -110,14 +113,29 @@ var quizzer = {
 
         if ( input.value.length > 0 )
         {
-            for ( var i = 0; i < this.answer_key.length; i++ )
+            for ( var i = 0; i < this.answer_key_merged.length; i++ )
             {
-                if ( input.value.toLowerCase() == this.answer_key[i].toLowerCase() )
+                if ( input.value.toLowerCase() == this.answer_key_merged[i].toLowerCase() )
                 {
                     this.time_on_current_answer = 0;
-                    this.correct[this.correct.length] = this.answer_key[i];
+                    var answer = this.answer_key_merged[i]
+                    this.correct.push(answer)
                     this.correct.sort();
-                    this.answer_key.splice(i,1);
+                    this.answer_key_merged.splice(i,1);
+                    // See if this was one of the splitters and remove it from answer_key too.
+                    if ( this.split_answer.indexOf('sdfsd') !== -1 ) 
+                    {
+                        // It's a splitter, so find it in the answer_key, remove it from answer_key,
+                        // and then remove it and its pair from split_answer.
+                    }
+                    else
+                    {
+                        // It's not a splitter, so just find it in answer_key
+                        // and remove it.
+                        var j = this.answer_key.indexOf(answer);
+                        console.log(j, answer);
+                        this.answer_key.splice(j,1);
+                    }
                     input.value = "";
                     this.correct_count++;
                     var msg = "";
@@ -133,6 +151,7 @@ var quizzer = {
                     return;
                 }
             }
+            // SEND HELP'ER
             if ( input.value.length > 2 )
             {
                 // If they don't have a right answer yet, check to make sure they're
@@ -184,8 +203,31 @@ var quizzer = {
         // Config handling. External config objects must be named quiz_config
         if ( typeof window.quiz_config !== 'undefined' ) { this.update_config(mapg_config); }
 
-        this.answer_key = $('#answer_key').attr('value').split(',');
+        var all_answers = $('#answer_key').attr('value');
+        this.answer_key = all_answers.split(',');
         this.answer_count = this.answer_key.length;
+
+        // SPLIT ANSWWER
+        // Check if we need to handle a "split" answer -- where a single option
+        // has more than one answer.
+        if ( all_answers.indexOf('/') !== -1 )
+        {
+            // Pull the answers that are split.
+            // We know that slashes would *never* be in an answer for any other
+            // reason than the answer needs to be split. We know this.
+            var splitters = this.answer_key.filter(/./.test, /\//);
+            var len = splitters.length;
+            for ( var i = 0; i < len; i ++ )
+            {
+                var s = this.answer_key.indexOf(splitters[i]);
+                var a = this.answer_key[s];
+                var answers = a.split('/');
+                this.split_answer.push(answers[0].trim())
+                this.split_answer.push(answers[1].trim())
+            }
+        }
+        this.answer_key_merged = this.answer_key.concat(this.split_answer);
+       
     }
 }
 
