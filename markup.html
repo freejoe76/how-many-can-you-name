@@ -14,19 +14,11 @@
 <input id="answerkey" type="hidden" value="Arizona,Utah,Oklahoma,Maine" />
 
 
-
-<script>
-// Only load jquery if it hasn't been yet.
-if ( typeof $ === 'undefined' )
-{
-var script = document.createElement( 'script' );
-script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
-document.getElementsByTagName('head')[0].appendChild(script);
-}
-</script>
-
 <style type="text/css">
+body { margin: .5em; }
 #correct { margin-top: 0; }
+.body-copy h1, .body-copy h2, .body-copy h3, .body-copy p { margin-bottom: .5em; }
+input#timer { border: 0;font-size: 120%; font-weight:bold; padding:0;background-color:#fafafa;}
 </style>
     <form name="timecount">
         <input id="timer" type="text" readonly="true" value="Wait for the timer..." name="timer" />
