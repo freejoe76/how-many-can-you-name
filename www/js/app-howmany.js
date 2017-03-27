@@ -6,6 +6,7 @@ var quizzer = {
     answer_count: 0,
     mins: 0,
     secs: 0,
+    time_on_current_answer: 0,
     time_count: function() 
     {
         // Count down.
@@ -60,6 +61,7 @@ var quizzer = {
     {
         // Deal with the passage of time.
         if( this.correct_count == this.answer_key.length ) return;
+        this.time_on_current_answer++;
         this.secs--;
         if( this.secs == -1 ) 
         {
@@ -94,6 +96,7 @@ var quizzer = {
             {
                 if( input.value.toLowerCase() == this.answer_key[i].toLowerCase() )
                 {
+                    this.time_on_current_answer = 0;
                     this.correct[this.correct.length] = this.answer_key[i];
                     this.correct.sort();
                     this.answer_key.splice(i,1);
