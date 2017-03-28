@@ -11,6 +11,8 @@ var quizzer = {
     time_on_current_answer: 0,
     config: 
     { 
+        slug: '',
+        log_url: '',
         has_photos: 0,
         log_answers: 0,
     },
@@ -162,7 +164,6 @@ var quizzer = {
                         // It's not a splitter, so just find it in answer_key
                         // and remove it.
                         var j = this.answer_key.indexOf(answer);
-                        console.log(j, answer);
                         this.answer_key.splice(j,1);
                     }
                     input.value = "";
@@ -219,6 +220,9 @@ var quizzer = {
         // Handle the end.
         // Show the "End" graphic:
         // $('#the-end').removeClass('hide');
+
+        if ( this.config.log_answers !== 0 ) this.log_answer();
+
         var len = this.answer_key.length;
         if ( this.config.has_photos === 0 )
         {
@@ -235,8 +239,9 @@ var quizzer = {
         $("#missed").css('display','block');
         $("#explanation").css('display', 'block');
     },
-    log_answer: function (correct)
+    log_answer: function ()
     {
+        var correct = this.correct_count;
         var params = '?slug=' + this.config.slug + '&correct=' + correct + '&callback=';
         var jqxhr = $.getJSON( this.config.log_url + params, function(data) 
         {
@@ -257,7 +262,7 @@ var quizzer = {
                 $('#result').append(' ' + data.correct + ' ' + people + ' (' + percent_right + '%) picked right.');
 
                 // Calculate the percent of people they did worse / better than.
-                var s = "es";
+                var s = "s";
                 if ( data.worse_than == 1 ) s = "";
                 percent_further = Math.round(data.worse_than/data.players*1000)/10;
                 percent_better = Math.round((100 - percent_right)*10)/10;
@@ -307,7 +312,7 @@ var quizzer = {
         // has to get right, set the config.
 
         // Config handling. External config objects must be named quiz_config
-        if ( typeof window.quiz_config !== 'undefined' ) { this.update_config(mapg_config); }
+        if ( typeof window.quiz_config !== 'undefined' ) { this.update_config(quiz_config); }
 
         var all_answers = $('#answer_key').attr('value');
         this.answer_key = all_answers.split(',');

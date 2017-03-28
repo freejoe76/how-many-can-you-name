@@ -15,9 +15,8 @@
     <meta name="language" content="en, sv" />
     <meta name="Copyright" content="Copyright &copy; 2017" />
 
-    <meta name="google-site-verification" content="2bKNvyyGh6DUlOvH1PYsmKN4KRlb-0ZI7TvFtuKLeAc" />
-    <link rel="stylesheet"  href="../css/style.css" type="text/css" media="all" />
-    <link rel='stylesheet'  href='https://fonts.googleapis.com/css?family=Open%20Sans|Source+Serif+Pro%3A400%2C400italic%2C600%2C600italic%2C700%2C700italic%7CSource+Sans+Pro%3A400%2C400italic%2C600%2C600italic%2C700%2C400italic&#038;ver=4.5.3' type='text/css' media='all' />
+    <link rel="stylesheet"  href="../css/style-howmany.css" type="text/css" media="all" />
+    <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Open%20Sans|Source+Serif+Pro%3A400%2C400italic%2C600%2C600italic%2C700%2C700italic%7CSource+Sans+Pro%3A400%2C400italic%2C600%2C600italic%2C700%2C400italic&#038;ver=4.5.3" type="text/css" media="all" />
 
 </head>
 <body class="body-copy">
@@ -35,7 +34,16 @@
 <input id="time_limit" type="hidden" value="2" />
 <!-- EDIT: Put the answers here, separated by commas, like this: value="Name1,Name2,Name3,Name4" -->
 <input id="answer_key" type="hidden" value="Arizona,Utah,Oklahoma,Maine,Colorado/Wyoming" />
+<!-- EDIT: Add the quiz-specific configuration values. -->
+<script>
 
+var quiz_config = { 
+        slug: 'test',
+        log_url: 'http://interactiveqa.nydailynews.com/quiz/howmany.php',
+        has_photos: 0,
+        log_answers: 1,
+    };
+</script>
 
 
 <style type="text/css">
