@@ -84,12 +84,12 @@ var quizzer = {
         // Format a string so we can show readers how much time they have left.
         var display;
 
-        if( mins <= 9 ) display = " 0";
+        if ( mins <= 9 ) display = " ";
         else display = " ";
 
         display += mins + ":";
 
-        if( secs <= 9 ) display += "0" + secs;
+        if ( secs <= 9 ) display += "0" + secs;
         else display += secs;
 
         return display;
@@ -130,7 +130,8 @@ var quizzer = {
 
         if ( input.value.length > 0 )
         {
-            for ( var i = 0; i < this.answer_key_merged.length; i++ )
+            var len = this.answer_key_merged.length;
+            for ( var i = 0; i < len; i++ )
             {
                 if ( input.value.toLowerCase() == this.answer_key_merged[i].toLowerCase() )
                 {
@@ -140,6 +141,7 @@ var quizzer = {
                     this.correct.sort();
                     this.answer_key_merged.splice(i,1);
 
+                    // SPLIT ANSWWER
                     // See if the correct answer was one of the split answers and 
                     // if so, remove it from answer_key too.
                     if ( this.find_in_array(answer, this.split_answer) > -1 )
@@ -184,7 +186,8 @@ var quizzer = {
                 // If they don't have a right answer yet, check to make sure they're
                 // on the right track, and if not, color the text red.
                 var all_wrong = 1;
-                for ( var i = 0; i < this.answer_key.length; i++ )
+                var len = this.answer_key.length;
+                for ( var i = 0; i < len; i++ )
                 {
                     var c = input.value.toLowerCase();
                     if ( this.answer_key[i].toLowerCase().indexOf(c) === 0 )
