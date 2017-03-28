@@ -167,14 +167,23 @@ var quizzer = {
                     }
                     input.value = "";
                     this.correct_count++;
-                    var msg = "";
-                    var len_correct = this.correct.length;
-                    this.answer_times[len_correct] = (this.mins * 60) + this.secs;
-                    for ( var x=0; x < len_correct; x++ ) msg += this.correct[x]+", ";
+                    this.answer_times.push((this.mins * 60) + this.secs);
+
+                    // PHOTO ANSWER
+                    if ( this.config.has_photos === 0 )
+                    {
+                        var msg = "";
+                        var len_correct = this.correct.length;
+                        for ( var x=0; x < len_correct; x++ ) msg += this.correct[x]+", ";
         
-                    $("#correct").html(msg);
-                    var remainmsg = " remain";
+                        $("#correct").html(msg);
+                    }
+                    else
+                    {
+                        
+                    }
                     
+                    var remainmsg = " remain";
                     $("#remain").text( (this.answer_count - this.correct_count) + remainmsg );
                     if ( this.correct_count == this.answer_count ) window.alert("You win!"); 
                     return;
