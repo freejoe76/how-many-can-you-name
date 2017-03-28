@@ -72,7 +72,6 @@ var quizzer = {
         if( this.mins == 0 && this.secs == 0 && this.alerted == 0 ) 
         {
             this.alerted = 1;
-            window.alert("Time up."); 
             this.show_answers(); 
         } 
         else 
@@ -205,12 +204,22 @@ var quizzer = {
     },
     show_answers: function()
     {
+        // Handle the end.
+        // Show the "End" graphic:
+        // $('#the-end').removeClass('hide');
         var len = this.answer_key.length;
-        var msg = '<h3>Missed:</h3><p>';
-        for( var x=0; x < len; x++ ) msg += this.answer_key[x]+", ";
-        msg += '</p>';
+        if ( this.config.has_photos === 0 )
+        {
+            var msg = '<h3>Missed:</h3><p>';
+            for( var x=0; x < len; x++ ) msg += this.answer_key[x]+", ";
+            msg += '</p>';
+            $("#missed").html(msg);
+        }
+        else
+        {
+            // Turn the photos for the unguessed answers on, color them red.
+        }
 
-        $("#missed").html(msg);
         $("#missed").css('display','block');
         $("#explanation").css('display', 'block');
     },
