@@ -235,6 +235,63 @@ var quizzer = {
         $("#missed").css('display','block');
         $("#explanation").css('display', 'block');
     },
+    log_answer: function (correct)
+    {
+        var params = '?slug=' + this.config.slug + '&correct=' + correct + '&callback=';
+        var jqxhr = $.getJSON( this.config.log_url + params, function(data) 
+        {
+            // SUCCESS
+            // Display how the reader has done compared to everyone else.
+            // data will look something like { "players": "1", "average": "8" }
+            var average = Math.round(data.average*10) / 10;
+
+            $('#result').append(' ' + data.players + ' other people have played. An average player guessed ' + average + ' correct.');
+            if  ( typeof data.correct !== 'undefined' )
+            {
+                var people = "people";
+                if ( data.correct == 1 ) people = "person";
+
+                var percent_right = Math.round(data.correct/data.players*1000)/10;
+                if ( data.players == 0 ) percent = 0;
+
+                $('#result').append(' ' + data.correct + ' ' + people + ' (' + percent_right + '%) picked right.');
+
+                // Calculate the percent of people they did worse / better than.
+                var s = "es";
+                if ( data.worse_than == 1 ) s = "";
+                percent_further = Math.round(data.worse_than/data.players*1000)/10;
+                percent_better = Math.round((100 - percent_right)*10)/10;
+                var better_than = data.players - data.correct;
+
+                // If they didn't do worse than anyone, we give them a
+                // positive message of accomplishment
+                if ( data.worse_than == 0 )
+                {
+                    if ( better_than == 1 ) s = "";
+                    $('#result').append('<br><br>You did better than ' + better_than + ' other player' + s + '. That means you did better than ' + percent_better + '% of the people who played this, and tied the other ' + percent_right + '%');
+                }
+                else
+                {
+                    $('#result').append('<br><br>You did worse than ' + data.worse_than + ' other player' + s + '. That means you did worse than ' + percent_further + '% of the people who played this.');
+                }
+
+                if ( distance == 0 && data.correct == 1 )
+                {
+                    $('#result').append(' <span style="color:red; clear: both;">You\'re the first to get them all right! Congrats!</span>');
+                }
+                else if ( distance == 0 && data.correct < 11 )
+                {
+                    $('#result').append(' <span style="color:red; clear: both;">You\'re the ' + to_ordinal(data.correct) + ' to get them all right! Right on!</span>');
+                }
+            }
+            })
+            .fail(function() {
+                $('#result').append('Sorry, we could not reach the upstream servers.');
+                $('#result').addClass('error');
+            })
+            .always(function() {
+            });
+    },
     start: function()
     {
         // Start the quiz timer and show the quiz interface elements.
