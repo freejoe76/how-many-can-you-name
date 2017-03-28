@@ -105,6 +105,24 @@ var quizzer = {
             cd = setTimeout("quizzer.counter()", 1000);
         }
     },
+    find_in_array: function(value, array)
+    {
+        // Loop through an array, if a string is found in the array then 
+        // return the index of the array item found.
+        // Otherwise, return -1.
+        var len = array.length;
+        for ( var i = 0; i < len; i++ )
+        {
+            if ( array[i].indexOf(value) !== -1 ) return i;
+        }
+        return -1;
+    },
+    is_true_in_array: function(value, array)
+    {
+        // The boolean version of find_in_array.
+        if ( this.find_in_array(value, array) === -1 ) return false;
+        return true;
+    },
     check_answer: function(input)
     {
         // Take the current value of the input field people type their answers into.
@@ -122,11 +140,21 @@ var quizzer = {
                     this.correct.push(answer)
                     this.correct.sort();
                     this.answer_key_merged.splice(i,1);
-                    // See if this was one of the splitters and remove it from answer_key too.
-                    if ( this.split_answer.indexOf('sdfsd') !== -1 ) 
+
+                    // See if the correct answer was one of the split answers and 
+                    // if so, remove it from answer_key too.
+                    if ( this.find_in_array(answer, this.split_answer) > -1 )
                     {
                         // It's a splitter, so find it in the answer_key, remove it from answer_key,
-                        // and then remove it and its pair from split_answer.
+                        // and remove its partner from answer_key_merged
+                        var splitter_in_main_key = this.find_in_array(answer, this.answer_key);
+                        var other_split = this.answer_key[splitter_in_main_key].replace(answer, '').replace('/', '').trim();
+                        var other_index = this.answer_key_merged.indexOf(other_split);
+                        
+                        // Clean up answer_key and answer_key_merged
+                        this.answer_key_merged.splice(other_index, 1);
+                        this.answer_key.splice(splitter_in_main_key, 1);
+                
                     }
                     else
                     {
