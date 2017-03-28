@@ -49,31 +49,6 @@ var quizzer = {
 
         return input.substring(i + 1, input.length);
     },
-    display_time: function(mins,secs) 
-    {
-        // Format a string so we can show readers how much time they have left.
-        var display;
-
-        if( mins <= 9 ) display = " 0";
-        else display = " ";
-
-        display += mins + ":";
-
-        if( secs <= 9 ) display += "0" + secs;
-        else display += secs;
-
-        return display;
-    },
-    quit: function()
-    {
-        // Sometimes games end early.
-        $('#end-it').remove();
-        this.secs = 1;
-        this.mins = 0;
-        this.counter();
-        return false;
-    },
-    alerted: 0,
     counter: function() 
     {
         // Deal with the passage of time.
@@ -105,6 +80,31 @@ var quizzer = {
             cd = setTimeout("quizzer.counter()", 1000);
         }
     },
+    display_time: function(mins,secs) 
+    {
+        // Format a string so we can show readers how much time they have left.
+        var display;
+
+        if( mins <= 9 ) display = " 0";
+        else display = " ";
+
+        display += mins + ":";
+
+        if( secs <= 9 ) display += "0" + secs;
+        else display += secs;
+
+        return display;
+    },
+    quit: function()
+    {
+        // Sometimes games end early.
+        $('#end-it').remove();
+        this.secs = 1;
+        this.mins = 0;
+        this.counter();
+        return false;
+    },
+    alerted: 0,
     find_in_array: function(value, array)
     {
         // Loop through an array, if a string is found in the array then 
