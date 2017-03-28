@@ -4,5 +4,5 @@ CREATE TABLE `howmany` (
   `max` FLOAT NOT NULL,
   `median` FLOAT NOT NULL,
   `mode` FLOAT NOT NULL,
-  `mean` FLOAT NOT NULL
-) ENGINE=InnoDB;
+  `mean` FLOAT NOT NULL,
+UNIQUE `INDEX` (`quiz_id`)) ENGINE=InnoDB;
