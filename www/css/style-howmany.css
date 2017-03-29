@@ -91,6 +91,9 @@ form input#timer {
 .photos li.correct {
     border: 2px solid #00fa9a;
 }
+.photos li.incorrect {
+    border: 2px solid red;
+}
 .photos li span.caption {
     display: block;
     font-size: 12px;

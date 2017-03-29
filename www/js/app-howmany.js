@@ -185,15 +185,7 @@ var quizzer = {
                     }
                     else
                     {
-                        var answer_slug = this.slugify(this.correct[0]);
-                        $('#' + answer_slug).addClass('correct');
-                        $('#' + answer_slug).html('');
-                        $('#' + answer_slug).css('background-image', 'url(img/' + answer_slug + '.jpg)');
-                        var newlines = '\00BB \0020\A\00000a';
-                        //document.styleSheets[0].addRule('#' + answer_slug + ':after','content: ' + newlines + this.correct[0] + ';');
-                        //document.styleSheets[0].addRule('#' + answer_slug + ':after','content: HOOPS;');
-                        //document.styleSheets[0].addRule('.photos li:after','content: "HIHIH";');
-                        $('#' + answer_slug).append('<span class="caption">' + this.correct[0] + '</span>');
+                        this.photo_activate(this.correct[0], 'correct');
                     }
                     
                     var remainmsg = " remain";
@@ -227,6 +219,19 @@ var quizzer = {
             if( input.value == " " ) input.value = "";
         }
     },
+    photo_activate: function(answer, correct_toggle)
+    {
+        // Activate a photo in a photo answer. correct_toggle will be "correct" or "incorrect"
+        var answer_slug = this.slugify(answer);
+        $('#' + answer_slug).addClass(correct_toggle);
+        $('#' + answer_slug).html('');
+        $('#' + answer_slug).css('background-image', 'url(img/' + answer_slug + '.jpg)');
+        var newlines = '\00BB \0020\A\00000a';
+        //document.styleSheets[0].addRule('#' + answer_slug + ':after','content: ' + newlines + this.correct[0] + ';');
+        //document.styleSheets[0].addRule('#' + answer_slug + ':after','content: HOOPS;');
+        //document.styleSheets[0].addRule('.photos li:after','content: "HIHIH";');
+        $('#' + answer_slug).append('<span class="caption">' + answer + '</span>');
+    },
     show_answers: function()
     {
         // Handle the end.
@@ -245,6 +250,10 @@ var quizzer = {
         else
         {
             // Turn the photos for the unguessed answers on, color them red.
+            for( var x=0; x < len; x++ )
+            {
+                this.photo_activate(this.answer_key[x], 'incorrect');
+            }
         }
 
         $("#missed").removeClass('hide');
