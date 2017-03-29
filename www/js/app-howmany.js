@@ -219,6 +219,7 @@ var quizzer = {
         if ( this.config.log_answers !== 0 ) this.log_answer();
 
         var len = this.answer_key.length;
+        // PHOTO ANSWER
         if ( this.config.has_photos === 0 )
         {
             for( var x=0; x < len; x++ ) $("#missed").append("<li>" + this.answer_key[x] + "</li>");
@@ -334,6 +335,15 @@ var quizzer = {
         }
         this.answer_key_merged = this.answer_key.concat(this.split_answer);
        
+        // PHOTO ANSWER
+        if ( this.config.has_photos === 0 )
+        {
+            $('#correct').addClass('textual');
+            $('#missed').addClass('textual');
+        }
+        else
+        {
+        }
     }
 }
 
