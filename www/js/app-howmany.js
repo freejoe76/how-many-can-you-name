@@ -106,6 +106,15 @@ var quizzer = {
         return false;
     },
     alerted: 0,
+    slugify: function (text) {
+        // from https://gist.github.com/mathewbyrne/1280286
+        return text.toString().toLowerCase()
+            .replace(/\s+/g, '-')           // Replace spaces with -
+            .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+            .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+            .replace(/^-+/, '')             // Trim - from start of text
+            .replace(/-+$/, '');            // Trim - from end of text
+    },
     find_in_array: function(value, array)
     {
         // Loop through an array, if a string is found in the array then 
@@ -343,18 +352,16 @@ var quizzer = {
         }
         else
         {
+            var len = this.answer_key.length;
+            for ( var i = 0; i < len; i ++ )
+            {
+                var answer_slug = this.slugify(this.answer_key[i]);
+                $('#correct').append('<li id="' + answer_slug + '">?</li>');
+            }
+            $('#correct').addClass('photos');
         }
     }
 }
 
 $(document).ready(function(){ quizzer.init(); });
 
-function slugify(text) {
-    // from https://gist.github.com/mathewbyrne/1280286
-    return text.toString().toLowerCase()
-        .replace(/\s+/g, '-')           // Replace spaces with -
-        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-        .replace(/^-+/, '')             // Trim - from start of text
-        .replace(/-+$/, '');            // Trim - from end of text
-}
