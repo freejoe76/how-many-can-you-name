@@ -1,1 +1,18 @@
- 
+h1, h2, h3, h4, h5, p, ul, ol, button {
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #333;
+}
+h1 {
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+    border-top: 2px solid #aaa;
+    border-bottom: 2px solid #aaa;
+    letter-spacing: 1.64px;
+    font-size: 1.3em;
+}
+button {
+    text-transform: uppercase;
+    background-color: #136DF8;
+    color: white;
+}
