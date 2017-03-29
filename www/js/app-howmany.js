@@ -221,9 +221,8 @@ var quizzer = {
         var len = this.answer_key.length;
         if ( this.config.has_photos === 0 )
         {
-            var msg = '<h3>Missed:</h3><p>';
             for( var x=0; x < len; x++ ) $("#missed").append("<li>" + this.answer_key[x] + "</li>");
-            $("#missed").prepend('<h3>Missed</h3>');
+            $("#missed").before('<h3>Missed</h3>');
         }
         else
         {
