@@ -47,6 +47,7 @@ button#end-it {
     float: left;
     border: 0;
     margin-left: 5px;
+    margin-top: 4px;
 }
 form input#timer { 
     font-size: 35px;

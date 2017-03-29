@@ -173,11 +173,7 @@ var quizzer = {
                     // PHOTO ANSWER
                     if ( this.config.has_photos === 0 )
                     {
-                        var msg = "";
-                        var len_correct = this.correct.length;
-                        for ( var x=0; x < len_correct; x++ ) msg += this.correct[x]+", ";
-        
-                        $("#correct").html(msg);
+                        $("#correct").append("<li>" + this.correct[0] + "</li>");
                     }
                     else
                     {
