@@ -139,8 +139,7 @@ var quizzer = {
                 {
                     this.time_on_current_answer = 0;
                     var answer = this.answer_key_merged[i]
-                    this.correct.push(answer)
-                    this.correct.sort();
+                    this.correct.unshift(answer)
                     this.answer_key_merged.splice(i,1);
 
                     // SPLIT ANSWWER
@@ -174,6 +173,7 @@ var quizzer = {
                     if ( this.config.has_photos === 0 )
                     {
                         $("#correct").append("<li>" + this.correct[0] + "</li>");
+                        //$("#correct").html(msg);
                     }
                     else
                     {
