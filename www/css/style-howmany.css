@@ -86,7 +86,7 @@ form input#timer {
     margin-right: 37px;
     margin-bottom: 24px;
     color: #aaa;
-    border: 1px solid #aaa;
+    border: 2px solid #aaa;
     font-size: 48px;
     font-weight: bold;
     text-align: center;
@@ -109,14 +109,19 @@ form input#timer {
     text-align: left;
     line-height: 12px;
 }
-.photos li:after {
+.photos li span {
+    font-size: 0;
     display: block;
+    bottom: -52px;
+    width: 50px;
+    position: relative;
+    text-align: left;
+    line-height: 0;
+}
+.photos li span:after {
     font-size: 12px;
     color: black;
     font-weight: normal;
-    position: relative;
-    bottom: -53px;
-    width: 50px;
     text-align: left;
     line-height: 12px;
 }
