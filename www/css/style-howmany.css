@@ -60,3 +60,9 @@ form input#timer {
     height: 43px;
     font-size: 24px;
 }
+#correct li:after { content: ', '; }
+#correct li:last-child:after { content: ' '; }
+#correct li {
+    float: left;
+    list-style-type: none;
+}
