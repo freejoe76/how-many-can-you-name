@@ -99,10 +99,8 @@ var quizzer = {
     quit: function()
     {
         // Sometimes games end early.
-        $('#end-it').remove();
         this.secs = 1;
         this.mins = 0;
-        this.counter();
         return false;
     },
     alerted: 0,
@@ -237,6 +235,9 @@ var quizzer = {
         // Handle the end.
         // Show the "End" graphic:
         // $('#the-end').removeClass('hide');
+        $('#answer').remove();
+        $('#end-it').remove();
+        $('#remain').text('You got ' + this.correct_count + ' out of ' + this.answer_count);
 
         if ( this.config.log_answers !== 0 ) this.log_answer();
 
