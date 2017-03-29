@@ -1,6 +1,23 @@
+body { margin: .5em; }
+.hide { display: none; }
+#correct { margin-top: 0; }
+.body-copy h1, .body-copy h2, .body-copy h3, .body-copy p { margin-bottom: .5em; }
+input#timer {
+    border: 0;
+    font-size: 120%;
+}
+input#answer { }
+input.wrong { color: red; }
 h1, h2, h3, h4, h5, p, ul, ol, button {
     font-family: 'Open Sans Condensed', sans-serif;
     color: #333;
+    font-size: 1.5em;
+}
+input#timer {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.5em;
 }
 h1 {
     text-transform: uppercase;
@@ -15,4 +32,13 @@ button {
     text-transform: uppercase;
     background-color: #136DF8;
     color: white;
+    height: 43px;
+}
+button#start-it {
+    width: 443px;
+    float: left;
+}
+form input#timer { 
+    font-size: 35px;
+    padding-left: 40px;
 }
