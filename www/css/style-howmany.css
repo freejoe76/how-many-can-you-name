@@ -88,3 +88,28 @@ form input#timer {
     text-align: center;
     line-height: 48px;
 }
+.photos li.correct {
+    border: 2px solid #00fa9a;
+}
+.photos li span.caption {
+    display: block;
+    font-size: 12px;
+    color: black;
+    font-weight: normal;
+    position: relative;
+    bottom: -53px;
+    width: 50px;
+    text-align: left;
+    line-height: 12px;
+}
+.photos li:after {
+    display: block;
+    font-size: 12px;
+    color: black;
+    font-weight: normal;
+    position: relative;
+    bottom: -53px;
+    width: 50px;
+    text-align: left;
+    line-height: 12px;
+}

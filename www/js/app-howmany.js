@@ -185,7 +185,15 @@ var quizzer = {
                     }
                     else
                     {
-                        
+                        var answer_slug = this.slugify(this.correct[0]);
+                        $('#' + answer_slug).addClass('correct');
+                        $('#' + answer_slug).html('');
+                        $('#' + answer_slug).css('background-image', 'url(img/' + answer_slug + '.jpg)');
+                        var newlines = '\00BB \0020\A\00000a';
+                        //document.styleSheets[0].addRule('#' + answer_slug + ':after','content: ' + newlines + this.correct[0] + ';');
+                        //document.styleSheets[0].addRule('#' + answer_slug + ':after','content: HOOPS;');
+                        //document.styleSheets[0].addRule('.photos li:after','content: "HIHIH";');
+                        $('#' + answer_slug).append('<span class="caption">' + this.correct[0] + '</span>');
                     }
                     
                     var remainmsg = " remain";
