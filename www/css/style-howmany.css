@@ -38,6 +38,7 @@ button {
     background-color: #136DF8;
     color: white;
     height: 43px;
+    border: 0;
 }
 button#start-it {
     width: 443px;
@@ -46,7 +47,7 @@ button#start-it {
 button#end-it:hover { color: red; }
 button#end-it {
     width: 200px;
-    background-color: white;
+    background-color: #fafafa;
     color: #333;
     float: left;
     border: 0;
@@ -54,16 +55,19 @@ button#end-it {
     margin-top: 4px;
 }
 form input#timer { 
+    width: 80px;
     font-size: 35px;
     padding-left: 40px;
+    background-color: #fafafa;
 }
 #answer_field { float: left; }
 #answer_field input {
     padding: 5px;
-    width: 343px;
+    width: 260px;
     height: 43px;
     font-size: 24px;
 }
+#quiz_interface { margin-top: 10px; }
 #remain { margin: 0; }
 #correct, #missed { clear: both; }
 .textual li:after { content: ', '; }
@@ -115,4 +119,9 @@ form input#timer {
     width: 50px;
     text-align: left;
     line-height: 12px;
+}
+body { background-color: #fafafa; }
+article {
+    width: 600px;
+    margin: 10px auto;
 }
