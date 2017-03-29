@@ -60,6 +60,8 @@ form input#timer {
     height: 43px;
     font-size: 24px;
 }
+#remain { margin: 0; }
+#correct { clear: both; }
 #correct li:after { content: ', '; }
 #correct li:last-child:after { content: ' '; }
 #correct li {
