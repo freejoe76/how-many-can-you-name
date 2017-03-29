@@ -173,7 +173,6 @@ var quizzer = {
                     if ( this.config.has_photos === 0 )
                     {
                         $("#correct").append("<li>" + this.correct[0] + "</li>");
-                        //$("#correct").html(msg);
                     }
                     else
                     {
@@ -223,16 +222,15 @@ var quizzer = {
         if ( this.config.has_photos === 0 )
         {
             var msg = '<h3>Missed:</h3><p>';
-            for( var x=0; x < len; x++ ) msg += this.answer_key[x]+", ";
-            msg += '</p>';
-            $("#missed").html(msg);
+            for( var x=0; x < len; x++ ) $("#missed").append("<li>" + this.answer_key[x] + "</li>");
+            $("#missed").prepend('<h3>Missed</h3>');
         }
         else
         {
             // Turn the photos for the unguessed answers on, color them red.
         }
 
-        $("#missed").css('display','block');
+        $("#missed").removeClass('hide');
         $("#explanation").css('display', 'block');
     },
     log_answer: function ()

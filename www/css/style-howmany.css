@@ -61,10 +61,10 @@ form input#timer {
     font-size: 24px;
 }
 #remain { margin: 0; }
-#correct { clear: both; }
-#correct li:after { content: ', '; }
-#correct li:last-child:after { content: ' '; }
-#correct li {
+#correct, #missed { clear: both; }
+#correct li:after, #missed li:after { content: ', '; }
+#correct li:last-child:after, #missed li:last-child:after { content: ' '; }
+#correct li, #missed li {
     float: left;
     list-style-type: none;
 }
