@@ -47,17 +47,22 @@ var quizzer = {
         // Pull out the seconds part of a time string, as in the "30" part of, say, "1:30"
         var len = input.length;
 
-        for( var i = 0; i < len; i++ ) if( input.substring(i, i + 1) == ":" ) break;
+        for ( var i = 0; i < len; i++ ) if ( input.substring(i, i + 1) == ":" ) break;
 
         return input.substring(i + 1, input.length);
     },
     counter: function() 
     {
         // Deal with the passage of time.
-        if( this.correct_count == this.answer_key.length ) return;
+        if ( this.correct_count == this.answer_count )
+        {
+            // They got 'em all.
+            this.show_answers();
+            return;
+        }
         this.time_on_current_answer++;
         this.secs--;
-        if( this.secs == -1 ) 
+        if ( this.secs == -1 ) 
         {
             this.secs = 59;
             this.mins--;
@@ -71,7 +76,7 @@ var quizzer = {
         }
         document.time_count.timer.value = this.display_time(this.mins,this.secs);
 
-        if( this.mins == 0 && this.secs == 0 && this.alerted == 0 ) 
+        if ( this.mins == 0 && this.secs == 0 && this.alerted == 0 ) 
         {
             this.alerted = 1;
             this.show_answers(); 
