@@ -52,16 +52,18 @@ var quiz_config = {
     </form>
 
     <section id="quiz_interface" class="hide">
-        <div id="answer_field">
-        <label for="answer" class="hide">Enter your answers here:</label>
-        <input type="text" onKeyUp="quizzer.check_answer(this);" name="input" id="answer" />
-        <span id="remain"></span>
+        <div id="answer_field_container">
+            <div id="answer_field">
+                <label for="answer" class="hide">Enter your answers here:</label>
+                <input type="text" onKeyUp="quizzer.check_answer(this);" name="input" id="answer" />
+                <p id="remain"></p>
+            </div>
+            <button class="btn-show-more-headlines" id="end-it" onClick="quizzer.quit();">End quiz now</button>
         </div>
         
         <h3>Correct Answers</h3>
         <ul id="correct"></ul>
         <div id="missed"></div>
-        <button class="btn-show-more-headlines" id="end-it" onClick="quizzer.quit();">End the quiz now</button>
     </section>
 
 <script src="../js/app-howmany.js"></script>

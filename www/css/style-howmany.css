@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5, p, ul, ol, button {
     color: #333;
     font-size: 1.5em;
 }
-input#timer {
+input {
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     color: #333;
@@ -28,6 +28,7 @@ h1 {
     letter-spacing: 1.64px;
     font-size: 1.3em;
 }
+button:hover { cursor: pointer; }
 button {
     text-transform: uppercase;
     background-color: #136DF8;
@@ -38,7 +39,23 @@ button#start-it {
     width: 443px;
     float: left;
 }
+button#end-it:hover { color: red; }
+button#end-it {
+    width: 200px;
+    background-color: white;
+    color: #333;
+    float: left;
+    border: 0;
+    margin-left: 5px;
+}
 form input#timer { 
     font-size: 35px;
     padding-left: 40px;
+}
+#answer_field { float: left; }
+#answer_field input {
+    padding: 5px;
+    width: 343px;
+    height: 43px;
+    font-size: 24px;
 }

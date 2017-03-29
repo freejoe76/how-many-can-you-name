@@ -300,7 +300,9 @@ var quizzer = {
     start: function()
     {
         // Start the quiz timer and show the quiz interface elements.
+        $('#start-it').before($('#answer_field_container').html());
         $('#start-it').remove();
+        $('#answer_field_container').remove();
         $('#quiz_interface').removeClass('hide');
         //this.counter();
         this.time_count();
