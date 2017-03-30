@@ -32,8 +32,12 @@ h3 {
     font-size: 30px;
     clear: both;
 }
+p {
+    font-family: "PT Serif", serif;
+}
 button:hover { cursor: pointer; }
 button {
+    font-weight: bold;
     text-transform: uppercase;
     background-color: #136DF8;
     color: white;
