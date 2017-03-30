@@ -267,7 +267,7 @@ var quizzer = {
     log_answer: function ()
     {
         var correct = this.correct_count;
-        var params = '?slug=' + this.config.slug + '&correct=' + correct + '&callback=';
+        var params = '?slug=' + this.config.slug + '&correct=' + correct + '&times=' + this.answer_times.join(',') + '&callback=';
         var jqxhr = $.getJSON( this.config.log_url + params, function(data) 
         {
             // SUCCESS

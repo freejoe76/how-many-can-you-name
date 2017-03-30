@@ -121,8 +121,27 @@ form input#timer {
 }
 
 
-body { background-color: #fafafa; }
+body {
+    background-color: white;
+}
 article {
-    width: 600px;
+    background-color: #fafafa;
+    max-width: 600px;
     margin: 10px auto;
 }
+@media only screen and (max-width:450px) {
+    article { width: 100%; }
+    button#start-it {
+        width: 90%;
+        margin: auto;
+        text-align: auto;
+        float: none;
+        display: block;
+    }
+    form input#timer {
+        padding-left: 0;
+        margin: auto;
+        display: block;
+    }
+}
+
