@@ -281,24 +281,24 @@ var quizzer = {
             if  ( typeof data.all_correct !== 'undefined' )
             {
                 var people = "people";
-                if ( data.all_correct == 1 ) people = "person";
+                if ( +data.all_correct == 1 ) people = "person";
 
                 var percent_right = Math.round(data.all_correct/data.count*1000)/10;
-                if ( data.count == 0 ) percent = 0;
+                if ( +data.count == 0 ) percent = 0;
 
                 $('#result').append(' ' + data.all_correct + ' ' + people + ' (' + percent_right + '%) got them all right.');
 
                 // Calculate the percent of people they did worse / better than.
                 var s = "s";
-                if ( data.worse_than == 1 ) s = "";
+                if ( +data.worse_than == 1 ) s = "";
                 percent_worse = Math.round(data.worse_than/data.count*1000)/10;
                 percent_better = Math.round((100 - percent_right)*10)/10;
                 var better_than = data.count - data.worse_than;
                 var spanclass = '';
-                if ( data.count < 100 ) spanclass = 'hide';
+                if ( +data.count < 100 ) spanclass = 'hide';
 
                 // If they didn't do worse than anyone, we give them a positive message of accomplishment
-                if ( data.worse_than == 0 )
+                if ( +data.worse_than == 0 )
                 {
                     if ( better_than == 1 ) s = "";
                     $('#result').append('<br><br>You did better than <span class="' + spanclass + '">' + better_than + ' other player' + s + '. That means you did better than</span> ' + percent_better + '% of the people who played this, and tied the other ' + percent_right + '%');
