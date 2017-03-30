@@ -272,26 +272,28 @@ var quizzer = {
         {
             // SUCCESS
             // Display how the reader has done compared to everyone else.
-            // data will look something like { "players": "1", "average": "8" }
-            var average = Math.round(data.average*10) / 10;
+            // data will look something like:
+            // { "correct": "10", "count": "6", "all_correct": "0", "mean": "8.33333333333", "worse_than": "4"}
+            var mean = Math.round(data.mean*10) / 10;
+            var number_missed = quizzer.answer_count - quizzer.correct_count;
 
-            $('#result').append(' ' + data.players + ' other people have played. An average player guessed ' + average + ' correct.');
-            if  ( typeof data.correct !== 'undefined' )
+            $('#result').append(' ' + data.count + ' other people have played. An average player guessed ' + mean + ' correct.');
+            if  ( typeof data.all_correct !== 'undefined' )
             {
                 var people = "people";
-                if ( data.correct == 1 ) people = "person";
+                if ( data.all_correct == 1 ) people = "person";
 
-                var percent_right = Math.round(data.correct/data.players*1000)/10;
-                if ( data.players == 0 ) percent = 0;
+                var percent_right = Math.round(data.all_correct/data.count*1000)/10;
+                if ( data.count == 0 ) percent = 0;
 
-                $('#result').append(' ' + data.correct + ' ' + people + ' (' + percent_right + '%) picked right.');
+                $('#result').append(' ' + data.all_correct + ' ' + people + ' (' + percent_right + '%) got them all right.');
 
                 // Calculate the percent of people they did worse / better than.
                 var s = "s";
                 if ( data.worse_than == 1 ) s = "";
-                percent_further = Math.round(data.worse_than/data.players*1000)/10;
+                percent_worse = Math.round(data.worse_than/data.count*1000)/10;
                 percent_better = Math.round((100 - percent_right)*10)/10;
-                var better_than = data.players - data.correct;
+                var better_than = data.count - data.worse_than;
 
                 // If they didn't do worse than anyone, we give them a
                 // positive message of accomplishment
@@ -302,14 +304,14 @@ var quizzer = {
                 }
                 else
                 {
-                    $('#result').append('<br><br>You did worse than ' + data.worse_than + ' other player' + s + '. That means you did worse than ' + percent_further + '% of the people who played this.');
+                    $('#result').append('<br><br>You did worse than ' + data.worse_than + ' other player' + s + '. That means you did worse than ' + percent_worse + '% of the people who played this.');
                 }
 
-                if ( distance == 0 && data.correct == 1 )
+                if ( number_missed == 0 && data.all_correct == 1 )
                 {
                     $('#result').append(' <span style="color:red; clear: both;">You\'re the first to get them all right! Congrats!</span>');
                 }
-                else if ( distance == 0 && data.correct < 11 )
+                else if ( number_missed == 0 && data.all_correct < 11 )
                 {
                     $('#result').append(' <span style="color:red; clear: both;">You\'re the ' + to_ordinal(data.correct) + ' to get them all right! Right on!</span>');
                 }
@@ -319,8 +321,7 @@ var quizzer = {
                 $('#result').append('Sorry, we could not reach the upstream servers.');
                 $('#result').addClass('error');
             })
-            .always(function() {
-            });
+            .always(function() {});
     },
     start: function()
     {

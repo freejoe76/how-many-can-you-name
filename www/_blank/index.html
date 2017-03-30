@@ -41,9 +41,9 @@
 <script>
 var quiz_config = { 
         slug: 'test',
-        log_url: 'http://interactiveqa.nydailynews.com/quiz/howmany.php',
+        log_url: '../howmany.php',
         has_photos: 1,
-        log_answers: 0,
+        log_answers: 1,
     };
 </script>
 
@@ -62,6 +62,7 @@ var quiz_config = {
             <button class="btn-show-more-headlines" id="end-it" onClick="quizzer.quit();">End quiz now</button>
         </div>
         
+        <p id="result"></p>
         <h3 class="hide">Correct Answers</h3>
         <ul id="correct"></ul>
         <ul id="missed" class="hide"></ul>
