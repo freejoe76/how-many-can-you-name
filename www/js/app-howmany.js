@@ -294,17 +294,18 @@ var quizzer = {
                 percent_worse = Math.round(data.worse_than/data.count*1000)/10;
                 percent_better = Math.round((100 - percent_right)*10)/10;
                 var better_than = data.count - data.worse_than;
+                var spanclass = '';
+                if ( data.count < 100 ) spanclass = 'hide';
 
-                // If they didn't do worse than anyone, we give them a
-                // positive message of accomplishment
+                // If they didn't do worse than anyone, we give them a positive message of accomplishment
                 if ( data.worse_than == 0 )
                 {
                     if ( better_than == 1 ) s = "";
-                    $('#result').append('<br><br>You did better than ' + better_than + ' other player' + s + '. That means you did better than ' + percent_better + '% of the people who played this, and tied the other ' + percent_right + '%');
+                    $('#result').append('<br><br>You did better than <span class="' + spanclass + '">' + better_than + ' other player' + s + '. That means you did better than</span> ' + percent_better + '% of the people who played this, and tied the other ' + percent_right + '%');
                 }
                 else
                 {
-                    $('#result').append('<br><br>You did worse than ' + data.worse_than + ' other player' + s + '. That means you did worse than ' + percent_worse + '% of the people who played this.');
+                    $('#result').append('<br><br>You did worse than <span class="' + spanclass + '">' + data.worse_than + ' other player' + s + '. That means you did worse than </span>' + percent_worse + '% of the people who played this.');
                 }
 
                 if ( number_missed == 0 && data.all_correct == 1 )
