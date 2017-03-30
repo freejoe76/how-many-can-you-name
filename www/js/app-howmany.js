@@ -57,6 +57,7 @@ var quizzer = {
         if ( this.correct_count == this.answer_count )
         {
             // They got 'em all.
+            console.log("WINNER WINNER");
             this.show_answers();
             return;
         }
