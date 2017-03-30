@@ -1,7 +1,7 @@
 body { margin: .5em; }
 .hide { display: none; }
 #correct { margin-top: 0; }
-.body-copy h1, .body-copy h2, .body-copy h3, .body-copy p { margin-bottom: .5em; }
+.body-copy h1, .body-copy h2, .body-copy h3, .body-copy p { margin-bottom: 0; }
 input#timer {
     border: 0;
     font-size: 120%;
@@ -32,7 +32,8 @@ h3 {
     font-size: 30px;
     clear: both;
 }
-p {
+p, .textual li {
+    font-size: 1.2em;
     font-family: "PT Serif", serif;
 }
 button:hover { cursor: pointer; }
@@ -75,7 +76,10 @@ form input#timer {
 #remain { margin: 0; }
 #correct, #missed { clear: both; }
 .textual li:after { content: ', '; }
-.textual li { margin-right: 3px; }
+.textual li {
+    margin-right: 3px;
+    font-size: 18px;
+}
 .textual li:last-child:after { content: ' '; }
 #correct li, #missed li {
     float: left;
@@ -131,17 +135,30 @@ article {
 }
 @media only screen and (max-width:450px) {
     article { width: 100%; }
-    button#start-it {
+    button#start-it, button#end-it {
         width: 90%;
         margin: auto;
         text-align: auto;
         float: none;
         display: block;
+        margin-top: 10px;
+    }
+    button#end-it { border: 1px solid #ccc; }
+    #answer_field input {
+        width: 100%;
+        clear: both;
+        display: block;
+        margin: auto;
+        margin-bottom: 10px;
     }
     form input#timer {
         padding-left: 0;
         margin: auto;
         display: block;
+        clear: both;
+    }
+    p#remain {
+        clear: both;
     }
 }
 
