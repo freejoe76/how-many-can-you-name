@@ -12,7 +12,7 @@ var quizzer = {
     config: 
     { 
         slug: '',
-        log_url: '',
+        log_url: '../handler.php',
         has_photos: 0,
         log_answers: 0,
     },
