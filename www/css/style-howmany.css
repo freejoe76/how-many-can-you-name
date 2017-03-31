@@ -61,6 +61,7 @@ button#end-it {
     margin-top: 4px;
 }
 form input#timer { 
+    margin-top: 15px;
     width: 80px;
     font-size: 35px;
     padding-left: 40px;
@@ -160,6 +161,7 @@ article {
         margin-bottom: 10px;
     }
     form input#timer {
+        margin-top: 0;
         width: 90px;
         padding-left: 0;
         margin: auto;
