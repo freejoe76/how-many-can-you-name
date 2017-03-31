@@ -157,6 +157,7 @@ article {
         margin-bottom: 10px;
     }
     form input#timer {
+        width: 90px;
         padding-left: 0;
         margin: auto;
         display: block;
