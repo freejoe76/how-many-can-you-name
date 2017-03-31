@@ -252,6 +252,8 @@ var quizzer = {
         // PHOTO ANSWER
         if ( this.config.has_photos === 0 )
         {
+            $('#remain').text('You got ' + this.correct_count + ' out of ' + this.answer_count + ': ');
+            $('#remain').append($('#correct'));
             for( var x=0; x < len; x++ ) $("#missed").append("<li>" + this.answer_key[x] + "</li>");
             $("#missed").before('<h3>Missed</h3>');
         }

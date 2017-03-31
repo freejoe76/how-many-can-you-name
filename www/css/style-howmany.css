@@ -11,7 +11,8 @@ input.wrong { color: red; }
 h1, h2, h3, h4, h5, p, ul, ol, button {
     font-family: 'Open Sans Condensed', sans-serif;
     color: #333;
-    font-size: 1.5em;
+    font-size: 25px;
+    line-height: 28px;
 }
 input {
     font-family: 'Open Sans', sans-serif;
@@ -29,7 +30,6 @@ h1 {
     font-size: 1.3em;
 }
 h3 {
-    font-size: 30px;
     clear: both;
 }
 p, .textual li {
@@ -123,10 +123,12 @@ form input#timer {
     text-align: left;
     line-height: 12px;
 }
+.strong { font-weight: bold; }
+.highlight { color: red; }
 
 
 body {
-    background-color: white;
+    background-color: #fafafa;
 }
 article {
     background-color: #fafafa;
