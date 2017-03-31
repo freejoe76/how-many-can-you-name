@@ -284,10 +284,12 @@ var quizzer = {
     {
         var url = document.querySelector("link[rel='canonical']").getAttribute("href");
         var tweet_text = 'On the ' + this.config.title;
-        $("article").append("<div id='share-it'><a class=\"twitter-share\" href='http://twitter.com/share?url=" + url + "&text=" + tweet_text + ", I got " + this.correct_count + " correct! @nydailynews' target='_blank'>\n\
-<button class='social_icon_box twitter_button'>Tweet this <img class='social_icon twitter_icon' src='../icons/twitter.png'></button></a>&nbsp;\n\
+        $("article").append("<div id='share-it'>\n\
+<p>Share your score</p>\n\
+<a class=\"twitter-share\" href='http://twitter.com/share?url=" + url + "&text=" + tweet_text + ", I got " + this.correct_count + " correct! @nydailynews' target='_blank'>\n\
+<button class='share social_icon_box twitter_button'><img alt='Share on Twitter' class='social_icon twitter_icon' src='../icons/twitter.png'></button></a>&nbsp;\n\
 <a class=\"fb-share\" href='http://www.facebook.com/sharer.php?u=" + url + "' target='_blank'>\n\
-<button class='social_icon_box facebook_button'>Facebook this <img class='social_icon facebook_icon' src='../icons/facebook.png'></button></a>\n\
+<button class='share social_icon_box facebook_button'><img alt='Share on Facebook' class='social_icon facebook_icon' src='../icons/facebook.png'></button></a>\n\
 </div>");
     },
     log_answer: function ()
