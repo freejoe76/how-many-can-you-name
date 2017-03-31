@@ -194,7 +194,10 @@ var quizzer = {
                     
                     var remainmsg = " remain";
                     $("#remain").text( (this.answer_count - this.correct_count) + remainmsg );
-                    if ( this.correct_count == this.answer_count ) window.alert("You win!"); 
+                    if ( this.correct_count == this.answer_count ) 
+                    {
+                        this.quit();
+                    }
                     return;
                 }
             }
