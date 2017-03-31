@@ -52,7 +52,7 @@ button#start-it {
 }
 button#end-it:hover { color: red; }
 button#end-it {
-    width: 200px;
+    width: 180px;
     background-color: #fafafa;
     color: #333;
     float: left;
