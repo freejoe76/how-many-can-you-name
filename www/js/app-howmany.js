@@ -278,6 +278,17 @@ var quizzer = {
 
         $("#missed").removeClass('hide');
         $("#explanation").css('display', 'block');
+        this.social_media();
+    },
+    social_media: function()
+    {
+        var url = document.querySelector("link[rel='canonical']").getAttribute("href");
+        var tweet_text = 'On the ' + this.config.title;
+        $("article").append("<div id='share-it'><a class=\"twitter-share\" href='http://twitter.com/share?url=" + url + "&text=" + tweet_text + ", I got " + this.correct_count + " correct! @nydailynews' target='_blank'>\n\
+<button class='social_icon_box twitter_button'>Tweet this <img class='social_icon twitter_icon' src='../icons/twitter.png'></button></a>&nbsp;\n\
+<a class=\"fb-share\" href='http://www.facebook.com/sharer.php?u=" + url + "' target='_blank'>\n\
+<button class='social_icon_box facebook_button'>Facebook this <img class='social_icon facebook_icon' src='../icons/facebook.png'></button></a>\n\
+</div>");
     },
     log_answer: function ()
     {

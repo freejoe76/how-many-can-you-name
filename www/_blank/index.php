@@ -1,3 +1,7 @@
+<?php
+$append = '';
+if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($_SERVER['QUERY_STRING']), 0, 11);
+?><!DOCTYPE HTML>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -15,7 +19,7 @@
     <meta name="language" content="en, sv" />
     <meta name="Copyright" content="Copyright &copy; 2017" />
 
-    <link rel="stylesheet"  href="../css/style-howmany.css" type="text/css" media="all" />
+    <link rel="stylesheet"  href="../css/style-howmany.css<?php echo $append; ?>" type="text/css" media="all" />
     <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Open%20Sans|Open+Sans+Condensed:300,700|PT+Serif" type="text/css" media="all" />
     <script>
     var is_mobile = function() {
@@ -47,10 +51,11 @@
 <!-- EDIT: Add the quiz-specific configuration values. -->
 <script>
 var quiz_config = { 
+        title: 'test',
         slug: 'test',
         log_url: '../handler.php',
         has_photos: 1,
-        log_answers: 1,
+        log_answers: 0,
     };
 if ( is_mobile() === 1 ) quiz_config.has_photos = 0;
 </script>
@@ -77,7 +82,7 @@ if ( is_mobile() === 1 ) quiz_config.has_photos = 0;
     </section>
 
     </article>
-    <script src="../js/app-howmany.js"></script>
+    <script src="../js/app-howmany.js<?php echo $append; ?>"></script>
 
 </body>
 </html>
