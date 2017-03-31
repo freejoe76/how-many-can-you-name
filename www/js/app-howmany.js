@@ -166,6 +166,8 @@ var quizzer = {
                         var splitter_in_main_key = this.find_in_array(answer, this.answer_key);
                         var other_split = this.answer_key[splitter_in_main_key].replace(answer, '').replace('/', '').trim();
                         var other_index = this.answer_key_merged.indexOf(other_split);
+
+                        var player = this.answer_key[splitter_in_main_key];
                         
                         // Clean up answer_key and answer_key_merged
                         this.answer_key_merged.splice(other_index, 1);
@@ -177,6 +179,9 @@ var quizzer = {
                         // It's not a splitter, so just find it in answer_key
                         // and remove it.
                         var j = this.answer_key.indexOf(answer);
+
+                        var player = this.answer_key[j];
+
                         this.answer_key.splice(j,1);
                     }
                     input.value = "";
@@ -190,7 +195,7 @@ var quizzer = {
                     }
                     else
                     {
-                        this.photo_activate(this.correct[0], 'correct');
+                        this.photo_activate(player, 'correct');
                     }
                     
                     var remainmsg = " remain";
@@ -230,13 +235,16 @@ var quizzer = {
     photo_activate: function(answer, correct_toggle)
     {
         // Activate a photo in a photo answer. correct_toggle will be "correct" or "incorrect"
+        var caption = answer;
+        if ( answer.indexOf('/') ) caption = answer.split('/')[0]
+
         var answer_slug = this.slugify(answer);
         $('#' + answer_slug).addClass(correct_toggle);
         $('#' + answer_slug).html('');
         $('#' + answer_slug).css('background-image', 'url(img/' + answer_slug + '.jpg)');
         var newlines = '\00BB \0020\A\00000a';
         $('#' + answer_slug).append('<span></span>');
-        document.styleSheets[0].addRule('#' + answer_slug + ' span:after','content: "' + answer + '";');
+        document.styleSheets[0].addRule('#' + answer_slug + ' span:after','content: "' + caption + '";');
     },
     show_answers: function()
     {
