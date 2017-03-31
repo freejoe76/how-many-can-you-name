@@ -156,7 +156,7 @@ var quizzer = {
                     this.correct.unshift(answer)
                     this.answer_key_merged.splice(i,1);
 
-                    // SPLIT ANSWWER
+                    // SPLIT ANSWER
                     // See if the correct answer was one of the split answers and 
                     // if so, remove it from answer_key too.
                     if ( this.find_in_array(answer, this.split_answer) > -1 )
@@ -208,11 +208,11 @@ var quizzer = {
                 // If they don't have a right answer yet, check to make sure they're
                 // on the right track, and if not, color the text red.
                 var all_wrong = 1;
-                var len = this.answer_key.length;
+                var len = this.answer_key_merged.length;
                 for ( var i = 0; i < len; i++ )
                 {
-                    var c = input.value.toLowerCase();
-                    if ( this.answer_key[i].toLowerCase().indexOf(c) === 0 )
+                    var c = input.value.trim().toLowerCase();
+                    if ( this.answer_key_merged[i].toLowerCase().indexOf(c) === 0 )
                     {
                         all_wrong = 0;
                     }
