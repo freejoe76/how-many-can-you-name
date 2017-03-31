@@ -277,7 +277,9 @@ var quizzer = {
             var mean = Math.round(data.mean*10) / 10;
             var number_missed = quizzer.answer_count - quizzer.correct_count;
 
-            $('#result').append(' ' + data.count + ' other people have played. An average player guessed ' + mean + ' correct.');
+            var spanclass = '';
+            if ( +data.count < 100 ) spanclass = 'hide';
+            $('#result').append('<span class="' + spanclass + '">' + data.count + ' other people have played.</span> An average player guessed ' + mean + ' correct.');
             if  ( typeof data.all_correct !== 'undefined' )
             {
                 var people = "people";
@@ -294,8 +296,6 @@ var quizzer = {
                 percent_worse = Math.round(data.worse_than/data.count*1000)/10;
                 percent_better = Math.round((100 - percent_right)*10)/10;
                 var better_than = data.count - data.worse_than;
-                var spanclass = '';
-                if ( +data.count < 100 ) spanclass = 'hide';
 
                 // If they didn't do worse than anyone, we give them a positive message of accomplishment
                 if ( +data.worse_than == 0 )
