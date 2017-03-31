@@ -1,5 +1,5 @@
 # How Many Can You Name
-Javascript and markup for publishing open-ended "How many X can you name?"-style quizzes. [Example](http://www.denverpost.com/2017/01/11/quiz-denver-broncos-coaches/).
+Javascript and markup for publishing open-ended "How many of X can you name?"-style quizzes. [Example](http://www.nydailynews.com/sports/baseball/yankees/2-minute-quiz-yankee-opening-day-starters-article-1.3015205).
 
 ## Usage
 
@@ -13,6 +13,15 @@ Javascript and markup for publishing open-ended "How many X can you name?"-style
 
 ### How to develop with this repo
 
+1. Check out the repo.
+2. Put the `www` directory somewhere on your web path.
+3. Test your changes with the `_blank/index.php` file.
+
+## About the code
+
+### The split answers / the Dwight Gooden exception
+
+Dwight Gooden also goes by Doc Gooden and we wanted people to be able to type in either Dwight or Doc Gooden and still have it count as a correct answer. Because of this, a lot of javascript was written. You can see most of it by searching for "SPLIT ANSWER" in the js.
 
 ## Credits
 
