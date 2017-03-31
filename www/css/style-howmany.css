@@ -46,6 +46,7 @@ button {
     border: 0;
 }
 button#start-it {
+    margin-top: 20px;
     width: 443px;
     float: left;
 }
@@ -148,7 +149,7 @@ article {
         text-align: auto;
         float: none;
         display: block;
-        margin-top: 10px;
+        margin-top: 20px;
     }
     button#end-it { border: 1px solid #ccc; }
     #answer_field input {
