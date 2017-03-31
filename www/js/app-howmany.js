@@ -145,10 +145,11 @@ var quizzer = {
 
         if ( input.value.length > 0 )
         {
+            var val = input.value.trim();
             var len = this.answer_key_merged.length;
             for ( var i = 0; i < len; i++ )
             {
-                if ( input.value.toLowerCase() == this.answer_key_merged[i].toLowerCase() )
+                if ( val.toLowerCase() == this.answer_key_merged[i].toLowerCase() )
                 {
                     this.time_on_current_answer = 0;
                     var answer = this.answer_key_merged[i]
@@ -244,6 +245,7 @@ var quizzer = {
         // $('#the-end').removeClass('hide');
         $('#answer').remove();
         $('#end-it').remove();
+        $('#remain').addClass('strong');
         $('#remain').text('You got ' + this.correct_count + ' out of ' + this.answer_count);
 
         if ( this.config.log_answers !== 0 ) this.log_answer();
@@ -254,13 +256,13 @@ var quizzer = {
         {
             $('#remain').text('You got ' + this.correct_count + ' out of ' + this.answer_count + ': ');
             $('#remain').append($('#correct'));
-            for( var x=0; x < len; x++ ) $("#missed").append("<li>" + this.answer_key[x] + "</li>");
+            for ( var x=0; x < len; x++ ) $("#missed").append("<li>" + this.answer_key[x] + "</li>");
             $("#missed").before('<h3>Missed</h3>');
         }
         else
         {
             // Turn the photos for the unguessed answers on, color them red.
-            for( var x=0; x < len; x++ )
+            for ( var x=0; x < len; x++ )
             {
                 this.photo_activate(this.answer_key[x], 'incorrect');
             }

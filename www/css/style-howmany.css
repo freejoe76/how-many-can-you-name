@@ -123,7 +123,10 @@ form input#timer {
     text-align: left;
     line-height: 12px;
 }
-.strong { font-weight: bold; }
+body p.strong {
+    margin-top: 10px!important;
+    font-weight: bold;
+}
 .highlight { color: red; }
 
 
