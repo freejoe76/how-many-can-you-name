@@ -283,7 +283,7 @@ var quizzer = {
     social_media: function()
     {
         var url = document.querySelector("link[rel='canonical']").getAttribute("href");
-        var tweet_text = 'On the ' + this.config.title;
+        var tweet_text = 'I did better than ' + percent_better + '% of the people who played the ' + this.config.title + ' quiz!';
         $("article").append("<div id='share-it'>\n\
 <p>Share your score</p>\n\
 <a class=\"twitter-share\" href='http://twitter.com/share?url=" + url + "&text=" + tweet_text + ", I got " + this.correct_count + " correct! @nydailynews' target='_blank'>\n\
@@ -301,7 +301,7 @@ var quizzer = {
             // SUCCESS
             // Display how the reader has done compared to everyone else.
             // data will look something like:
-            // { "correct": "10", "count": "6", "all_correct": "0", "mean": "8.33333333333", "worse_than": "4"}
+            // { "correct": "10", "count": "6", "all_correct": "0", "mean": "8.33333333333", "worse_than": "4", "better_than": "4"}
             var mean = Math.round(data.mean*10) / 10;
             var number_missed = quizzer.answer_count - quizzer.correct_count;
 
@@ -322,18 +322,18 @@ var quizzer = {
                 var s = "s";
                 if ( +data.worse_than == 1 ) s = "";
                 percent_worse = Math.round(data.worse_than/data.count*1000)/10;
-                percent_better = Math.round((100 - percent_right)*10)/10;
-                var better_than = data.count - data.worse_than;
+                percent_better = Math.round(data.better_than/data.count*1000)/10;
 
                 // If they didn't do worse than anyone, we give them a positive message of accomplishment
                 if ( +data.worse_than == 0 )
                 {
                     if ( better_than == 1 ) s = "";
-                    $('#result').append('<br><br>You did better than <span class="' + spanclass + '">' + better_than + ' other player' + s + '. That means you did better than</span> ' + percent_better + '% of the people who played this, and tied the other ' + percent_right + '%');
+                    $('#result').append('<br><br>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '. That means you did better than</span> ' + percent_better + '% of the people who played this, and tied the other ' + percent_right + '%');
                 }
                 else
                 {
-                    $('#result').append('<br><br>You did worse than <span class="' + spanclass + '">' + data.worse_than + ' other player' + s + '. That means you did worse than </span>' + percent_worse + '% of the people who played this.');
+                    $('#result').append('<br><br>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '. That means you did better than </span>' + percent_better + '% of the people who played this.');
+                    //$('#result').append('<br><br>You did worse than <span class="' + spanclass + '">' + data.worse_than + ' other player' + s + '. That means you did worse than </span>' + percent_worse + '% of the people who played this.');
                 }
 
                 if ( number_missed == 0 && data.all_correct == 1 )
