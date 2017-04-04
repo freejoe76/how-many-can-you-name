@@ -208,7 +208,7 @@ var quizzer = {
                 }
             }
             // SEND HELP'ER
-            if ( input.value.length > 2 )
+            if ( val.length > 2 )
             {
                 // If they don't have a right answer yet, check to make sure they're
                 // on the right track, and if not, color the text red.
@@ -216,7 +216,7 @@ var quizzer = {
                 var len = this.answer_key_merged.length;
                 for ( var i = 0; i < len; i++ )
                 {
-                    var c = input.value.trim().toLowerCase();
+                    var c = val.toLowerCase();
                     if ( this.answer_key_merged[i].toLowerCase().indexOf(c) === 0 )
                     {
                         all_wrong = 0;
@@ -224,6 +224,13 @@ var quizzer = {
                 }
                 if ( all_wrong == 1 ) $('input#answer').addClass('wrong');
                 else $('input#answer').removeClass('wrong');
+
+                // If they're on the wrong track but close, and it's been more than 5 seconds,
+                // give the reader a clue.
+                if ( all_wrong == 1 )
+                {
+                    
+                }
             }
             else $('input#answer').removeClass('wrong');
         }
@@ -283,10 +290,11 @@ var quizzer = {
     social_media: function()
     {
         var url = document.querySelector("link[rel='canonical']").getAttribute("href");
-        var tweet_text = 'I did better than ' + percent_better + '% of the people who played the ' + this.config.title + ' quiz!';
+        var tweet_text = 'I just played the ' + this.config.title + ' quiz.';
+        if ( typeof percent_better !== 'undefined' ) tweet_text = 'I did better than ' + percent_better + '% of the people who played the ' + this.config.title + ' quiz!';
         $("article").append("<div id='share-it'>\n\
 <p>Share your score</p>\n\
-<a class=\"twitter-share\" href='http://twitter.com/share?url=" + url + "&text=" + tweet_text + ", I got " + this.correct_count + " correct! @nydailynews' target='_blank'>\n\
+<a class=\"twitter-share\" href='http://twitter.com/share?url=" + url + "&text=" + tweet_text + " @nydailynews' target='_blank'>\n\
 <button class='share social_icon_box twitter_button'><img alt='Share on Twitter' class='social_icon twitter_icon' src='../icons/twitter.png'></button></a>&nbsp;\n\
 <a class=\"fb-share\" href='http://www.facebook.com/sharer.php?u=" + url + "' target='_blank'>\n\
 <button class='share social_icon_box facebook_button'><img alt='Share on Facebook' class='social_icon facebook_icon' src='../icons/facebook.png'></button></a>\n\
