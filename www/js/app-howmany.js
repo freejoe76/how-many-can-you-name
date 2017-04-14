@@ -245,7 +245,7 @@ var quizzer = {
         var caption = answer;
         if ( answer.indexOf('/') ) caption = answer.split('/')[0]
 
-        var answer_slug = this.slugify(answer);
+        var answer_slug = 'a' + this.slugify(answer);
         $('#' + answer_slug).addClass(correct_toggle);
         $('#' + answer_slug).html('');
         $('#' + answer_slug).css('background-image', 'url(img/' + answer_slug + '.jpg)');
@@ -415,7 +415,7 @@ var quizzer = {
             var len = this.answer_key.length;
             for ( var i = 0; i < len; i ++ )
             {
-                var answer_slug = this.slugify(this.answer_key[i]);
+                var answer_slug = 'a' + this.slugify(this.answer_key[i]);
                 $('#correct').append('<li id="' + answer_slug + '">?</li>');
             }
             $('#correct').addClass('photos');
