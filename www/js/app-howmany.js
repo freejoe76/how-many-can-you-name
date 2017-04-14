@@ -245,13 +245,13 @@ var quizzer = {
         var caption = answer;
         if ( answer.indexOf('/') ) caption = answer.split('/')[0]
 
-        var answer_slug = 'a' + this.slugify(answer);
-        $('#' + answer_slug).addClass(correct_toggle);
-        $('#' + answer_slug).html('');
-        $('#' + answer_slug).css('background-image', 'url(img/' + answer_slug + '.jpg)');
+        var answer_slug = this.slugify(answer);
+        $('#a' + answer_slug).addClass(correct_toggle);
+        $('#a' + answer_slug).html('');
+        $('#a' + answer_slug).css('background-image', 'url(img/' + answer_slug + '.jpg)');
         var newlines = '\00BB \0020\A\00000a';
-        $('#' + answer_slug).append('<span></span>');
-        document.styleSheets[0].addRule('#' + answer_slug + ' span:after','content: "' + caption + '";');
+        $('#a' + answer_slug).append('<span></span>');
+        document.styleSheets[0].addRule('#a' + answer_slug + ' span:after','content: "' + caption + '";');
     },
     show_answers: function()
     {
