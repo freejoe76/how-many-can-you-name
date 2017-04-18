@@ -2,13 +2,12 @@
 $append = '';
 if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($_SERVER['QUERY_STRING']), 0, 11);
 ?><!DOCTYPE HTML>
-<!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!-- EDIT: Add a title. -->
-    <title></title>
+    <title>TITLE</title>
 
     <!-- EDIT: Add the URL of the article this quiz is embedded in, once you know what that is -->
     <link rel="canonical" href="" />
@@ -17,7 +16,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
     <meta name="distribution" content="global" />
     <meta name="robots" content="noindex" />
     <meta name="language" content="en, sv" />
-    <meta name="Copyright" content="Copyright &copy; 2017" />
+    <meta name="Copyright" content="Copyright &copy; 2017 the New York Daily News" />
 
     <link rel="stylesheet"  href="../css/style-howmany.css<?php echo $append; ?>" type="text/css" media="all" />
     <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Open%20Sans|Open+Sans+Condensed:300,700|PT+Serif" type="text/css" media="all" />
@@ -38,7 +37,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
 <h1>The two-minute drill</h1>
 <!-- EDIT: Edit the text in the h2, and if we're quizzing on something other than names, the text in the p element. -->
 <h2>
-    How many U.S. states with an "h" in the name can you remember?
+    QUESTION
 </h2>
 
 <p class="hide">
@@ -51,11 +50,11 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
 <!-- EDIT: Add the quiz-specific configuration values. -->
 <script>
 var quiz_config = { 
-        title: 'test',
-        slug: 'test',
+        title: 'TITLE',
+        slug: 'SLUG',
         log_url: '../handler.php',
         has_photos: 1,
-        log_answers: 0,
+        log_answers: 1,
     };
 if ( is_mobile() === 1 ) quiz_config.has_photos = 0;
 </script>
