@@ -75,6 +75,10 @@ form input#timer {
     padding-left: 40px;
     background-color: #fafafa;
 }
+.timer-color {
+    color: red;
+}
+
 #answer_field { float: left; }
 #answer_field input {
     padding: 5px;

@@ -54,6 +54,7 @@ var quizzer = {
     counter: function() 
     {
         // Deal with the passage of time.
+        if (this.mins === 0 && this.secs === 11) $('#timer').addClass("timer-color");
         if ( this.correct_count == this.answer_count )
         {
             // They got 'em all.
