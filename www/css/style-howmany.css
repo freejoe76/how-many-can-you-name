@@ -79,13 +79,35 @@ form input#timer {
     color: red;
 }
 
-#answer_field { float: left; }
+#answer_field {
+    float: left;
+}
+
+.finished {
+    background-color: #ededed;
+    padding: 0 15px 15px 15px;
+    font-family: 'Open Sans', sans-serif;
+    width: 585px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.finished p {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.finished #result {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+}
+
 #answer_field input {
     padding: 5px;
     width: 260px;
     height: 43px;
     font-size: 24px;
 }
+
 #quiz_interface { margin-top: 10px; }
 #remain { margin: 0; }
 #correct, #missed { clear: both; }
