@@ -359,7 +359,11 @@ var quizzer = {
                 $('#result').append('Sorry, we could not reach the upstream servers.');
                 $('#result').addClass('error');
             })
-            .always(function() {});
+            .always(function() {
+                $("#answer_field").addClass('finished');
+                $("#timer").addClass('hide');
+                $("#answer_field").append($('p#result'));
+            });
     },
     start: function()
     {
