@@ -147,7 +147,7 @@ form input#timer {
     font-size: 0;
     display: block;
     bottom: -52px;
-    width: 50px;
+    width: 75px;
     position: relative;
     text-align: left;
     line-height: 0;
@@ -155,7 +155,7 @@ form input#timer {
 .photos li span:after {
     font-size: 12px;
     color: black;
-    font-weight: normal;
+    font-weight: bold;
     text-align: left;
     line-height: 12px;
 }

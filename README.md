@@ -1,5 +1,5 @@
 # How Many Can You Name
-Javascript and markup for publishing open-ended "How many of X can you name?"-style quizzes. [Example](http://www.nydailynews.com/sports/baseball/yankees/2-minute-quiz-yankee-opening-day-starters-article-1.3015205).
+Javascript and markup for publishing open-ended "How many of X can you name?"-style quizzes. [Example](http://www.nydailynews.com/entertainment/movies/planets-original-star-wars-trilogy-article-1.3136516).
 
 ## Usage
 
