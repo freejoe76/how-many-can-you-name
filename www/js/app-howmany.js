@@ -318,7 +318,9 @@ var quizzer = {
 
             var spanclass = '';
             if ( +data.count < 100 ) spanclass = 'hide';
-            $('#result').append('<span class="' + spanclass + '">' + data.count + ' other people played.</span> An average player got ' + mean + ' correct, and among those who got at least one answer right, an average player scored ' + non_zero_mean + '.');
+            $('#result').append('<span class="' + spanclass + '">' + data.count + ' other people played.</span>\n\
+                An average player got ' + mean + ' correct,\n\
+                and among those who got at least one answer right, an average player scored ' + non_zero_mean + '.');
             if  ( typeof data.all_correct !== 'undefined' )
             {
                 var people = "people";
@@ -339,15 +341,18 @@ var quizzer = {
                 if ( +data.worse_than == 0 )
                 {
                     if ( data.better_than == 1 ) s = "";
-                    $('#result').append('<br><strong>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '.</strong> That means you did better than</span> ' + percent_better + '% of the people who played this, and tied the other ' + percent_right + '%');
+                    $('#result').append('<br><strong>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '.</strong>\n\
+                        That means you did better than</span> ' + percent_better + '% of the people who played this, and tied the other ' + percent_right + '%');
                 }
                 else if ( +data.correct == 0 )
                 {
-                    $('#result').append('<br><strong>You got zero correct,</strong> which means a. you have lots of room for improvement and b. you did worse than the ' + data.worse_than + ' people who got at least one answer.');
+                    $('#result').append('<br><strong>You got zero correct,</strong>\n\
+                        which means a. you have lots of room for improvement and b. you did worse than the ' + data.worse_than + ' people who got at least one answer.');
                 }
                 else
                 {
-                    $('#result').append('<br><strong>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '.</strong> That means you did better than </span>' + percent_better + '% of the people who played this.');
+                    $('#result').append('<br><strong>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '.</strong>\n\
+                        That means you did better than </span>' + percent_better + '% of the people who played this.');
                 }
 
                 if ( number_missed == 0 && data.all_correct == 1 )
