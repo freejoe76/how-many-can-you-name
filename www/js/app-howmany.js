@@ -311,12 +311,14 @@ var quizzer = {
             // Display how the reader has done compared to everyone else.
             // data will look something like:
             // { "correct": "10", "count": "6", "all_correct": "0", "mean": "8.33333333333", "worse_than": "4", "better_than": "4"}
+            // { "correct": "0", "count": "246", "all_correct": "14", "non_zero_mean": "4.49143", "mean": "3.2073587398374", "worse_than": "175", "better_than": "0"}
             var mean = Math.round(data.mean*10) / 10;
+            var non_zero_mean = Math.round(data.non_zero_mean*10) / 10;
             var number_missed = quizzer.answer_count - quizzer.correct_count;
 
             var spanclass = '';
             if ( +data.count < 100 ) spanclass = 'hide';
-            $('#result').append('<span class="' + spanclass + '">' + data.count + ' other people have played.</span> An average player guessed ' + mean + ' correct.');
+            $('#result').append('<span class="' + spanclass + '">' + data.count + ' other people played.</span> An average player got ' + mean + ' correct, and among those who got at least one answer right, an average player scored ' + non_zero_mean + '.');
             if  ( typeof data.all_correct !== 'undefined' )
             {
                 var people = "people";
@@ -337,21 +339,24 @@ var quizzer = {
                 if ( +data.worse_than == 0 )
                 {
                     if ( data.better_than == 1 ) s = "";
-                    $('#result').append('<br><br>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '. That means you did better than</span> ' + percent_better + '% of the people who played this, and tied the other ' + percent_right + '%');
+                    $('#result').append('<br><strong>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '.</strong> That means you did better than</span> ' + percent_better + '% of the people who played this, and tied the other ' + percent_right + '%');
+                }
+                else if ( +data.correct == 0 )
+                {
+                    $('#result').append('<br><strong>You got zero correct,</strong> which means a. you have lots of room for improvement and b. you did worse than the ' + data.worse_than + ' people who got at least one answer.');
                 }
                 else
                 {
-                    $('#result').append('<br><br>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '. That means you did better than </span>' + percent_better + '% of the people who played this.');
-                    //$('#result').append('<br><br>You did worse than <span class="' + spanclass + '">' + data.worse_than + ' other player' + s + '. That means you did worse than </span>' + percent_worse + '% of the people who played this.');
+                    $('#result').append('<br><strong>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '.</strong> That means you did better than </span>' + percent_better + '% of the people who played this.');
                 }
 
                 if ( number_missed == 0 && data.all_correct == 1 )
                 {
-                    $('#result').append(' <span style="color:red; clear: both;">You\'re the first to get them all right! Congrats!</span>');
+                    $('#result').append(' <span style="color:red; clear: both;">You\'re the first to get them all right!!</span>');
                 }
                 else if ( number_missed == 0 && data.all_correct < 11 )
                 {
-                    $('#result').append(' <span style="color:red; clear: both;">You\'re the ' + to_ordinal(data.correct) + ' to get them all right! Right on!</span>');
+                    $('#result').append(' <span style="color:red; clear: both;">You\'re the ' + to_ordinal(data.correct) + ' to get them all right!!</span>');
                 }
             }
             })
