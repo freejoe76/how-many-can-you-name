@@ -341,7 +341,7 @@ var quizzer = {
                 if ( +data.worse_than == 0 )
                 {
                     if ( data.better_than == 1 ) s = "";
-                    $('#result').append('<br><strong>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '.</strong>\n\
+                    $('#result').append('<br>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '.\n\
                         That means you did better than</span> ' + percent_better + '% of the people who played this, and tied the other ' + percent_right + '%');
                 }
                 else if ( +data.correct == 0 )
@@ -351,7 +351,7 @@ var quizzer = {
                 }
                 else
                 {
-                    $('#result').append('<br><strong>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '.</strong>\n\
+                    $('#result').append('<br>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '.\n\
                         That means you did better than </span>' + percent_better + '% of the people who played this.');
                 }
 
