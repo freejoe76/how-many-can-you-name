@@ -1,4 +1,5 @@
 var quizzer = {
+    alerted: 0,
     correct_count: 0,
     correct: new Array(),
     answer_key: new Array(),
@@ -110,7 +111,6 @@ var quizzer = {
         this.mins = 0;
         return false;
     },
-    alerted: 0,
     slugify: function (text) {
         // from https://gist.github.com/mathewbyrne/1280286
         return text.toString().toLowerCase()
@@ -227,7 +227,7 @@ var quizzer = {
                 else $('input#answer').removeClass('wrong');
 
                 // If they're on the wrong track but close, and it's been more than 5 seconds,
-                // give the reader a clue.
+                // give the reader a clue. TODO
                 if ( all_wrong == 1 )
                 {
                     
@@ -237,7 +237,7 @@ var quizzer = {
         }
         else
         {
-            if( input.value == " " ) input.value = "";
+            if ( input.value == " " ) input.value = "";
         }
     },
     photo_activate: function(answer, correct_toggle)
@@ -309,7 +309,6 @@ var quizzer = {
             // SUCCESS
             // Display how the reader has done compared to everyone else.
             // data will look something like:
-            // { "correct": "10", "count": "6", "all_correct": "0", "mean": "8.33333333333", "worse_than": "4", "better_than": "4"}
             // { "correct": "0", "count": "246", "all_correct": "14", "non_zero_mean": "4.49143", "mean": "3.2073587398374", "worse_than": "175", "better_than": "0"}
             var mean = Math.round(data.mean*10) / 10;
             var non_zero_mean = Math.round(data.non_zero_mean*10) / 10;
