@@ -259,8 +259,7 @@ var quizzer = {
         // Handle the end.
         // Show the "End" graphic:
         // $('#the-end').removeClass('hide');
-        $('#answer').remove();
-        $('#end-it').remove();
+        $('#answer, #end-it').remove();
         $('#remain').addClass('strong');
         $('#remain').text('You got ' + this.correct_count + ' out of ' + this.answer_count);
 
@@ -379,8 +378,7 @@ var quizzer = {
     {
         // Start the quiz timer and show the quiz interface elements.
         $('#start-it').before($('#answer_field_container').html());
-        $('#start-it').remove();
-        $('#answer_field_container').remove();
+        $('#start-it, #answer_field_container').remove();
         $('#quiz_interface').removeClass('hide');
         //this.counter();
         this.time_count();
@@ -422,8 +420,7 @@ var quizzer = {
         // PHOTO ANSWER
         if ( this.config.has_photos === 0 )
         {
-            $('#correct').addClass('textual');
-            $('#missed').addClass('textual');
+            $('#correct, #missed').addClass('textual');
         }
         else
         {
@@ -439,4 +436,3 @@ var quizzer = {
 }
 
 $(document).ready(function(){ quizzer.init(); });
-
