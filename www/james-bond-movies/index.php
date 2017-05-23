@@ -28,6 +28,32 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
       return 0;
     };
     </script>
+
+    <style type="text/css">
+    .photos li {
+        float: left;
+        width: 75px;
+        height: 100px;
+        margin-right: 33px;
+        margin-bottom: 33px;
+        color: #aaa;
+        border: 2px solid #aaa;
+        font-size: 48px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 48px;
+    }
+
+    .photos li span {
+        font-size: 0;
+        display: block;
+        bottom: -105px;
+        width: 81px;
+        position: relative;
+        text-align: left;
+        line-height: 0;
+    }
+</style>
 </head>
 <body class="body-copy">
 
