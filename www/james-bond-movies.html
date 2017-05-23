@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- EDIT: Add a title. -->
+    <title>2-Minute Quiz: How many James Bond movies can you name - NY Daily News</title>
+
+    <!-- EDIT: Add the URL of the article this quiz is embedded in, once you know what that is -->
+    <link rel="canonical" href="" />
+    <link rel="shortcut icon" href="http://extras.mnginteractive.com/live/media/favIcon/dpo/favicon.ico" type="image/x-icon" />
+
+    <meta name="distribution" content="global" />
+    <meta name="robots" content="noindex" />
+    <meta name="language" content="en, sv" />
+    <meta name="Copyright" content="Copyright &copy; The Denver Post." />
+
+    <meta name="google-site-verification" content="2bKNvyyGh6DUlOvH1PYsmKN4KRlb-0ZI7TvFtuKLeAc" />
+    <link rel='stylesheet' id='knowlton-styles-css'  href='https://assets.digitalfirstmedia.com/prod/static/css/denverpost.css?ver=1.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='mason-fonts-css'  href='https://fonts.googleapis.com/css?family=Open%20Sans|Source+Serif+Pro%3A400%2C400italic%2C600%2C600italic%2C700%2C700italic%7CSource+Sans+Pro%3A400%2C400italic%2C600%2C600italic%2C700%2C400italic&#038;ver=4.5.3' type='text/css' media='all' />
+
+</head>
+<body class="body-copy">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<!-- EDIT: Edit the text in the h2, and if we're quizzing on something other than names, the text in the p element. -->
+<h2>
+    This is the question we are asking people to answer
+</h2>
+<p>
+    (Last names only. Type the last name in the box below, if you get it right it will disappear and be added to your correct-answers list. No need to type "Jr." or "Junior", no need to hit the enter key, if it's not accepting your answer either you're spelling it wrong or we made a mistake)
+</p>
+<!-- EDIT: If you want to give the people more or less than two minutes, edit this. --> 
+<input id="time_limit" type="hidden" value="2" />
+<!-- EDIT: Put the answers here, separated by commas, like this: value="Name1,Name2,Name3,Name4" -->
+<input id="answerkey" type="hidden" value="Arizona,Utah,Oklahoma,Maine" />
+
+
+
+<style type="text/css">
+body { margin: .5em; }
+#correct { margin-top: 0; }
+.body-copy h1, .body-copy h2, .body-copy h3, .body-copy p { margin-bottom: .5em; }
+input#timer { border: 0;
+    font-size: 120%;
+}
+</style>
+    <form name="timecount">
+        <input id="timer" type="text" readonly="true" value="Wait for the timer..." name="timer" />
+    </form>
+        <div id="answerfield">
+        <label for="answer" style="display:none;">Enter your answers here:</label>
+        <input type="text" onKeyUp="quizzer.checkAnswer(this);" name="input" id="answer" />
+        <span id="remain"></span>
+        </div>
+        
+        <h3>
+        Correct Answers:
+        </h3>
+        <p id="correct">None</p>
+        <div id="missed"></div>
+        <button class="btn-show-more-headlines" id="end-it" onClick="quizzer.quit();">End the quiz now</button>
+<script src="quiz.js"></script>
+
+</body>
+</html>
