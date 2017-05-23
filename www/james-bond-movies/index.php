@@ -7,10 +7,10 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!-- EDIT: Add a title. -->
-    <title>TITLE</title>
+    <title>QUIZ: How many of the 25 James Bond movies can you name?</title>
 
     <!-- EDIT: Add the URL of the article this quiz is embedded in, once you know what that is -->
-    <link rel="canonical" href="" />
+    <link rel="canonical" href="http://www.nydailynews.com/entertainment/movies/james-bond-movie-article-1.3189196" />
     <link rel="shortcut icon" href="" type="image/x-icon" />
 
     <meta name="distribution" content="global" />
