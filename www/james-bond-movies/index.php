@@ -34,7 +34,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
         float: left;
         width: 75px;
         height: 100px;
-        margin-right: 33px;
+        margin-right: 29px;
         margin-bottom: 33px;
         color: #aaa;
         border: 2px solid #aaa;
