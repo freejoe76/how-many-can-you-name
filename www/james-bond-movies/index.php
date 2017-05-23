@@ -30,7 +30,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
     </script>
 
     <style type="text/css">
-    .photos li {
+    #correct li {
         float: left;
         width: 75px;
         height: 100px;
@@ -44,7 +44,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
         line-height: 48px;
     }
 
-    .photos li span {
+    #correct li span {
         font-size: 0;
         display: block;
         bottom: -105px;
