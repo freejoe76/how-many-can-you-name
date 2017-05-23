@@ -29,7 +29,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
     };
     </script>
 
-    <style type="text/css">
+<style type="text/css">
     #correct li {
         float: left;
         width: 75px;
