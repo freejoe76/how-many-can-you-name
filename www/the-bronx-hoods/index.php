@@ -34,7 +34,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
     <article>
-<h1>The two-minute drill</h1>
+<h1>The five-minute drill</h1>
 <!-- EDIT: Edit the text in the h2, and if we're quizzing on something other than names, the text in the p element. -->
 <h2>
     How many neighborhoods in The Bronx can you name in five minutes?
@@ -61,7 +61,7 @@ if ( is_mobile() === 1 ) quiz_config.has_photos = 0;
 
     <button class="btn-show-more-headlines" id="start-it" onClick="quizzer.start();">Start the quiz</button>
     <form name="time_count">
-        <input id="timer" type="text" readonly="true" value="2:00" name="timer" />
+        <input id="timer" type="text" readonly="true" value="5:00" name="timer" />
     </form>
 
     <section id="quiz_interface" class="hide">
