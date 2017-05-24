@@ -22,9 +22,11 @@ Javascript and markup for publishing open-ended "How many of X can you name?"-st
         1. Add the quiz title and slug.
         2. If your quiz doesn't have photos, change the has_photos property value to 0.
 1. Add the quiz to the database.
-    1. Copy the SQL from [www/sql/insert.sql](blob/master/www/sql/insert.sql), `INSERT INTO howmany (slug, max, create_date) VALUES ('fast-and-furious', 8, NOW());`
+    1. Copy the SQL from [www/sql/insert.sql](www/sql/insert.sql), `INSERT INTO howmany (slug, max, create_date) VALUES ('fast-and-furious', 8, NOW());`
     2. Replace the "fast-and-furious" value with whatever your quiz slug is.
     3. Log in to your database server and execute that query.
+        1. If you run into trouble and need to edit your entry, you can edit the database record with a query along the lines of `UPDATE howmany SET slug='new-slug-name' WHERE quiz_id=9 LIMIT 1;`.
+        1. If you want to delete your record and start over, do that with `DELETE FROM howmany WHERE quiz_id=[ID-OF-YOUR-ERRANT-QUIZ] LIMIT 1;`
     
 
 ####
