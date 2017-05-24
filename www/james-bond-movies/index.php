@@ -62,7 +62,7 @@ if ( is_mobile() === 1 ) quiz_config.has_photos = 0;
 
     <button class="btn-show-more-headlines" id="start-it" onClick="quizzer.start();">Start the quiz</button>
     <form name="time_count">
-        <input id="timer" type="text" readonly="true" value="5:00" name="timer" />
+        <input id="timer" type="text" readonly="true" value="3:00" name="timer" />
     </form>
 
     <section id="quiz_interface" class="hide">
