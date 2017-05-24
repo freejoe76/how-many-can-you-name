@@ -2,21 +2,22 @@
 $append = '';
 if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($_SERVER['QUERY_STRING']), 0, 11);
 ?><!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!-- EDIT: Add a title. -->
-    <title>QUIZ: How many of the 25 James Bond movies can you name?</title>
+    <title>How many Queens neighborhoods can you name in five minutes?</title>
 
     <!-- EDIT: Add the URL of the article this quiz is embedded in, once you know what that is -->
-    <link rel="canonical" href="http://www.nydailynews.com/entertainment/movies/james-bond-movie-article-1.3189196" />
+    <link rel="canonical" href="http://www.nydailynews.com/news/world/quiz-nato-member-countries-article-1.3019144" />
     <link rel="shortcut icon" href="" type="image/x-icon" />
 
     <meta name="distribution" content="global" />
     <meta name="robots" content="noindex" />
     <meta name="language" content="en, sv" />
-    <meta name="Copyright" content="Copyright &copy; 2017 the New York Daily News" />
+    <meta name="Copyright" content="Copyright &copy; 2017" />
 
     <link rel="stylesheet"  href="../css/style-howmany.css<?php echo $append; ?>" type="text/css" media="all" />
     <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Open%20Sans|Open+Sans+Condensed:300,700|PT+Serif" type="text/css" media="all" />
@@ -28,32 +29,6 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
       return 0;
     };
     </script>
-
-<style type="text/css">
-    #quiz_interface li {
-        float: left;
-        width: 75px;
-        height: 100px;
-        margin-right: 25px;
-        margin-bottom: 33px;
-        color: #aaa;
-        border: 2px solid #aaa;
-        font-size: 48px;
-        font-weight: bold;
-        text-align: center;
-        line-height: 48px;
-    }
-
-    #quiz_interface li span {
-        font-size: 0;
-        display: block;
-        bottom: -105px;
-        width: 81px;
-        position: relative;
-        text-align: left;
-        line-height: 0;
-    }
-</style>
 </head>
 <body class="body-copy">
 
@@ -63,23 +38,23 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
 <h1>The three-minute drill</h1>
 <!-- EDIT: Edit the text in the h2, and if we're quizzing on something other than names, the text in the p element. -->
 <h2>
-    How many James Bond movies can you name in three minutes?
+    How many Queens neighborhoods can you name in five minutes?
 </h2>
 
 <p class="hide">
     (Type the name in the box below, if you get it right it will disappear and be added to your correct-answers list. No need to type "Jr." or "Junior", no need to hit the enter key, if it's not accepting your answer either you're spelling it wrong or we made a mistake)
 </p>
-<!-- EDIT: If you want to give the people more or less than two minutes, edit this. --> 
-<input id="time_limit" type="hidden" value="3" />
+<!-- EDIT: If you want to give the people more or less than five minutes, edit this. --> 
+<input id="time_limit" type="hidden" value="5" />
 <!-- EDIT: Put the answers here, separated by commas, like this: value="Name1,Name2,Name3,Name4" -->
-<input id="answer_key" type="hidden" value="Dr. No,From Russia with Love,Goldfinger,Thunderball,You Only Live Twice,On Her Majesty's Secret Service,Diamonds are Forever,Live and Let Die,The Man with the Golden Gun,The Spy Who Loved Me,Moonraker,For Your Eyes Only,Octopussy,Never Say Never Again,A View to a Kill,The Living Daylights,Licence to Kill,GoldenEye,Tomorrow Never Dies,The World is Not Enough,Die Another Day,Casino Royale,Quantum of Solace,Skyfall,Spectre" />
+<input id="answer_key" type="hidden" value="Arverne,Astoria,Astoria Heights,Auburndale,Bay Terrace,Bayside,Bayswater,Beechhurst,Bellaire,Belle Harbor,Bellerose,Blissville,Breezy Point,Briarwood,Broad Channel,Brookville,Cambria Heights,Clearview,College Point,Corona,Corona Heights,Douglaston,Downtown Flushing,Dutch Kills,Edgemere,Elmhurst,Far Rockaway,Floral Park,Flushing,Forest Hills,Forest Hills Gardens,Fresh Meadows,Glen Oaks,Glendale,Hammels,Hillcrest,Hollis,Hollis Hills,Holliswood,Howard Beach,Hunters Point,Jackson Heights,Jamaica,Jamaica Center,Jamaica Estates,Jamaica Hills,Kew Gardens,Kew Gardens Hills,Laurelton,Lefrak City,Lindenwood,Little Neck,Long Island City,Malba,Maspeth,Middle Village,Murray Hill,Neponsit,New Hyde Park,North Corona,North Springfield Gardens,Oakland Gardens,Old Howard Beach,Ozone Park,Pomonok,Queensbridge,Queens Village,Queensboro Hill,Ravenswood,Rego Park,Richmond Hill,Ridgewood,Rochdale,Rockaway Park,The Rockaways,Rosedale,Roxbury,Seaside,Somerville,South Jamaica,South Ozone Park,Springfield Gardens,St. Albans,Steinway,Sunnyside,Sunnyside Gardens,Utopia,Waldheim,Whitestone,Woodhaven,Woodside" />
 <!-- EDIT: Add the quiz-specific configuration values. -->
 <script>
 var quiz_config = { 
-        title: 'How many James Bond movies can you name in three minutes',
-        slug: 'james-bond-movies',
+        title: 'How many Queens neighborhoods can you name in five minutes',
+        slug: 'queens-neighborhoods',
         log_url: '../handler.php',
-        has_photos: 1,
+        has_photos: 0,
         log_answers: 1,
     };
 if ( is_mobile() === 1 ) quiz_config.has_photos = 0;
