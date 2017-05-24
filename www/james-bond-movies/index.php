@@ -18,7 +18,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
     <meta name="language" content="en, sv" />
     <meta name="Copyright" content="Copyright &copy; 2017 the New York Daily News" />
 
-    <link rel="stylesheet"  href="../css/style-howmany.css<?php echo $append; ?>" type="text/css" media="all" />
+    <link rel="stylesheet"  href="../css/style-howmany-v2.css<?php echo $append; ?>" type="text/css" media="all" />
     <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Open%20Sans|Open+Sans+Condensed:300,700|PT+Serif" type="text/css" media="all" />
     <script>
     var is_mobile = function() {
@@ -29,31 +29,6 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
     };
     </script>
 
-<style type="text/css">
-    #quiz_interface li {
-        float: left;
-        width: 75px;
-        height: 100px;
-        margin-right: 25px;
-        margin-bottom: 33px;
-        color: #aaa;
-        border: 2px solid #aaa;
-        font-size: 48px;
-        font-weight: bold;
-        text-align: center;
-        line-height: 48px;
-    }
-
-    #quiz_interface li span {
-        font-size: 0;
-        display: block;
-        bottom: -105px;
-        width: 81px;
-        position: relative;
-        text-align: left;
-        line-height: 0;
-    }
-</style>
 </head>
 <body class="body-copy">
 

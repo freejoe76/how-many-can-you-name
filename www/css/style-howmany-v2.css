@@ -1,0 +1,216 @@
+body { margin: .5em; }
+.hide { display: none; }
+#correct { margin-top: 0; }
+.body-copy h1, .body-copy h2, .body-copy h3, .body-copy p { margin-bottom: 0; }
+input#timer {
+    border: 0;
+    font-size: 120%;
+}
+input#answer { }
+input.wrong { color: red; }
+h1, h2, h3, h4, h5, p, ul, ol, button {
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #333;
+    font-size: 25px;
+    line-height: 28px;
+}
+input {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.5em;
+}
+h1 {
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+    border-top: 2px solid #aaa;
+    border-bottom: 2px solid #aaa;
+    letter-spacing: 1.64px;
+    font-size: 1.3em;
+}
+h2 {
+    margin-bottom: 20px!important;
+}
+h3 {
+    clear: both;
+}
+p, .textual li {
+    font-size: 1.2em;
+    font-family: "PT Serif", serif;
+}
+button:hover { cursor: pointer; }
+button {
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #136DF8;
+    color: white;
+    height: 43px;
+    border: 0;
+}
+button.share {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+button.twitter_button { background-color: #55ACEE; }
+button.facebook_button { background-color: #3B5998; }
+button#start-it {
+    width: 443px;
+    float: left;
+}
+button#end-it:hover { color: red; }
+button#end-it {
+    width: 180px;
+    background-color: #fafafa;
+    color: #333;
+    float: left;
+    border: 0;
+    margin-left: 5px;
+    margin-top: 4px;
+}
+form input#timer { 
+    width: 80px;
+    font-size: 35px;
+    padding-left: 40px;
+    background-color: #fafafa;
+}
+.timer-color {
+    color: red;
+}
+
+#answer_field {
+    float: left;
+}
+
+.finished {
+    background-color: #ededed;
+    padding: 0 15px 15px 15px;
+    font-family: 'Open Sans', sans-serif;
+    width: 585px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.finished p {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.finished #result {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+}
+
+#answer_field input {
+    padding: 5px;
+    width: 260px;
+    height: 43px;
+    font-size: 24px;
+}
+
+#quiz_interface { margin-top: 10px; }
+#remain { margin: 0; }
+#correct, #missed { clear: both; }
+.textual li:after { content: ', '; }
+.textual li {
+    margin-right: 3px;
+    font-size: 18px;
+}
+.textual li:last-child:after { content: ' '; }
+#correct li, #missed li {
+    float: left;
+    list-style-type: none;
+}
+#missed { margin-top: 0; }
+
+.photos li {
+    float: left;
+    width: 75px;
+    height: 100px;
+    margin-right: 25px;
+    margin-bottom: 33px;
+    color: #aaa;
+    border: 2px solid #aaa;
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 48px;
+}
+
+.photos li.correct {
+    border: 2px solid #00fa9a;
+}
+.photos li.incorrect {
+    border: 2px solid red;
+}
+/* Styles for the photo captions */
+.photos li span {
+    font-size: 0;
+    display: block;
+    bottom: -105px;
+    width: 81px;
+    position: relative;
+    text-align: left;
+    line-height: 0;
+}
+.photos li span:after {
+    font-size: 12px;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+    line-height: 12px;
+}
+body p.strong {
+    margin-top: 10px!important;
+    font-weight: bold;
+}
+.highlight { color: red; }
+
+#share-it {
+    clear: both;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+
+body {
+    background-color: #fafafa;
+}
+article {
+    background-color: #fafafa;
+    max-width: 600px;
+    margin: 10px auto;
+}
+@media only screen and (max-width:450px) {
+    body { margin: 0; }
+    article { width: 100%; }
+    h1 { letter-spacing: 0; }
+    button#start-it, button#end-it {
+        width: 90%;
+        margin: auto;
+        text-align: auto;
+        float: none;
+        display: block;
+        margin-top: 20px;
+    }
+    button#end-it { border: 1px solid #ccc; }
+    #answer_field input {
+        width: 100%;
+        clear: both;
+        display: block;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    form input#timer {
+        margin-top: 0;
+        width: 90px;
+        padding-left: 0;
+        margin: auto;
+        display: block;
+        clear: both;
+    }
+    p#remain {
+        clear: both;
+    }
+}
