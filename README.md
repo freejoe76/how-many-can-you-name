@@ -9,6 +9,26 @@ Javascript and markup for publishing open-ended "How many of X can you name?"-st
 2. Put the `www` directory somewhere on your web path.
 3. Test your changes with the `_blank/index.php` file.
 
+### How to create a quiz
+
+1. Copy the `_blank` directory into a new directory, named after your quiz.
+1. Edit your new index.php file.
+    1. Edit the title element.
+    2. Edit the canonical meta element.
+    3. Edit the `<h2>`
+    4. Edit the `<input id="answer_key" type="hidden"` and add your answers.
+    5. If you need more than two minutes, edit the `<input id="time_limit" type="hidden" value="2" />` and the `<input id="timer" type="text" readonly="true" value="2:00" name="timer" />` elements.
+    6. Edit the `var quiz_config = { ` object.
+        1. Add the quiz title and slug.
+        2. If your quiz doesn't have photos, change the has_photos property value to 0.
+1. Add the quiz to the database.
+    1. Copy the SQL from [www/sql/insert.sql](/nydailynews/how-many-can-you-name/blob/master/www/sql/insert.sql), `INSERT INTO howmany (slug, max, create_date) VALUES ('fast-and-furious', 8, NOW());`
+    2. Replace the "fast-and-furious" value with whatever your quiz slug is.
+    3. Log in to your database server and execute that query.
+    
+
+####
+
 ## About the code
 
 ### The split answers / the Dwight Gooden exception
