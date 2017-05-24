@@ -7,7 +7,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!-- EDIT: Add a title. -->
-    <title>TITLE</title>
+    <title>How many neighborhoods in The Bronx can you name in five minutes?</title>
 
     <!-- EDIT: Add the URL of the article this quiz is embedded in, once you know what that is -->
     <link rel="canonical" href="" />
@@ -37,23 +37,23 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
 <h1>The two-minute drill</h1>
 <!-- EDIT: Edit the text in the h2, and if we're quizzing on something other than names, the text in the p element. -->
 <h2>
-    QUESTION
+    How many neighborhoods in The Bronx can you name in five minutes?
 </h2>
 
 <p class="hide">
     (Type the name in the box below, if you get it right it will disappear and be added to your correct-answers list. No need to type "Jr." or "Junior", no need to hit the enter key, if it's not accepting your answer either you're spelling it wrong or we made a mistake)
 </p>
 <!-- EDIT: If you want to give the people more or less than two minutes, edit this. --> 
-<input id="time_limit" type="hidden" value="2" />
+<input id="time_limit" type="hidden" value="5" />
 <!-- EDIT: Put the answers here, separated by commas, like this: value="Name1,Name2,Name3,Name4" -->
-<input id="answer_key" type="hidden" value="Rhode Island,Washington,Idaho,New Hampshire,North Carolina,North Dakota,South Dakota,South Carolina,Utah,Oklahoma,Ohio,Hawaii,Massachusetts,Michigan" />
+<input id="answer_key" type="hidden" value="Allerton,Bathgate,Baychester,Bedford Park,Belmont,Bronx Park South,Bronx River,Bronxdale,Castle Hill,City Island,Claremont,Clason Point,Co-op City,Concourse,Concourse Village,Country Club,Crotona Park East,East Concourse,East Tremont,Eastchester,Edenwald,Edgewater Park,Fieldston,Fordham,Harding Park,Highbridge,Hunts Point,Indian Village,Kingsbridge,Kingsbridge Heights,Longwood,Marble Hill,Melrose,Morris Heights,Morris Park,Morrisania,Mott Haven,Mount Eden,Mount Hope,North Riverdale,Norwood,Olinville,Parkchester,Pelham Bay,Pelham Gardens,Pelham Parkway,Port Morris,Riverdale,Schuylerville,Soundview,Soundview-Bruckner,Spuyten Duyvil,Throgs Neck,Unionport,University Heights,Van Nest,Wakefield,West Concourse,West Farms,Westchester Square,Williamsbridge,Woodlawn" />
 <!-- EDIT: Add the quiz-specific configuration values. -->
 <script>
 var quiz_config = { 
-        title: 'TITLE',
-        slug: 'SLUG',
+        title: 'How many neighborhoods in The Bronx can you name in five minutes',
+        slug: 'bronx-neighborhoods',
         log_url: '../handler.php',
-        has_photos: 1,
+        has_photos: 0,
         log_answers: 1,
     };
 if ( is_mobile() === 1 ) quiz_config.has_photos = 0;
