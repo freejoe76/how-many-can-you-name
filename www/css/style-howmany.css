@@ -99,6 +99,7 @@ form input#timer {
 .finished #result {
     font-family: 'Open Sans', sans-serif;
     font-size: 1em;
+    clear: both;
 }
 
 #answer_field input {
