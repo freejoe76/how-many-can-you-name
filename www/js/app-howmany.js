@@ -39,7 +39,7 @@ var quizzer = {
         // Pull out the minutes part of a time string, as in the "1" part of, say, "1:30"
         var len = input.length;
 
-        for( var i = 0; i < len; i++ ) if( input.substring(i, i + 1) == ":" ) break;
+        for ( var i = 0; i < len; i++ ) if ( input.substring(i, i + 1) == ":" ) break;
 
         return input.substring(0, i);
     },
@@ -55,11 +55,11 @@ var quizzer = {
     counter: function() 
     {
         // Deal with the passage of time.
-        if (this.mins === 0 && this.secs === 11) $('#timer').addClass("timer-color");
+        if ( this.mins === 0 && this.secs === 11 ) $('#timer').addClass("timer-color");
         if ( this.correct_count == this.answer_count )
         {
             // They got 'em all.
-            console.log("WINNER WINNER");
+            //console.log("WINNER WINNER");
             this.show_answers();
             return;
         }
@@ -92,12 +92,7 @@ var quizzer = {
     display_time: function(mins,secs) 
     {
         // Format a string so we can show readers how much time they have left.
-        var display;
-
-        if ( mins <= 9 ) display = " ";
-        else display = " ";
-
-        display += mins + ":";
+        var display = " " + mins + ":";
 
         if ( secs <= 9 ) display += "0" + secs;
         else display += secs;
@@ -290,8 +285,8 @@ var quizzer = {
     social_media: function()
     {
         var url = document.querySelector("link[rel='canonical']").getAttribute("href");
-        var tweet_text = 'I just played the ' + this.config.title + ' quiz.';
-        if ( typeof percent_better !== 'undefined' ) tweet_text = 'I did better than ' + percent_better + '% of the people who played the ' + this.config.title + ' quiz!';
+        var tweet_text = 'I got ' + this.correct_count + ' answers on the ' + this.config.title + ' quiz.';
+        if ( typeof percent_better !== 'undefined' ) tweet_text = 'I did better than ' + percent_better + '% of players on the ' + this.config.title + ' quiz!';
         $("article").append("<div id='share-it'>\n\
 <p>Share your score</p>\n\
 <a class=\"twitter-share\" href='http://twitter.com/share?url=" + url + "&text=" + tweet_text + " @nydailynews' target='_blank'>\n\
