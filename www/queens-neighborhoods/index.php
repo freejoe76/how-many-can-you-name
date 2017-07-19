@@ -35,7 +35,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
     <article>
-<h1>The three-minute drill</h1>
+<h1>The eight-minute drill</h1>
 <!-- EDIT: Edit the text in the h2, and if we're quizzing on something other than names, the text in the p element. -->
 <h2>
     How many Queens neighborhoods can you name in eight minutes?
