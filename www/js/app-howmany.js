@@ -16,6 +16,7 @@ var quizzer = {
         log_url: '../handler.php',
         has_photos: 0,
         log_answers: 0,
+        log_start: 1,
     },
     update_config: function(config) {
         // Take an external config object and update this config object.
@@ -295,6 +296,11 @@ var quizzer = {
 <button class='share social_icon_box facebook_button'><img alt='Share on Facebook' class='social_icon facebook_icon' src='../icons/facebook.png'></button></a>\n\
 </div>");
     },
+    log_start: function ()
+    {
+        var params = '?slug=' + this.config.slug + '&start=1&callback=';
+        var jqxhr = $.getJSON( this.config.log_url + params, function(data) {} );
+    },
     log_answer: function ()
     {
         var correct = this.correct_count;
@@ -377,6 +383,9 @@ var quizzer = {
         //this.counter();
         this.time_count();
         document.getElementById('answer').focus();
+
+        //  RECORD IN THE DB THAT SOMEONE STARTED THE QUIZ
+        if ( this.config.log_start === 1 ) { this.log_start(); }
     },
     init: function() 
     {
@@ -426,6 +435,7 @@ var quizzer = {
             }
             $('#correct').addClass('photos');
         }
+
     }
 }
 
