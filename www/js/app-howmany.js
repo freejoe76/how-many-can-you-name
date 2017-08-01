@@ -118,21 +118,18 @@ var quizzer = {
     },
     find_in_array: function(value, array)
     {
-        // Loop through an array, if a string is found in the array then 
-        // return the index of the array item found.
+        // Loop through an array, if the string is found anywhere in the array 
+        // then return the index of the array item found.
+        // This got us into trouble when the answer string was in more than one answer --
+        // this script used to return the wrong key.
+        // Searching for '/' + value as well as value + '/'
         // Otherwise, return -1.
         var len = array.length;
         for ( var i = 0; i < len; i++ )
         {
-            if ( array[i].indexOf(value) !== -1 ) return i;
+            if ( array[i].indexOf(value + '/') !== -1 || array[i].indexOf('/' + value) !== -1 ) return i;
         }
         return -1;
-    },
-    is_true_in_array: function(value, array)
-    {
-        // The boolean version of find_in_array.
-        if ( this.find_in_array(value, array) === -1 ) return false;
-        return true;
     },
     check_answer: function(input)
     {
@@ -143,6 +140,7 @@ var quizzer = {
         if ( input.value.length > 0 )
         {
             var val = input.value.trim();
+            // answer_key_merged is the array of the non-split and the split answers.
             var len = this.answer_key_merged.length;
             for ( var i = 0; i < len; i++ )
             {
@@ -161,6 +159,7 @@ var quizzer = {
                         // It's a splitter, so find it in the answer_key, remove it from answer_key,
                         // and remove its partner from answer_key_merged
                         var splitter_in_main_key = this.find_in_array(answer, this.answer_key);
+                        console.log(splitter_in_main_key, this.answer_key, answer)
                         var other_split = this.answer_key[splitter_in_main_key].replace(answer, '').replace('/', '').trim();
                         var other_index = this.answer_key_merged.indexOf(other_split);
 
