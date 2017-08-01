@@ -97,6 +97,7 @@ form input#timer {
 }
 
 .finished #result {
+    line-height: 1.3em;
     font-family: 'Open Sans', sans-serif;
     font-size: 1em;
     clear: both;

@@ -116,7 +116,7 @@ var quizzer = {
             .replace(/^-+/, '')             // Trim - from start of text
             .replace(/-+$/, '');            // Trim - from end of text
     },
-    find_in_array: function(value, array)
+    find_in_array_slashes: function(value, array)
     {
         // Loop through an array, if the string is found anywhere in the array 
         // then return the index of the array item found.
@@ -128,6 +128,18 @@ var quizzer = {
         for ( var i = 0; i < len; i++ )
         {
             if ( array[i].indexOf(value + '/') !== -1 || array[i].indexOf('/' + value) !== -1 ) return i;
+        }
+        return -1;
+    },
+    find_in_array: function(value, array)
+    {
+        // Loop through an array, if the string is found anywhere in the array 
+        // then return the index of the array item found.
+        // Otherwise, return -1.
+        var len = array.length;
+        for ( var i = 0; i < len; i++ )
+        {
+            if ( array[i].indexOf(value) !== -1 ) return i;
         }
         return -1;
     },
@@ -156,19 +168,19 @@ var quizzer = {
                     // if so, remove it from answer_key too.
                     if ( this.find_in_array(answer, this.split_answer) > -1 )
                     {
-                        // It's a splitter, so find it in the answer_key, remove it from answer_key,
-                        // and remove its partner from answer_key_merged
-                        var splitter_in_main_key = this.find_in_array(answer, this.answer_key);
-                        console.log(splitter_in_main_key, this.answer_key, answer)
+                        // It's a splitter, so we:
+                        // 1. Find it in the answer_key,
+                        // 2. Remove it from answer_key, and
+                        // 3. Remove its partner from answer_key_merged
+                        var splitter_in_main_key = this.find_in_array_slashes(answer, this.answer_key);
                         var other_split = this.answer_key[splitter_in_main_key].replace(answer, '').replace('/', '').trim();
                         var other_index = this.answer_key_merged.indexOf(other_split);
 
                         var player = this.answer_key[splitter_in_main_key];
                         
-                        // Clean up answer_key and answer_key_merged
+                        // 2. Remove it from answer_key, and 3. Remove its partner from answer_key_merged
                         this.answer_key_merged.splice(other_index, 1);
                         this.answer_key.splice(splitter_in_main_key, 1);
-                
                     }
                     else
                     {

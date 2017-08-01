@@ -87,7 +87,7 @@ form input#timer {
     background-color: #ededed;
     padding: 0 15px 15px 15px;
     font-family: 'Open Sans', sans-serif;
-    width: 585px;
+    max-width: 585px;
     height: auto;
     margin-bottom: 15px;
 }
