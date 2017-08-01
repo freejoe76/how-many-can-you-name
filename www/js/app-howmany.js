@@ -297,8 +297,8 @@ var quizzer = {
     },
     log_start: function ()
     {
-        var params = '?slug=' + this.config.slug + '&start=1&callback=';
-        var jqxhr = $.getJSON( this.config.log_url + params, function(data) {} );
+        var url = this.config.log_url + '?slug=' + this.config.slug + '&start=1&callback=';
+        var jqxhr = $.getJSON( url, function(data) {} );
     },
     log_answer: function ()
     {
