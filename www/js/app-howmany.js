@@ -199,7 +199,7 @@ var quizzer = {
                     // PHOTO ANSWER
                     if ( this.config.has_photos === 0 )
                     {
-                        $("#correct").append("<li>" + this.correct[0] + "</li>");
+                        this.text_activate(this.correct[0]);
                     }
                     else
                     {
@@ -246,6 +246,11 @@ var quizzer = {
         {
             if ( input.value == " " ) input.value = "";
         }
+    },
+    text_activate: function(answer)
+    {
+        // What happens when you get a text answer right.
+        $("#correct").append("<li>" + answer + "</li>");
     },
     photo_activate: function(answer, correct_toggle)
     {
