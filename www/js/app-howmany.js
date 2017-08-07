@@ -299,6 +299,8 @@ var quizzer = {
         $("#missed").removeClass('hide');
         $("#explanation").css('display', 'block');
         this.social_media();
+        // Let the parent frame know, if it's listening
+        window.parent.postMessage({'quiz': 1}, '*');
     },
     show_text_answers: function()
     {
