@@ -1,1 +1,69 @@
+section#legend {
+	width: 150px;
+	float: left;
+}
+#legend ol {
+	position: relative;
+	display: block;
+	margin: 5% 0;
+	padding-left: 4px;
+	width: 0px;
+	background: #555;
+}
+#legend li {
+	position: relative;
+	display: inline-block;
+	top: -1em;
+	left: 1em;
+	height: 1em;
+	width: 20em;
+	font: bold 14px arial;
+	color: #333;
+}
+#legend li span {
+	display: none;
+}
+.green li:before {
+	background-color: #00933c;
+}
+.light-green li:before {
+	background-color: #00933c;
+}
+.red li:before {
+	background-color: #00933c;
+}
+.purple li:before {
+	background-color: #00933c;
+}
+.blue li:before {
+	background-color: #00933c;
+}
+.orange li:before {
+	background-color: #00933c;
+}
+.yellow li:before {
+	background-color: #00933c;
+}
+.brown li:before {
+	background-color: #00933c;
+}
+#legend li:before {
+    content: "";
+    position: absolute;
+    top: -0.2em;
+    left: -2em;
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: 4px solid #333;
+    border-radius: 16px;
+}
+.show, #legend li span.show {
+	display: block;
+}
+.body-copy #end-it {
+	width: 400px;
+	border: 1px solid #ddd;
+}
+#correct, #missed, h3, #share-it, .finished #result { clear: none; }
  

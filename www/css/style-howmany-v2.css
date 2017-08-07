@@ -119,7 +119,7 @@ form input#timer {
 }
 .textual li:last-child:after { content: ' '; }
 #correct li, #missed li {
-    float: left;
+    display: inline;
     list-style-type: none;
 }
 #missed { margin-top: 0; }
