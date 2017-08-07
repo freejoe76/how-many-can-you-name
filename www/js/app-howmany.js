@@ -4,6 +4,7 @@ var quizzer = {
     correct: new Array(),
     answer_key: new Array(),
     answer_key_merged: new Array(),
+    answer_key_original: new Array(),
     answer_times: new Array(),
     split_answer: new Array(),
     answer_count: 0,
@@ -173,6 +174,7 @@ var quizzer = {
                         // 2. Remove it from answer_key, and
                         // 3. Remove its partner from answer_key_merged
                         var splitter_in_main_key = this.find_in_array_slashes(answer, this.answer_key);
+                        this.previous_answer = this.find_in_array_slashes(answer, this.answer_key_original);
                         var other_split = this.answer_key[splitter_in_main_key].replace(answer, '').replace('/', '').trim();
                         var other_index = this.answer_key_merged.indexOf(other_split);
 
@@ -184,9 +186,11 @@ var quizzer = {
                     }
                     else
                     {
-                        // It's not a splitter, so just find it in answer_key
-                        // and remove it.
+                        // It's not a splitter, so just find it in answer_key,
+                        // remove it, and update the object with the index
+                        // of the removed answer.
                         var j = this.answer_key.indexOf(answer);
+                        this.previous_answer = this.answer_key_original.indexOf(answer);
 
                         var player = this.answer_key[j];
 
@@ -413,6 +417,7 @@ var quizzer = {
 
         var all_answers = $('#answer_key').attr('value');
         this.answer_key = all_answers.split(',');
+        this.answer_key_original = all_answers.split(',');
         this.answer_count = this.answer_key.length;
 
         // SPLIT ANSWWER
