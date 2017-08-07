@@ -101,6 +101,22 @@ var quizzer = {
 
         return display;
     },
+    reload: function(event)
+    {
+        // This could be called by the parent frame, if only we were on the same domain.
+        if ( event.origin === 'http://interactive.nydailynews.com' )
+        {
+            if ( typeof event.data.quiz !== 'undefined' ) 
+            {
+              googletag.pubads().refresh();
+              PARSELY.beacon.trackPageView({
+                url: document.location.href,
+                urlref: document.location.href,
+                js: 1
+              });
+            }
+        }
+    },
     quit: function()
     {
         // Sometimes games end early.
