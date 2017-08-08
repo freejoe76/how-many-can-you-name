@@ -330,7 +330,7 @@ var quizzer = {
     },
     social_media: function()
     {
-        var url = document.querySelector("link[rel='canonical']").getAttribute("href");
+        var url = ( window.location != window.parent.location ) ? document.referrer : document.querySelector("link[rel='canonical']").getAttribute("href");
         var tweet_text = 'I got ' + this.correct_count + ' answers on the ' + this.config.title + ' quiz.';
         if ( typeof percent_better !== 'undefined' ) tweet_text = 'I did better than ' + percent_better + '% of players on the ' + this.config.title + ' quiz!';
         $("article").append("<div id='share-it'>\n\
