@@ -13,10 +13,11 @@ function extend_quizzer() {
     quizzer.show_text_answers = function()
     {
         // Add to the existing functionality.
-        $('#remain').text('You got ' + this.correct_count + ' out of ' + this.answer_count + ': ');
+        $('#remain').text('You named ' + this.correct_count + ' out of ' + this.answer_count + ' stations.');
         $('#remain').append($('#correct'));
-        for ( var x=0; x < len; x++ ) $("#missed").append("<li>" + this.answer_key[x] + "</li>");
-        $("#missed").before('<h3>Missed</h3>');
+        //var len = this.answer_key.length;
+        //for ( var x=0; x < len; x++ ) $("#missed").append("<li>" + this.answer_key[x] + "</li>");
+        //$("#missed").before('<h3>Missed</h3>');
 
         // This is the new stuff:
 		var len = this.answer_count;

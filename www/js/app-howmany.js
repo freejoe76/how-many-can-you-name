@@ -322,9 +322,9 @@ var quizzer = {
     {
         // Child function of show_answers.
         // We made this a child function so we could easily override it.
-        var len = this.answer_key.length;
         $('#remain').text('You got ' + this.correct_count + ' out of ' + this.answer_count + ': ');
         $('#remain').append($('#correct'));
+        var len = this.answer_key.length;
         for ( var x=0; x < len; x++ ) $("#missed").append("<li>" + this.answer_key[x] + "</li>");
         $("#missed").before('<h3>Missed</h3>');
     },
@@ -386,17 +386,17 @@ var quizzer = {
                 {
                     if ( data.better_than == 1 ) s = "";
                     $('#result').append('<br>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '.\n\
-                        That means you did better than</span> ' + percent_better + '% of the people who played this, and tied the other ' + percent_right + '%');
+                        That means you did better than</span> ' + percent_better + '% of those who played, and tied the other ' + percent_right + '%');
                 }
                 else if ( +data.correct == 0 )
                 {
                     $('#result').append('<br><strong>You got zero correct,</strong>\n\
-                        which means a. you have lots of room for improvement and b. you did worse than the ' + data.worse_than + ' people who got at least one answer.');
+                        which means you have lots of room for improvement and you did worse than the ' + data.worse_than + ' people who got at least one answer.');
                 }
                 else
                 {
                     $('#result').append('<br>You did better than <span class="' + spanclass + '">' + data.better_than + ' other player' + s + '.\n\
-                        That means you did better than </span>' + percent_better + '% of the people who played this.');
+                        That means you did better than </span>' + percent_better + '% of those who played.');
                 }
 
                 if ( number_missed == 0 && data.all_correct == 1 )
