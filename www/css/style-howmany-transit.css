@@ -30,6 +30,13 @@ section#legend {
 #legend li span {
 	display: none;
 }
+/* To accommodate the answers that are two lines */
+#legend ol.done li.double {
+    top: -.25em;
+}
+#legend ol.done li.double ~ li {
+    top: -.25em;
+}
 .green li:before {
 	background-color: #00933c;
 }

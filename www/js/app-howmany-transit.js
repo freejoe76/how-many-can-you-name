@@ -13,6 +13,7 @@ function extend_quizzer() {
     quizzer.show_text_answers = function()
     {
         // Add to the existing functionality.
+		$('#legend ol').addClass('done');
         $('#remain').text('You named ' + this.correct_count + ' out of ' + this.answer_count + ' stations.');
         $('#remain').append($('#correct'));
         //var len = this.answer_key.length;
