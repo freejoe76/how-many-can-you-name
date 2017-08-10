@@ -5,6 +5,7 @@ section#legend {
 	width: 150px;
 	float: left;
     margin-right: 20px;
+    margin-left: 2px;
 }
 #legend ol {
 	position: relative;
@@ -84,5 +85,5 @@ section#legend {
 }
 #correct, #missed, h3, #share-it, .finished #result { clear: none; }
 .finished p {
-    max-width: 400px;
+    max-width: 380px;
 } 
