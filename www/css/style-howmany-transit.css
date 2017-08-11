@@ -43,25 +43,31 @@ section#legend {
 	background-color: #00933c;
 }
 .light-green li:before {
-	background-color: #00933c;
+	background-color: #6cbe45;
 }
 .red li:before {
-	background-color: #00933c;
+	background-color: #ee352e;
 }
 .purple li:before {
-	background-color: #00933c;
+	background-color: #b933ad;
 }
 .blue li:before {
-	background-color: #00933c;
+	background-color: #2850ad;
 }
 .orange li:before {
-	background-color: #00933c;
+	background-color: #ff6319;
 }
 .yellow li:before {
-	background-color: #00933c;
+	background-color: #fccc0a;
 }
 .brown li:before {
-	background-color: #00933c;
+	background-color: #996633;
+}
+.dark-grey li:before {
+	background-color: #808183;
+}
+.grey li:before {
+	background-color: #a7a9ac;
 }
 #legend li:before {
     content: "";
