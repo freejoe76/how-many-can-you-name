@@ -180,11 +180,28 @@ var quizzer = {
                     this.correct.unshift(answer)
                     this.answer_key_merged.splice(i,1);
 
-                    // SPLIT ANSWER
-                    // See if the correct answer was one of the split answers and 
-                    // if so, remove it from answer_key too.
-                    if ( this.find_in_array(answer, this.split_answer) > -1 )
+                    // Sometimes we have a situation where an answer the reader guesses is both a part of a split answer
+                    // and is an actual non-split answer. To make sure we don't mess up with the answer-handling when that happens,
+                    // we check the reader guess against the answer_key_original first.
+                    if ( this.answer_key_original.indexOf(answer) >= 0 )
                     {
+                        // It's not a splitter, so just find it in answer_key,
+                        // remove it, and update the object with the index
+                        // of the removed answer.
+                        var j = this.answer_key.indexOf(answer);
+                        this.previous_answer = this.answer_key_original.indexOf(answer);
+
+                        var player = this.answer_key[j];
+
+                        this.answer_key.splice(j,1);
+                    }
+                    //if ( this.find_in_array(answer, this.split_answer) > -1 )
+                    else
+                    {
+                        // SPLIT ANSWER
+                        // See if the correct answer was one of the split answers and 
+                        // if so, remove it from answer_key too.
+
                         // It's a splitter, so we:
                         // 1. Find it in the answer_key,
                         // 2. Remove it from answer_key, and
@@ -200,18 +217,7 @@ var quizzer = {
                         this.answer_key_merged.splice(other_index, 1);
                         this.answer_key.splice(splitter_in_main_key, 1);
                     }
-                    else
-                    {
-                        // It's not a splitter, so just find it in answer_key,
-                        // remove it, and update the object with the index
-                        // of the removed answer.
-                        var j = this.answer_key.indexOf(answer);
-                        this.previous_answer = this.answer_key_original.indexOf(answer);
 
-                        var player = this.answer_key[j];
-
-                        this.answer_key.splice(j,1);
-                    }
                     input.value = "";
                     this.correct_count++;
                     this.answer_times.push((this.mins * 60) + this.secs);
