@@ -183,7 +183,7 @@ article {
     max-width: 600px;
     margin: 10px auto;
 }
-@media only screen and (max-width:450px) {
+@media only screen and (min-width: 320px) and (max-width: 727px) {
     body { margin: 0; }
     article { width: 100%; }
     h1 { letter-spacing: 0; }
