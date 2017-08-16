@@ -83,12 +83,14 @@ section#legend {
 .show, #legend li span.show {
 	display: block;
 }
-.body-copy #start-it {
-    width: 400px;
-}
-.body-copy #end-it {
-	width: 400px;
-	border: 1px solid #ddd;
+@media only screen and (min-width: 450px) {
+    .body-copy #start-it {
+        width: 400px;
+    }
+    .body-copy #end-it {
+        width: 400px;
+        border: 1px solid #ddd;
+    }
 }
 #correct, #missed, h3, #share-it, .finished #result { clear: none; }
 .finished p {
