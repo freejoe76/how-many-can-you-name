@@ -6,7 +6,7 @@ section#legend {
 	width: 150px;
 	float: left;
     margin-right: 20px;
-    margin-left: 2px;
+    margin-left: 10px;
 }
 #legend ol {
 	position: relative;
