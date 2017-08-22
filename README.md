@@ -28,6 +28,19 @@ Javascript and markup for publishing open-ended "How many of X can you name?"-st
         1. If you run into trouble and need to edit your entry, you can edit the database record with a query along the lines of `UPDATE howmany SET slug='new-slug-name' WHERE quiz_id=9 LIMIT 1;`.
         1. If you want to delete your record and start over, do that with `DELETE FROM howmany WHERE quiz_id=[ID-OF-YOUR-ERRANT-QUIZ] LIMIT 1;`
     
+### How to update a quiz
+
+1. If the quiz is not in repo, download the latest version of the quiz from the server.
+    1. If you're deploying via scp, that command may look something like `cd path-to-www; scp -r prod:/apps/quiz/specific-quiz ./`
+1. Edit `index.php` in your text editor, go down to around line 48. You'll want to edit the line below the line that has `EDIT: Put the answers here` on it.
+1. In the line below, add your answers to the value attribute of the answer_key input (`<input id="answer_key" type="hidden" value="...`).
+1. If this is a photo quiz, add the photo(s) to the img directory.
+1. Update the `max` value for that particular quiz in the database.
+    1. SSH into the server.
+    1. Log in to the database.
+    1. Find the `quiz_id` for the quiz you're editing. You can see a list of all the quizzes and the quiz_id's with `SELECT * FROM howmany;`
+    1. Update the max field value with a query such as `UPDATE howmany SET max = 183 WHERE quiz_id = 16;`, but replace the `183` and the `16` with your particular values.
+1. Re-deploy.
 
 ####
 
