@@ -88,11 +88,11 @@ section#legend {
         width: 400px;
     }
     .body-copy #end-it {
-        width: 400px;
+        width: 380px;
         border: 1px solid #ddd;
     }
 }
 #correct, #missed, h3, #share-it, .finished #result { clear: none; }
-.finished p {
-    max-width: 380px;
+.finished, .finished p {
+    max-width: 370px;
 } 
