@@ -6,7 +6,7 @@ function extend_quizzer() {
         // What happens when you get a text answer right.
         $("#correct").append("<li>" + answer + "</li>");
 		// Display the stop in the ol
-		var index = this.previous_answer + 1;
+		var index = this.prev_answer_position + 1;
 		$('#legend ol li:nth-child(' + index + ')').addClass('show');
 		$('#legend ol li:nth-child(' + index + ') span').addClass('show');
     };

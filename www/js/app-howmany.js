@@ -133,12 +133,25 @@ var quizzer = {
             .replace(/^-+/, '')             // Trim - from start of text
             .replace(/-+$/, '');            // Trim - from end of text
     },
+    find_in_array_slashes_if_in_array: function(value, array, array_to_check)
+    {
+        // Loop through an array, if the string is found anywhere in the array,
+        // and that array item is also in the array to check against, then return the index of the array item found.
+        var len = array.length;
+        for ( var i = 0; i < len; i++ )
+        {
+            if ( array[i].indexOf(value + '/') !== -1 || array[i].indexOf('/' + value) !== -1 )
+            {
+                if ( array_to_check.indexOf(array[i]) >= 0 ) return i;
+            }
+        }
+        return -1;
+    },
     find_in_array_slashes: function(value, array)
     {
         // Loop through an array, if the string is found anywhere in the array 
         // then return the index of the array item found.
-        // This got us into trouble when the answer string was in more than one answer --
-        // this script used to return the wrong key.
+        // This got us into trouble when the answer string was in more than one answer -- how do we know which one to return?
         // Searching for '/' + value as well as value + '/'
         // Otherwise, return -1.
         var len = array.length;
@@ -189,7 +202,7 @@ var quizzer = {
                         // remove it, and update the object with the index
                         // of the removed answer.
                         var j = this.answer_key.indexOf(answer);
-                        this.previous_answer = this.answer_key_original.indexOf(answer);
+                        this.prev_answer_position = this.answer_key_original.indexOf(answer);
 
                         var player = this.answer_key[j];
 
@@ -202,12 +215,15 @@ var quizzer = {
                         // See if the correct answer was one of the split answers and 
                         // if so, remove it from answer_key too.
 
+                        // TODO Sometimes an answer the reader guesses is in two split answers. WHAT THEN?
+
                         // It's a splitter, so we:
                         // 1. Find it in the answer_key,
                         // 2. Remove it from answer_key, and
                         // 3. Remove its partner from answer_key_merged
                         var splitter_in_main_key = this.find_in_array_slashes(answer, this.answer_key);
-                        this.previous_answer = this.find_in_array_slashes(answer, this.answer_key_original);
+                        this.prev_answer_position = this.find_in_array_slashes(answer, this.answer_key_original);
+                        this.prev_answer_position = this.find_in_array_slashes_if_in_array(answer, this.answer_key_original, this.answer_key);
                         var other_split = this.answer_key[splitter_in_main_key].replace(answer, '').replace('/', '').trim();
                         var other_index = this.answer_key_merged.indexOf(other_split);
 
@@ -491,4 +507,11 @@ var quizzer = {
     }
 }
 
-$(document).ready(function(){ quizzer.init(); });
+function ready(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
+        fn();
+    } else {
+        document.addEventListener('DOMContentLoaded', fn);
+    }
+}
+ready(function(){ quizzer.init(); });
