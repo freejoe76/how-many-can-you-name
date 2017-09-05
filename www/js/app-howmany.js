@@ -196,7 +196,7 @@ var quizzer = {
                     // Sometimes we have a situation where an answer the reader guesses is both a part of a split answer
                     // and is an actual non-split answer. To make sure we don't mess up with the answer-handling when that happens,
                     // we check the reader guess against the answer_key_original first.
-                    if ( this.answer_key_original.indexOf(answer) >= 0 )
+                    if ( this.answer_key_original.indexOf(answer) >= 0 && this.find_in_array_slashes(answer, this.answer_key) === -1 )
                     {
                         // It's not a splitter, so just find it in answer_key,
                         // remove it, and update the object with the index
@@ -211,11 +211,12 @@ var quizzer = {
                     //if ( this.find_in_array(answer, this.split_answer) > -1 )
                     else
                     {
-                        // SPLIT ANSWER
+                        // SPLIT ANSWER OR SPLIT ANSWER COMBINED WITH A NON-SPLIT
                         // See if the correct answer was one of the split answers and 
                         // if so, remove it from answer_key too.
 
-                        // TODO Sometimes an answer the reader guesses is in two split answers. WHAT THEN?
+                        // Sometimes an answer the reader guesses is in two split answers. SOLVED
+                        // TODO Sometimes an answer the reader guesses is in a split answer and a non-split. WHAT THEN?
 
                         // It's a splitter, so we:
                         // 1. Find it in the answer_key,
