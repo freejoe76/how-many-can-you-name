@@ -364,15 +364,26 @@ var quizzer = {
 <button class='share social_icon_box facebook_button'><img alt='Share on Facebook' class='social_icon facebook_icon' src='../icons/facebook.png'></button></a>\n\
 </div>");
     },
+    rando: function() 
+    {
+        // Generate a random string in order to bust cache.
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 5; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
+    },
     log_start: function ()
     {
-        var url = this.config.log_url + '?slug=' + this.config.slug + '&start=1&callback=';
+        var url = this.config.log_url + '?slug=' + this.config.slug + '&start=1&rando=' + this.rando() + '&callback=';
         var jqxhr = $.getJSON( url, function(data) {} );
     },
     log_answer: function ()
     {
         var correct = this.correct_count;
-        var params = '?slug=' + this.config.slug + '&correct=' + correct + '&times=' + this.answer_times.join(',') + '&callback=';
+        var params = '?slug=' + this.config.slug + '&correct=' + correct + '&times=' + this.answer_times.join(',') + '&rando=' + this.rando() + '&callback=';
         var jqxhr = $.getJSON( this.config.log_url + params, function(data) 
         {
             // SUCCESS
