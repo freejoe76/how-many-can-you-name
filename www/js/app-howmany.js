@@ -281,6 +281,7 @@ var quizzer = {
                     $('input#answer').addClass('wrong');
 
                     // HELPER
+                    // *** If someone types a space when they're already in the wrong then we know they're definitely on the wrong path. ***
                     if ( val_len > 5 )
                     {
                         // How long have we been wrong
