@@ -259,7 +259,8 @@ var quizzer = {
                 }
             }
             // SEND HELP'ER
-            if ( val.length > 2 )
+            var val_len = val.length;
+            if ( val_len > 2 )
             {
                 // If they don't have a right answer yet, check to make sure they're
                 // on the right track, and if not, color the text red.
@@ -271,10 +272,45 @@ var quizzer = {
                     if ( this.answer_key_merged[i].toLowerCase().indexOf(c) === 0 )
                     {
                         all_wrong = 0;
+                        break;
                     }
                 }
-                if ( all_wrong == 1 ) $('input#answer').addClass('wrong');
+                var chars_wrong = 0;
+                if ( all_wrong == 1 )
+                {
+                    $('input#answer').addClass('wrong');
+
+                    // HELPER
+                    if ( val_len > 5 )
+                    {
+                        // How long have we been wrong
+                        for ( var j = val_len - 1; j > 0; j -- )
+                        {
+                            // Check this particular substring of what the reader has typed in to see if it matches any remaining answers
+                            var c = val.substring(0, j).toLowerCase();
+                            var all_these_wrong = 1;
+                            for ( var i = 0; i < len; i++ )
+                            {
+                                if ( this.answer_key_merged[i].toLowerCase().indexOf(c) === 0 )
+                                {
+                                    all_these_wrong = 0;
+                                    break;
+                                }
+                            }
+                            if ( all_these_wrong === 0 ) break;
+                            chars_wrong += 1;
+                        }
+                    }
+                    console.log(j, chars_wrong);
+                }
                 else $('input#answer').removeClass('wrong');
+
+                if ( all_wrong == 1 && val_len > 10 )
+                {
+                    // Check and make sure they're not on a completely wrong path.
+                    // If they are, let them know.
+                
+                }
 
                 // If they're on the wrong track but close, and it's been more than 5 seconds,
                 // give the reader a clue. TODO
