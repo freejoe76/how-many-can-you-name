@@ -70,9 +70,9 @@ button#end-it {
     margin-top: 4px;
 }
 form input#timer { 
-    width: 80px;
+    width: 90px;
     font-size: 35px;
-    padding-left: 40px;
+    padding-left: 20px;
     background-color: #fafafa;
 }
 .timer-color {
