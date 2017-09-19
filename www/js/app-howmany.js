@@ -157,7 +157,11 @@ var quizzer = {
         var len = array.length;
         for ( var i = 0; i < len; i++ )
         {
-            if ( array[i].indexOf(value + '/') !== -1 || array[i].indexOf('/' + value) !== -1 ) return i;
+            if ( array[i].indexOf('/') !== -1 )
+            {
+                var bits = array[i].split('/');
+                if ( value === bits[0] || value === bits[1] ) return i;
+            }
         }
         return -1;
     },
