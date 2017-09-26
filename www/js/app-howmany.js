@@ -137,6 +137,8 @@ var quizzer = {
     {
         // Loop through an array, if the string is found anywhere in the array,
         // and that array item is also in the array to check against, then return the index of the array item found.
+        // EXAMPLE:
+        // var value == 'dwight', array = ['dwight/doc/duder'], array_to_check = ['dwight', 'doc', 'duder'];
         var len = array.length;
         for ( var i = 0; i < len; i++ )
         {
@@ -154,13 +156,16 @@ var quizzer = {
         // This got us into trouble when the answer string was in more than one answer -- how do we know which one to return?
         // Searching for '/' + value as well as value + '/'
         // Otherwise, return -1.
+        // SPLIT ANSWER
         var len = array.length;
         for ( var i = 0; i < len; i++ )
         {
             if ( array[i].indexOf('/') !== -1 )
             {
                 var bits = array[i].split('/');
-                if ( value === bits[0] || value === bits[1] ) return i;
+                for ( var j = 0; j < bits.length; j ++ ) {
+                    if ( value === bits[j] ) return i;
+                }
             }
         }
         return -1;
@@ -208,7 +213,7 @@ var quizzer = {
                         var j = this.answer_key.indexOf(answer);
                         this.prev_answer_position = this.answer_key_original.indexOf(answer);
 
-                        var player = this.answer_key[j];
+                        var correct_answer = this.answer_key[j];
 
                         this.answer_key.splice(j,1);
                     }
@@ -228,15 +233,29 @@ var quizzer = {
                         // 3. Remove its partner from answer_key_merged
                         var splitter_in_main_key = this.find_in_array_slashes(answer, this.answer_key);
                         this.prev_answer_position = this.find_in_array_slashes(answer, this.answer_key_original);
+                        console.log("1", this.prev_answer_position);
                         this.prev_answer_position = this.find_in_array_slashes_if_in_array(answer, this.answer_key_original, this.answer_key);
-                        var other_split = this.answer_key[splitter_in_main_key].replace(answer, '').replace('/', '').trim();
-                        var other_index = this.answer_key_merged.indexOf(other_split);
+                        console.log("2", this.prev_answer_position);
+                        console.log(answer, splitter_in_main_key, this.answer_key);
 
-                        var player = this.answer_key[splitter_in_main_key];
+                        var correct_answer = this.answer_key[splitter_in_main_key];
+
+                        // If the splitter was in an answers that had more than one other answer,
+                        // we need to find and eliminate that too.
+                        var splits = this.answer_key[splitter_in_main_key].replace(answer, '').split('/');
+                        var other_splits = [splits[0], splits[1]];
+                        if ( splits.length > 2 ) other_splits = splits;
+
+                        for ( var j = 0; j < other_splits.length; j ++ ) 
+                        {
+                            if ( other_splits[j] === '' ) continue;
+                            var other_split = other_splits[j];
+                            var other_index = this.answer_key_merged.indexOf(other_split);
                         
-                        // 2. Remove it from answer_key, and 3. Remove its partner from answer_key_merged
-                        this.answer_key_merged.splice(other_index, 1);
-                        this.answer_key.splice(splitter_in_main_key, 1);
+                            // 2. Remove it from answer_key, and 3. Remove its partner from answer_key_merged
+                            this.answer_key_merged.splice(other_index, 1);
+                            this.answer_key.splice(splitter_in_main_key, 1);
+                        }
                     }
 
                     input.value = "";
@@ -250,7 +269,7 @@ var quizzer = {
                     }
                     else
                     {
-                        this.photo_activate(player, 'correct');
+                        this.photo_activate(correct_answer, 'correct');
                     }
                     
                     var remainmsg = " remain";
@@ -520,7 +539,7 @@ var quizzer = {
         this.answer_key_original = all_answers.split(',');
         this.answer_count = this.answer_key.length;
 
-        // SPLIT ANSWWER
+        // SPLIT ANSWER
         // Check if we need to handle a "split" answer -- where a single option
         // has more than one answer.
         if ( all_answers.indexOf('/') !== -1 )
@@ -535,8 +554,9 @@ var quizzer = {
                 var s = this.answer_key.indexOf(splitters[i]);
                 var a = this.answer_key[s];
                 var answers = a.split('/');
-                this.split_answer.push(answers[0].trim())
-                this.split_answer.push(answers[1].trim())
+                for ( var j = 0; j < answers.length; j ++ ) {
+                    this.split_answer.push(answers[j].trim())
+                }
             }
         }
         this.answer_key_merged = this.answer_key.concat(this.split_answer);
