@@ -236,7 +236,7 @@ var quizzer = {
                         this.prev_answer_position = this.find_in_array_slashes_if_in_array(answer, this.answer_key_original, this.answer_key);
                         // If these two don't match, there's a logic error.
                         if ( this.prev_answer_position !== prev_simple ) this.prev_answer_position = prev_simple;
-                        console.log(answer, 'mainkey', splitter_in_main_key, 'answer_key', this.answer_key);
+                        //console.log(answer, 'mainkey', splitter_in_main_key, 'answer_key', this.answer_key);
 
                         var correct_answer = this.answer_key[splitter_in_main_key];
 
@@ -325,7 +325,7 @@ var quizzer = {
                             chars_wrong += 1;
                         }
                     }
-                    console.log(j, chars_wrong);
+                    //console.log(j, chars_wrong);
                 }
                 else $('input#answer').removeClass('wrong');
 
