@@ -144,7 +144,7 @@ var quizzer = {
         {
             if ( array[i].indexOf(value + '/') !== -1 || array[i].indexOf('/' + value) !== -1 )
             {
-                if ( array_to_check.indexOf(array[i]) >= 0 ) return i;
+                if ( array_to_check.indexOf(array[i]) !== -1 ) return i;
             }
         }
         return -1;
@@ -232,11 +232,11 @@ var quizzer = {
                         // 2. Remove it from answer_key, and
                         // 3. Remove its partner from answer_key_merged
                         var splitter_in_main_key = this.find_in_array_slashes(answer, this.answer_key);
-                        this.prev_answer_position = this.find_in_array_slashes(answer, this.answer_key_original);
-                        console.log("1", this.prev_answer_position);
+                        var prev_simple = this.find_in_array_slashes(answer, this.answer_key_original);
                         this.prev_answer_position = this.find_in_array_slashes_if_in_array(answer, this.answer_key_original, this.answer_key);
-                        console.log("2", this.prev_answer_position);
-                        console.log(answer, splitter_in_main_key, this.answer_key);
+                        // If these two don't match, there's a logic error.
+                        if ( this.prev_answer_position !== prev_simple ) this.prev_answer_position = prev_simple;
+                        console.log(answer, 'mainkey', splitter_in_main_key, 'answer_key', this.answer_key);
 
                         var correct_answer = this.answer_key[splitter_in_main_key];
 
@@ -254,8 +254,8 @@ var quizzer = {
                         
                             // 2. Remove it from answer_key, and 3. Remove its partner from answer_key_merged
                             this.answer_key_merged.splice(other_index, 1);
-                            this.answer_key.splice(splitter_in_main_key, 1);
                         }
+                        this.answer_key.splice(splitter_in_main_key, 1);
                     }
 
                     input.value = "";
