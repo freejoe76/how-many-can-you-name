@@ -5,9 +5,11 @@ function extend_quizzer() {
     {
         // What happens when you get a text answer right.
         $("#correct").append("<li>" + answer + "</li>");
-		// Display the stop in the ol
-		var index = this.prev_answer_position + 1;
-		$('#legend ol li:nth-child(' + index + ')').addClass('show');
+		// Display the stop in the ol.
+        // If it's already displayed then that means we show a different one.
+		var index = this.prev_simple + 1;
+        var classes = $('#legend ol li:nth-child(' + index + ') span').attr('class');
+        if ( typeof classes !== 'undefined' && classes == 'show' ) index = this.prev_answer_position + 1;
 		$('#legend ol li:nth-child(' + index + ') span').addClass('show');
     };
     quizzer.show_text_answers = function()
