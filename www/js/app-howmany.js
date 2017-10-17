@@ -11,6 +11,8 @@ var quizzer = {
     mins: 0,
     secs: 0,
     time_on_current_answer: 0,
+    prev_simple: null,
+    prev_answer_position: null,
     config: 
     { 
         slug: '',
@@ -212,6 +214,11 @@ var quizzer = {
                         // of the removed answer.
                         var j = this.answer_key.indexOf(answer);
                         this.prev_answer_position = this.answer_key_original.indexOf(answer);
+                        // In case for some weird reason (cough, MTA's B line), the same answer exists in more than one place.
+                        if ( this.prev_answer_position !== this.answer_key_original.lastIndexOf(answer) )
+                        {
+                            this.prev_simple = this.answer_key_original.lastIndexOf(answer);
+                        }
 
                         var correct_answer = this.answer_key[j];
 
@@ -269,6 +276,10 @@ var quizzer = {
                     {
                         this.photo_activate(correct_answer, 'correct');
                     }
+
+                    // Reset the vars that track the index of the previous answer.
+                    this.prev_simple = null;
+                    this.prev_answer_position = null;
                     
                     var remainmsg = " remain";
                     $("#remain").text( (this.answer_count - this.correct_count) + remainmsg );
