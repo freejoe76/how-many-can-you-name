@@ -7,9 +7,14 @@ function extend_quizzer() {
         $("#correct").append("<li>" + answer + "</li>");
 		// Display the stop in the ol.
         // If it's already displayed then that means we show a different one.
-		var index = this.prev_simple + 1;
-        var classes = $('#legend ol li:nth-child(' + index + ') span').attr('class');
-        if ( typeof classes !== 'undefined' && classes == 'show' ) index = this.prev_answer_position + 1;
+        var index = this.prev_answer_position + 1;
+        // In edge cases where we have a split answer that has multiple possibilities for displaying the list item
+        if ( typeof this.prev_simple !== 'undefined' )
+        {
+            index = this.prev_simple + 1;
+            var classes = $('#legend ol li:nth-child(' + index + ') span').attr('class');
+            if ( typeof classes !== 'undefined' && classes == 'show' ) index = this.prev_answer_position + 1;
+        }
 		$('#legend ol li:nth-child(' + index + ') span').addClass('show');
     };
     quizzer.show_text_answers = function()
