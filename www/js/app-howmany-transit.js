@@ -9,7 +9,7 @@ function extend_quizzer() {
         // If it's already displayed then that means we show a different one.
         var index = this.prev_answer_position + 1;
         // In edge cases where we have a split answer that has multiple possibilities for displaying the list item
-        if ( typeof this.prev_simple !== 'undefined' )
+        if ( typeof this.prev_simple !== 'undefined' && this.prev_simple !== null )
         {
             index = this.prev_simple + 1;
             var classes = $('#legend ol li:nth-child(' + index + ') span').attr('class');
