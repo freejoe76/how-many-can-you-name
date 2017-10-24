@@ -31,7 +31,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
 </head>
 <body class="body-copy">
 
-<script src="http://interactive.nydailynews.com/includes/js/vendor/jquery.js"></script>
+<script src="/js/jquery.min.js"></script>
 
     <article>
 <h1>The two-minute drill</h1>
