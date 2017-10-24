@@ -20,6 +20,7 @@ var quizzer = {
         has_photos: 0,
         log_answers: 0,
         log_start: 1,
+        in_dev: 0
     },
     update_config: function(config) {
         // Take an external config object and update this config object.
@@ -63,7 +64,6 @@ var quizzer = {
         if ( this.correct_count == this.answer_count )
         {
             // They got 'em all.
-            //console.log("WINNER WINNER");
             this.show_answers();
             return;
         }
@@ -239,17 +239,30 @@ var quizzer = {
                         // 2. Remove it from answer_key, and
                         // 3. Remove its partner from answer_key_merged
                         var splitter_in_main_key = this.find_in_array_slashes(answer, this.answer_key);
+                        if ( this.config.in_dev === 1 ) console.log("STEP 1: splitter_in_main:", splitter_in_main_key, this.answer_key[splitter_in_main_key]);
                         this.prev_simple = this.find_in_array_slashes(answer, this.answer_key_original);
+                        if ( this.config.in_dev === 1 ) console.log("STEP 2: prev_simple:", this.prev_simple, this.answer_key_original[this.prev_simple]);
                         this.prev_answer_position = this.find_in_array_slashes_if_in_array(answer, this.answer_key_original, this.answer_key);
-                        //console.log(answer, 'mainkey', splitter_in_main_key, 'answer_key', this.answer_key);
+                        if ( this.config.in_dev === 1 ) console.log("STEP 3: prev_answer_position:", this.prev_answer_position, this.answer_key_original[this.prev_answer_position], this.answer_key[this.prev_answer_position]);
+
+
+                        if ( this.config.in_dev === 1 ) console.log(answer, 'mainkey', splitter_in_main_key, 'answer_len (orig, merged, key): (', this.answer_key_original.length, this.answer_key_merged.length, this.answer_key.length, ') answer_key_merged', this.answer_key_merged);
 
                         var correct_answer = this.answer_key[splitter_in_main_key];
 
                         // If the splitter was in an answers that had more than one other answer,
                         // we need to find and eliminate that too.
-                        var splits = this.answer_key[splitter_in_main_key].replace(answer, '').split('/');
+                        // There's a challenge here when there's a short answer that's part of the split answer,
+                        // like "57/7", and the reader guesses "7", which means the "7" in "57" is what gets stripped out.
+                        // That's why instead of the old var splits = this.answer_key[splitter_in_main_key].replace(answer, '').split('/');
+                        // we do this:
+                        var splits = this.answer_key[splitter_in_main_key].split('/');
+                        var index = splits.indexOf(answer);
+                        splits.splice(index, 1);
                         var other_splits = [splits[0], splits[1]];
-                        if ( splits.length > 2 ) other_splits = splits;
+                        if ( this.config.in_dev === 1 ) console.log("STEP 4a: splitter, answer, splits", this.answer_key[splitter_in_main_key], answer, splits);
+                        if ( this.config.in_dev === 1 ) console.log("STEP 4b: Splits (splits, other)", splits, other_splits);
+                        if ( splits.length > 1 ) other_splits = splits;
 
                         for ( var j = 0; j < other_splits.length; j ++ ) 
                         {
@@ -287,6 +300,7 @@ var quizzer = {
                     {
                         this.quit();
                     }
+                    console.log('end', i);
                     return;
                 }
             }
@@ -334,7 +348,7 @@ var quizzer = {
                             chars_wrong += 1;
                         }
                     }
-                    //console.log(j, chars_wrong);
+                    if ( this.config.in_dev === 1 ) console.log(j, chars_wrong);
                 }
                 else $('input#answer').removeClass('wrong');
 
@@ -427,7 +441,7 @@ var quizzer = {
         if ( typeof percent_better !== 'undefined' ) tweet_text = 'I did better than ' + percent_better + '% of players on the ' + this.config.title + ' quiz!';
         $("article").append("<div id='share-it'>\n\
 <p>Share your score</p>\n\
-<a class=\"twitter-share\" href='http://twitter.com/share?url=" + url + "&text=" + tweet_text + " @nydailynews' target='_blank'>\n\
+<a class=\"twitter-share\" href='http://twitter.com/share?url=" + url + "&text=" + tweet_text + "&via=NYDNi&related=nydailynews' target='_blank'>\n\
 <button class='share social_icon_box twitter_button'><img alt='Share on Twitter' class='social_icon twitter_icon' src='../icons/twitter.png'></button></a>&nbsp;\n\
 <a class=\"fb-share\" href='http://www.facebook.com/sharer.php?u=" + url + "' target='_blank'>\n\
 <button class='share social_icon_box facebook_button'><img alt='Share on Facebook' class='social_icon facebook_icon' src='../icons/facebook.png'></button></a>\n\
@@ -439,7 +453,7 @@ var quizzer = {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-        for( var i=0; i < 5; i++ )
+        for( var i=0; i < 8; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
 
         return text;
@@ -542,6 +556,7 @@ var quizzer = {
 
         // Config handling. External config objects must be named quiz_config
         if ( typeof window.quiz_config !== 'undefined' ) { this.update_config(quiz_config); }
+        if ( document.location.hash === '#dev' ) this.config.in_dev = 1;
 
         var all_answers = $('#answer_key').attr('value');
         this.answer_key = all_answers.split(',');
@@ -564,6 +579,9 @@ var quizzer = {
                 var a = this.answer_key[s];
                 var answers = a.split('/');
                 for ( var j = 0; j < answers.length; j ++ ) {
+                    // If the answer is already in there for whatever reason,
+                    // don't add it again.
+                    //if ( this.answer_key.indexOf(answers[j].trim()) === -1 )  console.log('adsf');
                     this.split_answer.push(answers[j].trim())
                 }
             }
