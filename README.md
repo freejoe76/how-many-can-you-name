@@ -22,7 +22,7 @@ Javascript and markup for publishing open-ended "How many of X can you name?"-st
         1. Add the quiz title and slug.
         2. If your quiz doesn't have photos, change the has_photos property value to 0.
 1. Add the quiz to the database.
-    1. Copy the SQL from [www/sql/insert.sql](www/sql/insert.sql), `INSERT INTO howmany (slug, max, create_date) VALUES ('fast-and-furious', 8, NOW());`
+    1. Copy the SQL from [www/sql/insert.sql](sql/insert.sql), `INSERT INTO howmany (slug, max, create_date) VALUES ('fast-and-furious', 8, NOW());`
     2. Replace the "fast-and-furious" value with whatever your quiz slug is.
     3. Log in to your database server and execute that query.
         1. If you run into trouble and need to edit your entry, you can edit the database record with a query along the lines of `UPDATE howmany SET slug='new-slug-name' WHERE quiz_id=9 LIMIT 1;`.
@@ -53,13 +53,3 @@ Dwight Gooden also goes by Doc Gooden and we wanted people to be able to type in
 ## Credits
 
 Design by Jeffrey Mariano, New York Daily News. Markup, CSS, most of the javascript by Joe Murphy, New York Daily News / Denver Post.
-
-## Old Usage
-
-### How to create a quiz, the old way
-
-1. Copy the markup in full-page.html to a new html file.
-2. Edit the markup in the places there's an `<!-- EDIT:` in the markup.
-3. Upload the quiz.js to a server somewhere, if it's not up there already.
-4. Upload the html file to the same directory quiz.js is in.
-5. After you know the URL it will be iframe'd in, update the meta canonical value of the html file to point to there.
