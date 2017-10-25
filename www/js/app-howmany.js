@@ -199,9 +199,11 @@ var quizzer = {
             {
                 if ( val.toLowerCase() == this.answer_key_merged[i].toLowerCase() )
                 {
+                    // NON-SPLIT ANSWER
                     this.time_on_current_answer = 0;
                     var answer = this.answer_key_merged[i]
                     this.correct.unshift(answer)
+                    if ( this.config.in_dev === 2 ) console.log("REMOVED from answer_key_merged: ", answer, "\n array length:", this.answer_key_merged.length);
                     this.answer_key_merged.splice(i,1);
 
                     // Sometimes we have a situation where an answer the reader guesses is both a part of a split answer
@@ -266,11 +268,12 @@ var quizzer = {
 
                         for ( var j = 0; j < other_splits.length; j ++ ) 
                         {
-                            if ( other_splits[j] === '' ) continue;
+                            if ( other_splits[j] === '' || typeof other_splits[j] === 'undefined' ) continue;
                             var other_split = other_splits[j];
                             var other_index = this.answer_key_merged.indexOf(other_split);
                         
                             // 2. Remove it from answer_key, and 3. Remove its partner from answer_key_merged
+                            if ( this.config.in_dev === 2 ) console.log("REMOVED from answer_key_merged: ", other_split,"\n array length:", this.answer_key_merged.length);
                             this.answer_key_merged.splice(other_index, 1);
                         }
                         this.answer_key.splice(splitter_in_main_key, 1);
@@ -300,7 +303,6 @@ var quizzer = {
                     {
                         this.quit();
                     }
-                    console.log('end', i);
                     return;
                 }
             }
@@ -557,6 +559,7 @@ var quizzer = {
         // Config handling. External config objects must be named quiz_config
         if ( typeof window.quiz_config !== 'undefined' ) { this.update_config(quiz_config); }
         if ( document.location.hash === '#dev' ) this.config.in_dev = 1;
+        else if ( document.location.hash === '#devv' ) this.config.in_dev = 2;
 
         var all_answers = $('#answer_key').attr('value');
         this.answer_key = all_answers.split(',');
