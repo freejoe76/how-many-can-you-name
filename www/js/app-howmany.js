@@ -510,7 +510,7 @@ var quizzer = {
                 else if ( +data.correct == 0 )
                 {
                     $('#result').append('<br><strong>You got zero correct,</strong>\n\
-                        which means you have lots of room for improvement and you did worse than the ' + data.worse_than + ' people who got at least one answer.');
+                        which means you did worse than the ' + data.worse_than + ' people who got at least one answer.');
                 }
                 else
                 {
