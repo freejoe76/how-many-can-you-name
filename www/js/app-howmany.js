@@ -1,12 +1,12 @@
 var quizzer = {
     alerted: 0,
     correct_count: 0,
-    correct: new Array(),
-    answer_key: new Array(),
-    answer_key_merged: new Array(),
-    answer_key_original: new Array(),
-    answer_times: new Array(),
-    split_answer: new Array(),
+    correct: [],
+    answer_key: [],
+    answer_key_merged: [],
+    answer_key_original: [],
+    answer_times: [],
+    split_answer: [],
     answer_count: 0,
     mins: 0,
     secs: 0,
@@ -60,7 +60,7 @@ var quizzer = {
     counter: function() 
     {
         // Deal with the passage of time.
-        if ( this.mins === 0 && this.secs === 11 ) $('#timer').addClass("timer-color");
+        if ( this.mins === 0 && this.secs === 11 ) document.getElementById('timer').classList.add('timer-color');
         if ( this.correct_count == this.answer_count )
         {
             // They got 'em all.
@@ -108,7 +108,7 @@ var quizzer = {
         // This could be called by the parent frame, if only we were on the same domain.
         if ( event.origin === 'http://interactive.nydailynews.com' )
         {
-            if ( typeof event.data.quiz !== 'undefined' ) 
+            if ( typeof event.data.quiz !== 'undefined' && typeof PARSELY !== 'undefined' ) 
             {
               googletag.pubads().refresh();
               PARSELY.beacon.trackPageView({
@@ -327,7 +327,7 @@ var quizzer = {
                 var chars_wrong = 0;
                 if ( all_wrong == 1 )
                 {
-                    $('input#answer').addClass('wrong');
+                    document.getElementById('answer').classList.add('wrong');
 
                     // HELPER
                     // *** If someone types a space when they're already in the wrong then we know they're definitely on the wrong path. ***
@@ -401,7 +401,7 @@ var quizzer = {
         // Show the "End" graphic:
         // $('#the-end').removeClass('hide');
         $('#answer, #end-it').remove();
-        $('#remain').addClass('strong');
+        document.getElementById('remain').classList.add('strong');
         $('#remain').text('You got ' + this.correct_count + ' out of ' + this.answer_count);
 
         if ( this.config.log_answers !== 0 ) this.log_answer();
@@ -444,7 +444,7 @@ var quizzer = {
         if ( typeof percent_better !== 'undefined' ) tweet_text = 'I did better than ' + percent_better + '% of players on the ' + this.config.title + ' quiz!';
         $("article").append("<div id='share-it'>\n\
 <p>Share your score</p>\n\
-<a class=\"twitter-share\" href='http://twitter.com/share?url=" + url + "&text=" + tweet_text + "&via=NYDNi&related=nydailynews' target='_blank'>\n\
+<a class=\"twitter-share\" href='http://twitter.com/share?url=" + url + "&text=" + tweet_text + "&via=NYDNi&related=nydailynews,NYDNi' target='_blank'>\n\
 <button class='share social_icon_box twitter_button'><img alt='Share on Twitter' class='social_icon twitter_icon' src='../icons/twitter.png'></button></a>&nbsp;\n\
 <a class=\"fb-share\" href='http://www.facebook.com/sharer.php?u=" + url + "' target='_blank'>\n\
 <button class='share social_icon_box facebook_button'><img alt='Share on Facebook' class='social_icon facebook_icon' src='../icons/facebook.png'></button></a>\n\
@@ -463,6 +463,7 @@ var quizzer = {
     },
     log_start: function ()
     {
+        // Keep track of how many people start a quiz.
         var url = this.config.log_url + '?slug=' + this.config.slug + '&start=1&rando=' + this.rando() + '&callback=';
         var jqxhr = $.getJSON( url, function(data) {} );
     },
@@ -531,11 +532,11 @@ var quizzer = {
             })
             .fail(function() {
                 $('#result').append('Sorry, we could not reach the upstream servers.');
-                $('#result').addClass('error');
+                document.getElementById('result').classList.add('error');
             })
             .always(function() {
-                $("#answer_field").addClass('finished');
-                $("#timer").addClass('hide');
+                document.getElementById('answer_field').classList.add('finished');
+                document.getElementById('timer').classList.add('hide');
                 $("#answer_field").append($('p#result'));
             });
     },
@@ -558,7 +559,7 @@ var quizzer = {
         // has to get right, set the config.
 
         // Config handling. External config objects must be named quiz_config
-        if ( typeof window.quiz_config !== 'undefined' ) { this.update_config(quiz_config); }
+        if ( typeof window.quiz_config !== 'undefined' ) this.update_config(quiz_config);
         if ( document.location.hash === '#dev' ) this.config.in_dev = 1;
         else if ( document.location.hash === '#devv' ) this.config.in_dev = 2;
 
@@ -595,7 +596,8 @@ var quizzer = {
         // PHOTO ANSWER
         if ( this.config.has_photos === 0 )
         {
-            $('#correct, #missed').addClass('textual');
+            document.getElementById('correct').classList.add('textual');
+            document.getElementById('missed').classList.add('textual');
         }
         else
         {
@@ -605,7 +607,7 @@ var quizzer = {
                 var answer_slug = 'a' + this.slugify(this.answer_key[i]);
                 $('#correct').append('<li id="' + answer_slug + '">?</li>');
             }
-            $('#correct').addClass('photos');
+            document.getElementById('correct').classList.add('photos');
         }
 
     }
