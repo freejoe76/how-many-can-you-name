@@ -308,7 +308,8 @@ var quizzer = {
             }
             // SEND HELP'ER
             var val_len = val.length;
-            if ( val_len > 2 )
+            //if ( val_len > 2 )
+            if ( val_len >= 0 )
             {
                 // If they don't have a right answer yet, check to make sure they're
                 // on the right track, and if not, color the text red.
