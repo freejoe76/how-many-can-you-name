@@ -18,7 +18,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
     <meta name="language" content="en, sv" />
     <meta name="Copyright" content="Copyright &copy; 2017 the New York Daily News" />
 
-    <link rel="stylesheet"  href="../css/style-howmany.css<?php echo $append; ?>" type="text/css" media="all" />
+    <link rel="stylesheet"  href="../css/style-howmany-v2.css<?php echo $append; ?>" type="text/css" media="all" />
     <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Open%20Sans|Open+Sans+Condensed:300,700|PT+Serif" type="text/css" media="all" />
     <script>
     var is_mobile = function() {

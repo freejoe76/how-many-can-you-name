@@ -440,7 +440,7 @@ var quizzer = {
     social_media: function()
     {
         var url = ( window.location != window.parent.location ) ? document.referrer : document.querySelector("link[rel='canonical']").getAttribute("href");
-        var tweet_text = 'I got ' + this.correct_count + ' answers on the ' + this.config.title + ' quiz.';
+        var tweet_text = 'I scored' + this.correct_count + ' on the ' + this.config.title.charAt(0).toLowerCase() + this.config.title.slice(1) + ' quiz.';
         if ( typeof percent_better !== 'undefined' ) tweet_text = 'I did better than ' + percent_better + '% of players on the ' + this.config.title + ' quiz!';
         $("article").append("<div id='share-it'>\n\
 <p>Share your score</p>\n\
