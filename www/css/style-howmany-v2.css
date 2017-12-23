@@ -214,4 +214,8 @@ article {
     p#remain {
         clear: both;
     }
+    /* For transit on handheld */
+    #legend ol {
+        display: none;
+    }
 }
