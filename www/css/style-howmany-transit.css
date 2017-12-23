@@ -92,6 +92,11 @@ section#legend {
         border: 1px solid #ddd;
     }
 }
+@media only screen and (max-width: 450px) {
+    #legend ol {
+        display: none;
+    }
+}
 #correct, #missed, h3, #share-it, .finished #result { clear: none; }
 .finished, .finished p {
     max-width: 370px;
