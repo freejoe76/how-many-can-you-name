@@ -16,7 +16,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
     <meta name="distribution" content="global" />
     <meta name="robots" content="noindex" />
     <meta name="language" content="en, sv" />
-    <meta name="Copyright" content="Copyright &copy; 2017 the New York Daily News" />
+    <meta name="Copyright" content="Copyright &copy; 2018 the New York Daily News" />
 
     <link rel="stylesheet"  href="../css/style-howmany-v2.css<?php echo $append; ?>" type="text/css" media="all" />
     <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Open%20Sans|Open+Sans+Condensed:300,700|PT+Serif" type="text/css" media="all" />
@@ -58,6 +58,14 @@ var quiz_config = {
     };
 if ( is_mobile() === 1 ) quiz_config.has_photos = 0;
 </script>
+<style>
+.photos li {
+	/*
+	background-size: 75px;
+	*/
+}
+</style>
+
 
     <button class="btn-show-more-headlines" id="start-it" onClick="quizzer.start();">Start the quiz</button>
     <form name="time_count">
