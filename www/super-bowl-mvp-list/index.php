@@ -7,7 +7,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!-- EDIT: Add a title. -->
-    <title>TITLE</title>
+    <title>How many Super Bowl MVP's can you name</title>
 
     <!-- EDIT: Add the URL of the article this quiz is embedded in, once you know what that is -->
     <link rel="canonical" href="" />
@@ -37,7 +37,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
 <h1>The two-minute drill</h1>
 <!-- EDIT: Edit the text in the h2, and if we're quizzing on something other than names, the text in the p element. -->
 <h2>
-    QUESTION
+    How many Super Bowl MVP's can you name?
 </h2>
 
 <p class="hide">
@@ -46,12 +46,12 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
 <!-- EDIT: If you want to give the people more or less than two minutes, edit this. --> 
 <input id="time_limit" type="hidden" value="2" />
 <!-- EDIT: Put the answers here, separated by commas, like this: value="Name1,Name2,Name3,Name4" -->
-<input id="answer_key" type="hidden" value="Rhode Island,Washington,Idaho,New Hampshire,North Carolina,North Dakota,South Dakota,South Carolina,Utah,Oklahoma,Ohio,Hawaii,Massachusetts,Michigan" />
+<input id="answer_key" type="hidden" value="Tom Brady,Von Miller,Malcolm Smith,Joe Flacco,Eli Manning,Aaron Rodgers,Drew Brees,Santonio Holmes,Peyton Manning,Hines Ward,Deion Branch,Dexter Jackson,Ray Lewis,Kurt Warner,John Elway,Terrell Davis,Desmond Howard,Larry Brown,Steve Young,Emmit Smith,Troy Aikman,Mark Rypien,Ottis Anderson,Joe Montana,Jerry Rice,Doug Williams,Phil Simms,Richard Dent,Marcus Allen,John Riggins,Jim Plunkett,Terry Bradshaw,Harvey Martin,Randy White,Fred Bilentnikoff,Lynn Swann,Franco Harris,Larry Csonka,Jake Scott,Roger Staubach,Chuck Howley,Len Dawson,Joe Namath,Bart Starr" />
 <!-- EDIT: Add the quiz-specific configuration values. -->
 <script>
 var quiz_config = { 
-        title: 'TITLE',
-        slug: 'SLUG',
+        title: 'How many Super Bowl MVP\'s can you name',
+        slug: 'super-bowl-mvp-list',
         log_url: '../handler.php',
         has_photos: 1,
         log_answers: 1,
@@ -60,9 +60,7 @@ if ( is_mobile() === 1 ) quiz_config.has_photos = 0;
 </script>
 <style>
 .photos li {
-	/*
 	background-size: 75px;
-	*/
 }
 </style>
 
