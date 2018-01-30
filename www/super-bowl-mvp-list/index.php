@@ -46,7 +46,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
 <!-- EDIT: If you want to give the people more or less than two minutes, edit this. --> 
 <input id="time_limit" type="hidden" value="2" />
 <!-- EDIT: Put the answers here, separated by commas, like this: value="Name1,Name2,Name3,Name4" -->
-<input id="answer_key" type="hidden" value="Tom Brady,Von Miller,Malcolm Smith,Joe Flacco,Eli Manning,Aaron Rodgers,Drew Brees,Santonio Holmes,Peyton Manning,Hines Ward,Deion Branch,Dexter Jackson,Ray Lewis,Kurt Warner,John Elway,Terrell Davis,Desmond Howard,Larry Brown,Steve Young,Emmit Smith,Troy Aikman,Mark Rypien,Ottis Anderson,Joe Montana,Jerry Rice,Doug Williams,Phil Simms,Richard Dent,Marcus Allen,John Riggins,Jim Plunkett,Terry Bradshaw,Harvey Martin,Randy White,Fred Bilentnikoff,Lynn Swann,Franco Harris,Larry Csonka,Jake Scott,Roger Staubach,Chuck Howley,Len Dawson,Joe Namath,Bart Starr" />
+<input id="answer_key" type="hidden" value="Tom Brady,Von Miller,Malcolm Smith,Joe Flacco,Eli Manning,Aaron Rodgers,Drew Brees,Santonio Holmes,Peyton Manning,Hines Ward,Deion Branch,Dexter Jackson,Ray Lewis,Kurt Warner,John Elway,Terrell Davis,Desmond Howard,Larry Brown,Steve Young,Emmitt Smith,Troy Aikman,Mark Rypien,Ottis Anderson,Joe Montana,Jerry Rice,Doug Williams,Phil Simms,Richard Dent,Marcus Allen,John Riggins,Jim Plunkett,Terry Bradshaw,Harvey Martin,Randy White,Fred Biletnikoff,Lynn Swann,Franco Harris,Larry Csonka,Jake Scott,Roger Staubach,Chuck Howley,Len Dawson,Joe Namath,Bart Starr" />
 <!-- EDIT: Add the quiz-specific configuration values. -->
 <script>
 var quiz_config = { 
