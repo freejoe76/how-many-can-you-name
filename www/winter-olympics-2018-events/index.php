@@ -46,7 +46,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
 <!-- EDIT: If you want to give the people more or less than two minutes, edit this. --> 
 <input id="time_limit" type="hidden" value="3" />
 <!-- EDIT: Put the answers here, separated by commas, like this: value="Name1,Name2,Name3,Name4" -->
-<input id="answer_key" type="hidden" value="alpine skiing,biathlon,bobsled/bobsleigh,cross-country skiing,curling,figure skating,freestyle skiing,ice hockey,luge,nordic combined,short track speed-skating,skeleton,ski jump/ski jumping,snowboard/snow boarding,speed skating" />
+<input id="answer_key" type="hidden" value="alpine skiing,biathlon,bobsled/bobsleigh,cross-country skiing/cross country skiing,curling,figure skating,freestyle skiing,ice hockey/hockey,luge,nordic combined,short track speed-skating/short track speed skating,skeleton,ski jump/ski jumping,snowboard/snow boarding,speed skating" />
 <!-- EDIT: Add the quiz-specific configuration values. -->
 <script>
 var quiz_config = { 
@@ -62,6 +62,10 @@ if ( is_mobile() === 1 ) quiz_config.has_photos = 0;
 .photos li {
     background-size: 150px;
 	width: 150px;
+}
+.photos li span {
+	width: 131px;
+	text-transform: capitalize;
 }
 </style>
 
