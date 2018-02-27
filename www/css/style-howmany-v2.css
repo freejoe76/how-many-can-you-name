@@ -184,7 +184,7 @@ article {
     margin: 10px auto;
 }
 @media only screen and (max-width: 450px) {
-    body { margin: 0; }
+    body { margin: 0 0 0 5px; }
     article { width: 100%; }
     h1 { letter-spacing: 0; }
     button#start-it, button#end-it {
