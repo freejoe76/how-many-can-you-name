@@ -18,8 +18,8 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
     <meta name="language" content="en, sv" />
     <meta name="Copyright" content="Copyright &copy; 2018 the New York Daily News" />
 
-    <link rel="stylesheet"  href="../css/style-howmany-v2.css<?php echo $append; ?>" type="text/css" media="all" />
-    <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Open%20Sans|Open+Sans+Condensed:300,700|PT+Serif" type="text/css" media="all" />
+    <link rel="stylesheet"  href="../css/style-howmany-v2.css<?php echo $append; ?>" media="all" />
+    <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|PT+Serif" media="all" />
 </head>
 <body class="body-copy">
 
