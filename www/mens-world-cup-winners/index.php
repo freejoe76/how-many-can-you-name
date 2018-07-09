@@ -7,7 +7,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!-- EDIT: Add a title. -->
-    <title>How many Marvel movies can you name?</title>
+    <title>How many men's World Cup winners can you name?</title>
 
     <!-- EDIT: Add the URL of the article this quiz is embedded in, once you know what that is -->
     <link rel="canonical" href="" />
@@ -19,47 +19,49 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
     <meta name="Copyright" content="Copyright &copy; 2018 the New York Daily News" />
 
     <link rel="stylesheet"  href="../css/style-howmany-v2.css<?php echo $append; ?>" media="all" />
-    <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300,700|PT+Serif" media="all" />
+    <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|PT+Serif" media="all" />
 </head>
 <body class="body-copy">
 
 <script src="/js/jquery.min.js"></script>
 
     <article>
-<h1>The seven-minute drill</h1>
+<h1>The two-minute drill</h1>
 <!-- EDIT: Edit the text in the h2, and if we're quizzing on something other than names, the text in the p element. -->
 <h2>
-   How many Marvel movies can you name in seven minutes? 
+   How many men's World Cup winners can you name? 
 </h2>
 
 <p class="hide">
     (Type the name in the box below, if you get it right it will disappear and be added to your correct-answers list. No need to type "Jr." or "Junior", no need to hit the enter key, if it's not accepting your answer either you're spelling it wrong or we made a mistake)
 </p>
 <!-- EDIT: If you want to give the people more or less than two minutes, edit this. --> 
-<input id="time_limit" type="hidden" value="7" />
+<input id="time_limit" type="hidden" value="2" />
 <!-- EDIT: Put the answers here, separated by commas, like this: value="Name1,Name2,Name3,Name4" -->
-<input id="answer_key" type="hidden" value="Black Panther,Thor: Ragnarok/Ragnarok/Thor 3,Spider-Man: Homecoming/Spider-Man Homecoming/Homecoming,Guardians of the Galaxy Vol. 2/Guardians of the Galaxy Vol 2,Logan,Doctor Strange,X-Men: Apocalypse/Apocalypse/X-Men Apocalypse,Captain America: Civil War/Civil War/Captain America 3,Deadpool,Fantastic Four/Fantastic 4,Ant-Man,Avengers: Age of Ultron/Age of Ultron/Avengers 2,Guardians of the Galaxy,X-Men: Days of Future Past/Days of Future Past,The Amazing Spider-Man 2,Captain America: The Winter Soldier/The Winter Soldier/Captain America 2,Thor: The Dark World/The Dark World/Thor 2,The Wolverine,Iron Man 3,The Amazing Spider-Man,The Avengers/Avengers,Ghost Rider: Spirit of Vengeance/Spirit of Vengence/Ghost Rider 2,Captain America: The First Avenger/The First Avenger/Captain America,X-Men: First Class/First Class/X-Men First Class,Thor,Iron Man 2,X-Men Origins: Wolverine/Wolverine,Punisher: War Zone/War Zone/Punisher 2,The Incredible Hulk,Iron Man,Fantastic Four: Rise of the Silver Surfer/Rise of the Silver Surfer/Fantastic Four 2,Spider-Man 3,Ghost Rider,X3: The Last Stand/X-Men 3/X-Men The Last Stand,Fantastic Four,Man-Thing,Elektra,Blade: Trinity/Blade 3/Blade Trinity,Spider-Man 2,The Punisher,Hulk,X2: X-Men United/X-Men 2/X-Men United,Daredevil,Spider-Man,Blade II/Blade 2,X-Men,Blade,Howard the Duck" />
+<input id="answer_key" type="hidden" value="Uruguay,Italy,Germany,Brazil,England,Argentina,France,Spain" />
 <!-- EDIT: Add the quiz-specific configuration values. -->
 <script>
 var quiz_config = { 
-        title: 'How many Marvel movies can you name?',
-        slug: 'marvel-movies',
+        title: 'How many men\'s world Cup Winners can you name?',
+        slug: 'mens-world-cup-winners',
         log_url: '../handler.php',
-        has_photos: 1,
+        has_photos: 0,
         log_answers: 1,
     };
 if ( is_mobile === 1 ) quiz_config.has_photos = 0;
 </script>
 <style>
 .photos li {
+	/*
 	background-size: 75px;
+	*/
 }
-.photos li span { width: 87px!important; }
 </style>
+
 
     <button class="btn-show-more-headlines" id="start-it" onClick="quizzer.start();">Start the quiz</button>
     <form name="time_count">
-        <input id="timer" type="text" readonly="true" value="7:00" name="timer" />
+        <input id="timer" type="text" readonly="true" value="2:00" name="timer" />
     </form>
 
     <section id="quiz_interface" class="hide">
