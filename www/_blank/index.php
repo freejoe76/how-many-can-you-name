@@ -48,7 +48,7 @@ var quiz_config = {
         has_photos: 1,
         log_answers: 1,
     };
-if ( is_mobile === 1 ) quiz_config.has_photos = 0;
+if ( is_mobile() === 1 ) quiz_config.has_photos = 0;
 </script>
 <style>
 .photos li {
