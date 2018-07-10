@@ -45,7 +45,7 @@ var quiz_config = {
         title: 'How many men\'s world Cup Winners can you name?',
         slug: 'mens-world-cup-winners',
         log_url: '../handler.php',
-        has_photos: 0,
+        has_photos: 1,
         log_answers: 1,
     };
 if ( is_mobile === 1 ) quiz_config.has_photos = 0;
