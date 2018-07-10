@@ -52,9 +52,11 @@ if ( is_mobile === 1 ) quiz_config.has_photos = 0;
 </script>
 <style>
 .photos li {
-	/*
-	background-size: 75px;
-	*/
+	background-size: 200px;
+	width: 200px;
+}
+.photos li span {
+	text-transform: capitalize;
 }
 </style>
 
