@@ -38,7 +38,7 @@ if ( $_SERVER['QUERY_STRING'] !== '' ) $append = '?' . substr(htmlspecialchars($
 <!-- EDIT: If you want to give the people more or less than two minutes, edit this. --> 
 <input id="time_limit" type="hidden" value="2" />
 <!-- EDIT: Put the answers here, separated by commas, like this: value="Name1,Name2,Name3,Name4" -->
-<input id="answer_key" type="hidden" value="Uruguay,Italy,Germany,Brazil,England,Argentina,France,Spain" />
+<input id="answer_key" type="hidden" value="Uruguay,Italy,Germany,West Germany,Brazil,England,Argentina,France,Spain" />
 <!-- EDIT: Add the quiz-specific configuration values. -->
 <script>
 var quiz_config = { 
