@@ -18,6 +18,7 @@ var quizzer = {
         slug: '',
         log_url: '../handler.php',
         has_photos: 0,
+        share: 0,
         log_answers: 0,
         log_start: 1,
         in_dev: 0
@@ -102,22 +103,6 @@ var quizzer = {
         else display += secs;
 
         return display;
-    },
-    reload: function(event)
-    {
-        // This could be called by the parent frame, if only we were on the same domain.
-        if ( event.origin === 'http://interactive.nydailynews.com' )
-        {
-            if ( typeof event.data.quiz !== 'undefined' && typeof PARSELY !== 'undefined' ) 
-            {
-              googletag.pubads().refresh();
-              PARSELY.beacon.trackPageView({
-                url: document.location.href,
-                urlref: document.location.href,
-                js: 1
-              });
-            }
-        }
     },
     quit: function()
     {
@@ -423,7 +408,7 @@ var quizzer = {
 
         $("#missed").removeClass('hide');
         $("#explanation").css('display', 'block');
-        this.social_media();
+        if ( this.config.share !== 0 ) this.social_media();
         // Let the parent frame know, if it's listening
         window.parent.postMessage({'quiz': 1}, '*');
     },
@@ -434,8 +419,22 @@ var quizzer = {
         $('#remain').text('You got ' + this.correct_count + ' out of ' + this.answer_count + ': ');
         $('#remain').append($('#correct'));
         var len = this.answer_key.length;
-        for ( var x=0; x < len; x++ ) $("#missed").append("<li>" + this.answer_key[x] + "</li>");
-        $("#missed").before('<h3>Missed</h3>');
+        var list_type = 'ul'
+        if ( document.getElementById('missed').nodeName === "DL" ) list_type = 'dl'
+        for ( var x=0; x < len; x++ ) {
+            var el_id = this.slugify(this.answer_key[x]);
+            if ( list_type == 'ul' ) $("#missed").append("<li id='" + el_id + "'>" + this.answer_key[x] + "</li>");
+            else if ( list_type == 'dl' ) {
+                //$("#missed").append("<dt>" + this.answer_key[x] + "</dt><dd id='" + el_id + "'></dd>");
+                console.log(el_id)
+                var keyEl = document.getElementById(el_id);
+                if ( keyEl !== null ) var keySibEl = keyEl.nextElementSibling;
+                $("#missed").append(keyEl);
+                $("#missed").append(keySibEl);
+
+            }
+        }
+        $("#missed").before('<h3>The ones you missed:</h3>');
     },
     social_media: function()
     {
